@@ -29,8 +29,8 @@ In the Layers panel, add a new layer.\
 Select Point as the layer type, Latitude and Longitude as the columns.
 
 8. Add Filter\
-Go to the Filters panel, add a new filter\
+Go to the Filters panel, add a new filter.\
 Select the Collection Time as the column.
 
 9. Set visualisation\
-Select increcremental time window, set its width and press play to start the animation.
+Select increcremental time window, set its width and click the play button to start the animation.
