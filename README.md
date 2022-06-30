@@ -2,7 +2,7 @@
 Main development repository for SpreadGL.
 
 # Dataset Examples
-In the "data examples" folder, You can find some dataset examples for visualization.
+In the "data examples" folder, you can find some dataset examples for visualization.
 
 # User Guide
 1. Clone rsepository\
