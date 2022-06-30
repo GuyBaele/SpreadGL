@@ -6,7 +6,7 @@ Main development repository for SpreadGL.
 "git clone git@github.com:FlorentLee/SpreadGL.git"
 
 2. Install Packages\
-"npm install"
+"npm install"\
 "npm audit fix --force"
 
 3. Mapbox Token\
