@@ -1,5 +1,5 @@
 # SpreadGL
-Main development repository for SpreadGL
+Main development repository for SpreadGL.
 
 # Dataset Examples
 In the "data examples" folder, You can find some dataset examples for visualization.
