@@ -1,13 +1,17 @@
 # SpreadGL
 Main development repository for SpreadGL
+
 # Dataset Examples
 In the "data examples" folder, You can find some dataset examples for visualization.
-# User Guide
-1. Clone Repository\
-"git clone git@github.com:FlorentLee/visualization_demo.git"
 
-3. Install\
-"cd visualization_demo"
+# User Guide
+1. Clone rsepository\
+"git clone git@github.com:FlorentLee/SpreadGL.git"
+
+2. Enter this directory\
+"cd ...\SpreadGL"
+
+3. Install packages\
 "npm install"
 
 4. Mapbox Token\
@@ -18,13 +22,15 @@ My own access token was already embedded in App.js. Feel free to replace it.
 "npm start"
 
 6. Load Data\
-Drag and drop a .csv file into the application.
+Drag and drop a CSV file into the application.
 
 7. Add Layer\
-Select Basic - Point and select latitude + longitude columns.
+In the Layers panel, add a new layer.\
+Select Point as the layer type, Latitude and Longitude as the columns.
 
 8. Add Filter\
-Go to the Filters panel, add a filter and select the collection time column.
+Go to the Filters panel, add a new filter\
+Select the Collection Time as the column.
 
-9. Set visualisation settings\
+9. Set visualisation\
 Select increcremental time window, set its width and press play to start the animation.
