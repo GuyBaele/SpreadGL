@@ -5,17 +5,15 @@ Main development repository for SpreadGL.
 1. Clone Rsepository\
 "git clone git@github.com:FlorentLee/SpreadGL.git"
 
-2. Enter Directory\
-"cd ...\SpreadGL"
-
-3. Install Packages\
+2. Install Packages\
 "npm install"
+"npm audit fix --force"
 
-4. Mapbox Token\
+3. Mapbox Token\
 As Kepler.gl is built on top of Mapbox, you need to get a mapbox account and an access token at mapbox.com.\
 My own access token was already embedded in App.js. Feel free to replace it.
 
-5. Start\
+4. Start\
 "npm start"
 
 # Examples
