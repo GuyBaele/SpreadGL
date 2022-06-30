@@ -1,9 +1,6 @@
 # SpreadGL
 Main development repository for SpreadGL.
 
-# Dataset Examples
-In the "data examples" folder, you can find some dataset examples for visualization.
-
 # Installation
 1. Clone Rsepository\
 "git clone git@github.com:FlorentLee/SpreadGL.git"
@@ -21,7 +18,10 @@ My own access token was already embedded in App.js. Feel free to replace it.
 5. Start\
 "npm start"
 
-# Point Visualization
+# Examples
+In the "data examples" folder, you can find some dataset examples for visualization.
+
+# Point Map Visualization
 1. Load Data\
 Drag and drop a CSV file into the application.
 
