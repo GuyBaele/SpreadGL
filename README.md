@@ -10,8 +10,7 @@ Main development repository for SpreadGL.
 "npm audit fix --force"
 
 3. Mapbox Token\
-As Kepler.gl is built on top of Mapbox, you need to get a mapbox account and an access token at mapbox.com.\
-My own access token was already embedded in App.js. Feel free to replace it.
+As Kepler.gl is built on top of Mapbox, you need to get a mapbox account and an access token at mapbox.com. My own access token is already embedded in App.js. Feel free to replace it.
 
 4. Start\
 "npm start"
@@ -36,19 +35,19 @@ FInd the incremental time window, set its width and click the play button to sta
 
 # Arc Layer Visualisation:
 1. Load Data\
-Drag and drop .csv into the application.
+Drag and drop B.1.619_country.csv into the application.
 
 2. Add Layer\
 In the Layers panel, add a new layer.\
 Select Arc as the layer type, the fields below as the columns.\
-Source Lat: pickup_latitude\
-Source Lng: pickup_longitude\
-Target Lat: dropoff_latitude\
-Target Lng: dropoff_longitude
+Source Lat: start_latitude\
+Source Lng: start_longitude\
+Target Lat: end_latitude\
+Target Lng: end_longitude
 
 3. Add Filter\
 Go to the Filters panel, add a new filter\
-Select tpep_pickup_datetime / tpep_dropoff_datetime as the column.
+Select start_time as the column.
 
 4. Set visualisation settings\
 FInd the incremental time window, set its width and click the play button to start the animation.
