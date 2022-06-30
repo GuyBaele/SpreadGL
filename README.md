@@ -21,9 +21,9 @@ My own access token was already embedded in App.js. Feel free to replace it.
 # Examples
 In the "data examples" folder, you can find some dataset examples for visualization.
 
-# Point Map Visualization
+# Point Layer Visualization
 1. Load Data\
-Drag and drop a CSV file into the application.
+Drag and drop "Belgium Omicron Cases.csv" into the application. (Belgium Omicron Cases)
 
 2. Add Layers\
 In the Layers panel, add a new layer.\
@@ -34,4 +34,24 @@ Go to the Filters panel, add a new filter.\
 Select the Collection Time as the column.
 
 4. Set Visualisation\
-Select increcremental time window, set its width and click the play button to start the animation.
+FInd the incremental time window, set its width and click the play button to start the animation.
+
+# Arc Layer Visualisation:
+1. Load Data\
+Drag and drop .csv into the application.
+
+2. Add Layer\
+In the Layers panel, add a new layer.\
+Select Arc as the layer type, the fields below as the columns.\
+Source Lat: pickup_latitude\
+Source Lng: pickup_longitude\
+Target Lat: dropoff_latitude\
+Target Lng: dropoff_longitude
+
+3. Add Filter\
+Go to the Filters panel, add a new filter\
+Select tpep_pickup_datetime / tpep_dropoff_datetime as the column.
+
+4. Set visualisation settings\
+FInd the incremental time window, set its width and click the play button to start the animation.
+
