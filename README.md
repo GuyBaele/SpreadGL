@@ -33,7 +33,7 @@ Select the Collection Time as the column.
 4. Set Visualisation\
 Find the incremental time window, set its width and click the play button to start the animation.
 
-## Arc Layer Visualisation:
+## Arc Layer Visualisation
 1. Load Data\
 Drag and drop B.1.619_country.csv into the application.
 
@@ -53,7 +53,7 @@ Select start_time as the column.
 FInd the incremental time window, set its width and click the play button to start the animation.
 
 
-## Playback Videos:
+## Playback Videos
 
 
 https://user-images.githubusercontent.com/74751786/200294066-5037c41c-94b7-43af-a9af-709ba38932ee.mp4
