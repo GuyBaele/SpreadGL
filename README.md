@@ -1,8 +1,8 @@
-# SpreadGL
+# Spread.gl
 Main development repository for SpreadGL.
 
 # Installation
-1. Clone Rsepository\
+1. Clone Repository\
 "git clone git@github.com:FlorentLee/SpreadGL.git"
 
 2. Install Packages\
@@ -53,14 +53,22 @@ Select start_time as the column.
 FInd the incremental time window, set its width and click the play button to start the animation.
 
 
-## Playback Videos
+# Animation examples in spread.gl
 
+## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 
-
-https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
-
-
-
+<center>
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
+</center>
+
+
+## Yellow fever virus in Brazil
+
+<center>
+https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
+</center>
+
+
+## Porcine epidemic diarrhea virus (PEDV) in China
 
 
