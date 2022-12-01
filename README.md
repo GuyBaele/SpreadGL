@@ -1,6 +1,7 @@
 # Spread.gl
 Main development repository for SpreadGL.
 
+
 # Installation
 1. Clone Repository\
 "git clone git@github.com:FlorentLee/SpreadGL.git"
@@ -15,12 +16,10 @@ As Kepler.gl is built on top of Mapbox, you need to get a mapbox account and an 
 4. Start\
 "npm start"
 
-# Examples
-In the "inputdata" directory , you can find all the required input files for our 3 examples in the manuscript.
-
-
 
 # Animation examples in spread.gl
+
+In the "inputdata" directory , you can find all the required input files for our 3 examples in the manuscript.
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 
