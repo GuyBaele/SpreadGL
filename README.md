@@ -26,7 +26,7 @@ In the "inputdata" directory , you can find all the required input files for our
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
 
-Processing Steps:\
+Processing Steps:
 1. Parse 'B.1.1.7_England.MCC.tree' with correct attribute names and regular expressions of '\d+-?\d+-?\d+'(DATES) & '-?\d+\.?\d+'(LOCATIONS).
 2. Reproject coordinates from 'Output_UK_Projection_1st.csv' to 'Output_WGS84_RConverted_2nd.csv' using 'Projection_Transformation.R'.
 3. Combine two files mentioned above in Microsoft Excel to get 'Output_Combined_3rd.csv' for further check.
@@ -38,7 +38,7 @@ Processing Steps:\
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 
-Processing Steps:\
+Processing Steps:
 1. Parse 'YFV.MCC.tree' with correct attribute names and regular expressions of '\d+-?\d+-?\d+'(DATES), '.+?(?=\=)' & '(?<=\{)(.*)[^\}]+'(POLYGONS).
 2. Get 'YFV_Polygon_Layer.geojson' and visualise it with 'brazil_region_maxtemp.csv' in Kepler.gl.
 
@@ -47,7 +47,7 @@ Processing Steps:\
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
 
 
-Processing Steps:\
+Processing Steps:
 1. Parse 'PEDV_China.MCC.tree' with the regular expression of '\d+-?\d+-?\d+'(DATES) and the correct location reference to 'Capital_Coordinates_Involved_Provinces.csv'.
 2. Load 'PEDV_China_Output.csv' and 'Pig_Population_Involved_Provinces.geojson' in Kepler.gl.
 3. Add custom map style by creating your own map style at mapbox for example.
