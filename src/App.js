@@ -1,5 +1,5 @@
 import React from "react";
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
 import { taskMiddleware } from "react-palm/tasks";
 import { Provider } from "react-redux";
 import KeplerGl from "kepler.gl";
@@ -7,11 +7,6 @@ import keplerGlReducer from "kepler.gl/reducers";
 // import { addDataToMap } from "kepler.gl/actions";
 // import useSWR from "swr";, useDispatch
 
-window.process = {
-  env: {
-      NODE_ENV: 'test'
-  }
-}
 
 const reducers = combineReducers({
   keplerGl: keplerGlReducer
