@@ -11,7 +11,7 @@ npm install
 
 3. Mapbox Access Token\
 Sign up for a Mapbox account and create an access token at mapbox.com.\
-Modify and insert your own token by the following instructions.\
+Modify the file of mapbox.js and insert your own token by the following instructions.\
 vi src/mapbox.js\
 i\
 MAKE THE CHANGE\
