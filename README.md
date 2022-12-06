@@ -20,7 +20,7 @@ Press ESC
 :q
 
 4. Start\
-	npm start
+npm start
 
 
 # Animation examples in spread.gl
