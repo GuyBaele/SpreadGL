@@ -4,7 +4,7 @@ import { taskMiddleware } from "react-palm/tasks";
 import { Provider } from "react-redux";
 import KeplerGl from "kepler.gl";
 import keplerGlReducer from "kepler.gl/reducers";
-// import {token} from "./mapbox";
+import {token} from "./mapbox";
 
 
 const reducers = combineReducers({
@@ -12,15 +12,6 @@ const reducers = combineReducers({
 });
 
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
-
-function writeCookie(){
-    if(document.cookie === "")
-    {
-        document.cookie = prompt('Please enter your mapbox access mapboxAccessToken here:');
-    }
-    return document.cookie;
-}
-const token = writeCookie();
 
 function App() {
     // var [mapboxAccessToken, setToken] = useState("");
@@ -38,7 +29,6 @@ function App() {
     //     } catch (err){
     //         console.error(err);
     //     }
-    writeCookie();
       return (
           <div className="App">
                 <Provider store={store}>
