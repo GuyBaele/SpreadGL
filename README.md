@@ -4,17 +4,17 @@ Main development repository for SpreadGL.
 
 # Installation
 1. Clone Repository\
-		git clone git@github.com:FlorentLee/SpreadGL.git
+			git clone git@github.com:FlorentLee/SpreadGL.git
 
 2. Install Packages\
-		npm install
+			npm install
 
 3. Mapbox Access Token\
 Sign up for a Mapbox account and create an access token at mapbox.com.\
 Modify the file of mapbox.js and insert your own token there.
 
 4. Start\
-		npm start
+			npm start
 
 
 # Animation examples in spread.gl
