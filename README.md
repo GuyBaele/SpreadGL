@@ -17,6 +17,7 @@ Modify the file of mapbox.js and insert your own token there.
 	npm start
 
 # Processing Tree Files
+	pip install -r requirements.txt
 	python3 main.py --tree B.1.1.7_England.MCC.tree --date yyyy-mm-dd --location coordinates
 	python3 main.py --tree YFV.MCC.tree --date yyyy-mm-dd --location location1,location2
 	python3 main.py --tree PEDV_China.MCC.tree --date yyyy-mm-dd --location location --list Capital_Coordinates_Involved_Provinces.csv
