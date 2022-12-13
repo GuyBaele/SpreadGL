@@ -9,7 +9,7 @@ Main development repository for SpreadGL.
 2. Install Packages
 * npm install
 
-3. Sign up for a Mapbox account and create an access token at mapbox.com.\
+3. Sign up for a Mapbox account and create an access token at mapbox.com.
 * Modify the file of mapbox.js and insert your own token there.
 
 4. Start the Project
