@@ -16,8 +16,9 @@ Main development repository for SpreadGL.
 * npm start
 
 # Processing Tree Files
+Please make sure that you have already installed Python 3. 
 1. Drag the folder of TreeProcessingTool to the directory where the MCC tree and its location list (optional) are situated.
-2. Install required packages in a new terminal at the folder of TreeProcessingTool. You only have to do it once.
+2. Install required python packages in a new terminal at the folder of TreeProcessingTool. You only have to do it once.
 * pip install -r requirements.txt
 3. Check the descriptions of arguments.
 * python3 main.py --help
