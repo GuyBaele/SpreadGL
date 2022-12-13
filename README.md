@@ -55,4 +55,4 @@ https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-
 
 To be continued:
 1. Generate the file of 'Pig_Population_Involved_Provinces.geojson' as an environmental layer.
-2. Add a customised map style created on your own, e.g. via Mapbox.
+2. Add a custom map style created by yourself, e.g. via Mapbox.
