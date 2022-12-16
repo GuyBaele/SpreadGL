@@ -35,11 +35,12 @@ In the "inputdata" folder, you can find all the required input files for our 3 e
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
-
-To be continued:
-1. Reproject coordinates from 'Output_UK_Projection_1st.csv' to 'Output_WGS84_RConverted_2nd.csv' using 'Projection_Transformation.R'.
-2. Combine two files mentioned above in Microsoft Excel to get 'Output_Combined_3rd.csv' for further check.
-3. Remove outliers by referring to 'metadata_for_check.csv' via 'Outlier_Detection.py' to get 'Final_Output_4th.csv'.
+You can follow the next steps to convert the coordinates of 'Output_UK_Projection_1st.csv' to accepted format.
+1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'
+2. Reproject the coordinates from the British National Grid CRS to the WGS 84 CRS in R.
+* Rscript Projection_Transformation.R
+3. Remove outliers by referring to the metadata and then get the final output.
+* Python Outlier_Detection.py
 
 ## Yellow fever virus in Brazil
 
