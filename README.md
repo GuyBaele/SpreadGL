@@ -23,7 +23,7 @@ Please make sure that you have already installed Python 3.
 3. Check the descriptions of arguments.
 * python3 main.py --help
 4. Process the corresponding tree.
-* python3 main.py --tree B.1.1.7_England.MCC.tree --date yyyy-mm-dd --location coordinates
+* python3 main.py --tree B.1.1.7_England.MCC.tree --date yyyy-mm-dd --location coordinates --type csv
 * python3 main.py --tree YFV.MCC.tree --date yyyy-mm-dd --location location1,location2
 * python3 main.py --tree PEDV_China.MCC.tree --date yyyy-mm-dd --location location --list Capital_Coordinates_Involved_Provinces.csv
 
