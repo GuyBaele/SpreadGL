@@ -35,7 +35,7 @@ In the "inputdata" folder, you can find all the required input files for our 3 e
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
-You can follow the next steps to convert the coordinates of 'Output_UK_Projection_1st.csv' to accepted format.
+You can follow the next steps to convert the coordinates of 'Output_UK_Projection_1st.csv' to accepted format.\
 Note: Please make sure that you have already installed R. 
 1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'
 2. Reproject the coordinates from the British National Grid CRS to the WGS 84 CRS in R.
@@ -48,7 +48,7 @@ Note: Please make sure that you have already installed R.
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 
-To be continued:
+To be continued:\
 Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.
 
 ## Porcine epidemic diarrhea virus (PEDV) in China
