@@ -16,7 +16,7 @@ Main development repository for SpreadGL.
 * npm start
 
 # Processing Tree Files
-Notice: Please make sure that you have already installed Python 3. 
+Note: Please make sure that you have already installed Python 3. 
 1. Drag the folder of TreeProcessingTool to the directory where the MCC tree and its location list (optional) are situated.
 2. Install required python packages in a new terminal at the folder of TreeProcessingTool. You only have to do it once.
 * pip install -r requirements.txt
@@ -36,7 +36,7 @@ In the "inputdata" folder, you can find all the required input files for our 3 e
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
 You can follow the next steps to convert the coordinates of 'Output_UK_Projection_1st.csv' to accepted format.
-Notice: Please make sure that you have already installed R. 
+Note: Please make sure that you have already installed R. 
 1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'
 2. Reproject the coordinates from the British National Grid CRS to the WGS 84 CRS in R.
 * Rscript Projection_Transformation.R
