@@ -1,5 +1,5 @@
 # Spread.gl
-Main development repository for SpreadGL.
+Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples.
 
 
 # Installation
@@ -15,14 +15,14 @@ Main development repository for SpreadGL.
 4. Start the Project
 * npm start
 
-# Processing Tree Files
+# Processing MCC Tree Files
 Note: Please make sure that you have already installed Python 3. 
-1. Drag the folder of TreeProcessingTool to the directory where the MCC tree and its location list (optional) are situated.
-2. Install required python packages in a new terminal at the folder of TreeProcessingTool. You only have to do it once.
+1. Drag or copy the contents of the scripts folder to the directory where the maximum clade credibility (MCC) tree and its location list (optional) are situated. More information regarding the different scripts can be found in the README of the scripts folder.
+2. Install the required python packages in a new terminal in the scripts folder. You only have to do it once.
 * pip install -r requirements.txt
 3. Check the descriptions of arguments.
 * python3 main.py --help
-4. Process the corresponding tree.
+4. Process the MCC tree you want to visualise.
 * python3 main.py --tree B.1.1.7_England.MCC.tree --date yyyy-mm-dd --location coordinates --type csv
 * python3 main.py --tree YFV.MCC.tree --date yyyy-mm-dd --location location1,location2
 * python3 main.py --tree PEDV_China.MCC.tree --date yyyy-mm-dd --location location --list Capital_Coordinates_Involved_Provinces.csv
