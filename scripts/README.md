@@ -22,4 +22,4 @@ In this directory, you can find each script that will be used to process MCC tre
 
 **geojsonLayer.py:** As the type of final output is set as GeoJSON by default, we create features for each tree branch, put them into a feature collection and then export it as a GeoJSON file. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, we create multiple polygons as the geometry of the features.
 
-requirements.txt: This file lists all the required dependencies.
+**requirements.txt:** This file lists all the required dependencies.
