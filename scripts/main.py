@@ -17,10 +17,11 @@ def main():
                         help='Enter the two annotations, storing latitudes and longitudes in this order, with a comma separator. '
                              'If there is only one annotation that stores either coordinates or location names, enter this annotation without comma.')
     parser.add_argument('--list', '-li',
-                        help='Optional: Specify the file name of your list of coordinates with filename extension. '
+                        help='Optional, only mandatory for discrete space: Specify the file name of your list of coordinates with filename extension. '
                              'This file should be in the format of ".csv" with the separator of "," '
                              'and comprised of three columns with a specific header of "location,latitude,longitude".')
-    parser.add_argument('--type', '-t',  choices=['csv'], help='Optional: Type in "csv" if you would like to inspect your output file in a tabular format.')
+    parser.add_argument('--type', '-t',  choices=['csv'],
+                        help='Optional: Type in "csv" if you would like to inspect your output file in a tabular format.')
 
     args = parser.parse_args()
     tree = str(args.tree)
