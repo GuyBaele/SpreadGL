@@ -12,15 +12,15 @@ In this directory, you can find all the scripts that will be used to process max
 
 **continuousMCCTreeParser.py** extracts information from MCC trees with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step is to process details from the summary MCC tree, it extracts time information via TimeConversion.py as well as the location information via CoordinateConversion.py. Afterwards, it calls the function of iterateTree in BranchInference.py to traverse the whole tree and replace the empty values in each tree branch with correct information. Finally, the result will be stored in a dictionary/hash map.
 
-**BranchInference.py:** The algorithm of Deep-first Search will be implemented to traverse the whole tree in order to obtain originally existing information from each branch and then store it in a stack. In the meanwhile, missing values will be replaced by calling the function of branchProcessor. To be more specific, here we use the start & end point to represent the two sides of one tree branch. The location information of the current start point is the same as that of the previous end point, where the latter is known. The time information of the current end point can be retrieved from the next start point. We can then calculate the time for the current start point, which also serves as the time for the previous end point. In all, we can gather and infer enough details for each branch via traversal.
+**BranchInference.py** implements a depth first search algorithm to traverse the entire MCC tree in order to obtain existing information from each branch and then store it in a stack. In the meantime, missing values will be replaced by calling the function of branchProcessor. To be more specific, here we use the start & end point to represent the two ends of one tree branch. The location information of the current start point is the same as that of the previous end point, where the latter is known. The time information of the current end point can be retrieved from the next start point. We can then calculate the time for the current start point, which also serves as the time for the previous end point. In all, we can gather and infer enough details for each branch via traversal.
 
-**TimeConversion.py:** It is used to realise conversion functions among different time formats.
+**TimeConversion.py** s used to perform conversions between different time formats.
 
-**CoordinateConversion.py:** It is used to parse coordinates in the tree annotation or from the location list.
+**CoordinateConversion.py** is used to parse coordinates in the tree annotation or from the location list.
 
-**PatternManagement.py:** This script stores different regular expressions that can match dates, floating point numbers, coordinates or strings.
+**PatternManagement.py** stores different regular expressions that can match dates, floating point numbers, coordinates or strings.
 
-**discreteMCCTreeParser.py:** It works in the same way as continuousMCCTreeParser.py. But the users have to provide an extra location list in the context of discrete phylogeographic analysis.
+**discreteMCCTreeParser.py** works similarly as continuousMCCTreeParser.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
 
 **geojsonLayer.py:** As the type of final output is set as GeoJSON by default, we created feature(s) for each tree branch, using the parsed tree information as the properties part. Then, we put them into a feature collection. Eventually, we exported it as a GeoJSON file. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, one or multiple polygons should be created to serve as the geometry part of feature(s).
 
