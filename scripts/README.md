@@ -24,7 +24,7 @@ In this directory, you can find all the scripts that will be used to process max
 
 **geojsonLayer.py:** As the type of final output is set as GeoJSON by default, we created feature(s) for each tree branch, using the parsed tree information as the properties part. Then, we put them into a feature collection. Eventually, we exported it as a GeoJSON file. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, one or multiple polygons should be created to serve as the geometry part of feature(s).
 
-**requirements.txt:** This file lists all the required dependencies.
+**requirements.txt** lists all the required Python dependencies.
 
 # Tutorial
 
