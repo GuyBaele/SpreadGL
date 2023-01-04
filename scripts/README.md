@@ -1,8 +1,8 @@
-In this directory, you can find all the scripts that will be used to process MCC trees. Please check below for the explanations about how they work and the command-line based tutorial on how to use them.
+In this directory, you can find all the scripts that will be used to process maximum clade credibility (MCC) trees. Please check below for descriptions of how they work and a command-line based tutorial on how to use them. In short, the **main.py** script is the key method to call upon, and will delegate further processing tasks to the other scripts.
 
-# Explanations
+# Script descriptions
 
-**main.py:** It parses the arguments from the client end and passes the values of different parameters to the corresponding script with the correct type of phylogeographic analysis.
+**main.py** parses the arguments from the client end and passes the values of different parameters to the corresponding script with the correct type of phylogeographic analysis.
 
 **continuousProcessor.py:** An interface accepts values from main.py, parses the tree in TreeParser.py, starts the process with continuousMCCTreeParser.py and returns the result in the format of either csv or geojson.
 
