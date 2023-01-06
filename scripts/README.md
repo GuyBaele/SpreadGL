@@ -4,25 +4,29 @@ In this directory, you can find all the scripts that will be used to process max
 
 **main.py** parses the arguments from the client end and passes the values of different parameters to the corresponding script with the correct type of phylogeographic analysis.
 
-**continuousProcessor.py:** An interface accepts values from main.py, parses the tree in TreeParser.py, starts the process with continuousMCCTreeParser.py and returns the result in the format of either csv or geojson.
+**continuous_space_processor.py:** accepts values from main.py, parses the tree in TreeParser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
 
-**discreteProcessor.py:** An interface accepts values from main.py, parses the tree in TreeParser.py, starts the process with discreteMCCTreeParser.py and returns the result in the format of either csv or geojson.
+**discrete_space_processor.py:** accepts values from main.py, parses the tree in TreeParser.py, starts a process by discrete_tree_handler.py and returns the result in the format of either csv or geojson.
 
-**TreeParser.py** will parse the MCC tree using the third-party modules TreeSwift & Biopython.
+**tree_parser.py** parses the MCC tree using two third-party modules: TreeSwift & Bio.Phylo.
 
-**continuousMCCTreeParser.py** extracts information from MCC trees with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step is to process details from the summary MCC tree, it extracts time information via TimeConversion.py as well as the location information via CoordinateConversion.py. Afterwards, it calls the function of iterateTree in BranchInference.py to traverse the whole tree and replace the empty values in each tree branch with correct information. Finally, the result will be stored in a dictionary/hash map.
+**continuous_tree_handler.py** deals with MCC trees with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step, the method of find_clades, provided by Bio.Phylo package, will be called to traverse the tree and gather the exsiting information from each node/tip. It implements the depth-first (preorder) search algorithm. For each node / tip, the location information in the annotation can be extracted by coordinate_conversion.py. The time information of tips can also be obtained from the sequence name by time_conversion.py.
 
-**BranchInference.py** implements a depth first search algorithm to traverse the entire MCC tree in order to obtain existing information from each branch and then store it in a stack. In the meantime, missing values will be replaced by calling the function of branchProcessor. To be more specific, here we use the start & end point to represent the two ends of one tree branch. The location information of the current start point is the same as that of the previous end point, where the latter is known. The time information of the current end point can be retrieved from the next start point. We can then calculate the time for the current start point, which also serves as the time for the previous end point. In all, we can gather and infer enough details for each branch via traversal.
+In order to better reflect the relationship of parent node and child node, we used starting point & ending point to denote them respectively and put their information (key-value pairs) together in the same dictionary, denoted as branch. Branches will be nested in a list. Then, we processed these branches via tree_processor.py. Eventually, the list of branches (dictionaries) will be returned as a result.
 
-**TimeConversion.py** s used to perform conversions between different time formats.
+**tree_processor.py** was mainly designed to infer the dates of each node by recursively referring to the date of its child node and their distance (length of branch). As the branches were stored in the way of pre-order traversal, we created a stack and pushed them into it. While the branch at the top of the stack has a tip as its ending point or been visited twice (no more sub-branch in the stack), the method of exchange_branch_information* will be called. The goal is to exchange information and infer the values of date between the neighbouring branches.
 
-**CoordinateConversion.py** is used to parse coordinates in the tree annotation or from the location list.
+**exchange_branch_information:* In this method, the current branch at the top of the stack will be poped out. The time of the ending point of its previous branch should be equal to that of the starting point of the current branch. The starting point of the previous branch can hence be calculated by referring to the branch length. As for the location of the starting point of the current branch, it is the same as that of the ending point of its previous branch. Until now, all the information of both branches is completely recorded. The visit times of the previous branch will be added by one.
 
-**PatternManagement.py** stores different regular expressions that can match dates, floating point numbers, coordinates or strings.
+**time_conversion.py** is used to perform conversions between different time formats.
 
-**discreteMCCTreeParser.py** works similarly as continuousMCCTreeParser.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
+**coordinate_conversion.py** is used to parse coordinates in the tree annotation or from the location list.
 
-**geojsonLayer.py:** As the type of final output is set as GeoJSON by default, we created feature(s) for each tree branch, using the parsed tree information as the properties part. Then, we put them into a feature collection. Eventually, we exported it as a GeoJSON file. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, one or multiple polygons should be created to serve as the geometry part of feature(s).
+**pattern_management.py** stores different regular expressions that can match dates, floating point numbers, coordinates or strings.
+
+**discrete_tree_handler.py** works similarly as continuous_tree_handler.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
+
+**geojson_file_generator.py:** As the type of final output is set as GeoJSON by default, we created feature(s) for each tree branch, using the parsed tree information as the properties part. Then, we put them into a feature collection. Eventually, we exported it as a GeoJSON file. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, one or multiple polygons should be created to serve as the geometry part of feature(s).
 
 **requirements.txt** lists all the required Python dependencies.
 
