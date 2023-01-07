@@ -1,6 +1,6 @@
 import argparse
-from continuousProcessor import *
-from discreteProcessor import *
+from continuous_space_processor import *
+from discrete_space_processor import *
 
 
 def main():
@@ -8,10 +8,10 @@ def main():
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--tree', '-tr', required=True,
                         help='Specify the file name of your MCC tree with filename extension.')
-    parser.add_argument('--date', '-d', choices=['decimal', 'yyyy-mm-dd'], required=True,
-                        help='At the end of sequence names, find the date format. '
-                             'If it is a decimal number, enter "decimal". '
-                             'If it is ISO-8601 (Year-Month-Day), enter "yyyy-mm-dd". '
+    parser.add_argument('--date', '-d', choices=['float', 'datetime'], required=True,
+                        help='At the end of sequence names, find the format of date information. '
+                             'If it is a floating-point number, enter "float". '
+                             'If it is ISO-8601 (Year-Month-Day/yyyy-mm-dd), enter "datetime". '
                              'When it is incomplete, the first day of the corresponding month or year will be applied.')
     parser.add_argument('--location', '-l', required=True,
                         help='Enter the two annotations, storing latitudes and longitudes in this order, with a comma separator. '
@@ -31,9 +31,9 @@ def main():
     extension = str(args.type)
 
     if location_list == 'None':
-        processContinuousMCCTree(tree, date, location, extension)
+        process_continuous_phylogeography(tree, date, location, extension)
     else:
-        processDiscreteMCCTree(tree, location_list, date, location, extension)
+        process_discrete_phylogeography(tree, location_list, date, location, extension)
 
 
 # Run with command line arguments precisely when called directly

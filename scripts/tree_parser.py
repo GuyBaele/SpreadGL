@@ -3,7 +3,7 @@ import tempfile
 from Bio import Phylo
 
 
-def parseTree(tree_path):
+def parse_tree(tree_path):
     tree = treeswift.read_tree_nexus(tree_path, translate=True).get('TREE1')
     temp_file = tempfile.NamedTemporaryFile(mode="w+t")
     tree.write_tree_newick(temp_file.name, hide_rooted_prefix=False)

@@ -2,7 +2,7 @@ import geojson
 import re
 
 
-def createGeojsonLayer(parsed_tree, tree_info):
+def generate_geojson_file(parsed_tree, tree_info):
 
     features = []
     tree_info_id = 0
