@@ -2,6 +2,8 @@ In this directory, you can find all the scripts that will be used to process max
 
 # Script descriptions
 
+**requirements.txt** lists all the required Python dependencies.
+
 **main.py** parses the arguments from the client end and passes the values of different parameters to the corresponding script with the correct type of phylogeographic analysis.
 
 **continuous_space_processor.py:** accepts values from main.py, parses the tree in TreeParser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
@@ -28,7 +30,56 @@ In order to better reflect the relationship of parent node and child node, we us
 
 **geojson_file_generator.py:** By default, the format of output file is set as GeoJSON. Feature and FeatureCollection are two types of GeoJSON. A FeatureCollection contains an array of Feature Objects. A Feature object represents a spatially bounded entity and contains several members, such as "geometry" and "properties". The value of the properties member can be any JSON object. As the tree information is recorded in many branches (dictionaries), each branch can serve as the properties member of a Feature object. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, each ending point of the branches may correspond to one or multiple polygons, which can become the geometry memebr of the Feature object(s). To conclude, we created one or several Feature object(s) for each branch, put all of them into a FeatureCollection and exported a GeoJSON file.
 
-**requirements.txt** lists all the required Python dependencies.
+Here is an example.
+```
+{
+    "type": "FeatureCollection",
+    "features": [
+        {"type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    []
+                ]
+            },
+            "properties": {
+                "id":17,
+                "duration":0.6207730480719,
+                "name":"MH018115|Brazil|ES|VendaNovaDoImigrante|NP|NA|IAL-11_11|2017-01-24",
+                "start_time":"2016-06-11 08:40:29",
+                "end_time":"2017-01-24 11:59:59",
+                "start_latitude":-20.51398598643596,
+                "start_longitude":-46.85916960400302,
+                "end_latitude":-20.433141927814653,
+                "end_longitude":-41.067196968419054
+            }
+        },
+        {"type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-48.428766,-21.350363],[-48.606715,-21.256626],[-48.69569,-21.101844],[-48.501579,-21.019836],
+                        [-48.339791,-20.870381],[-47.734757,-20.839631],[-47.539018,-20.92914],[-47.472875,-21.139962],
+                        [-47.571243,-21.320161],[-47.805942,-21.437464],[-48.072867,-21.44995],[-48.428766,-21.350363]
+                    ]
+                ]
+            },
+            "properties": {
+                "id":18,
+                "duration":0.2150216520605,
+                "name":"None",
+                "start_time":"2015-11-30 09:37:52",
+                "end_time":"2016-02-17 00:18:13",
+                "start_latitude":-20.768129100821106,
+                "start_longitude":-47.33880273745724,
+                "end_latitude":-21.127361903797887,
+                "end_longitude":-47.98910670165459
+            }
+        }
+    ]
+}
+```
 
 # Tutorial
 
