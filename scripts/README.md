@@ -2,13 +2,13 @@ In this directory, you can find all the scripts that will be used to process max
 
 # Script descriptions
 
-**requirements.txt** lists all the required Python dependencies.
+**requirements.txt** lists all the required Python dependencies for the spread.gl processing scripts.
 
-**main.py** parses the arguments from the client end and passes the values of different parameters to the corresponding script with the correct type of phylogeographic analysis.
+**main.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
 
-**continuous_space_processor.py:** accepts values from main.py, parses the tree in tree_parser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
+**continuous_space_processor.py** accepts values from main.py, parses the tree in tree_parser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
 
-**discrete_space_processor.py:** accepts values from main.py, parses the tree in tree_parser.py, starts a process by discrete_tree_handler.py and returns the result in the format of either csv or geojson.
+**discrete_space_processor.py** accepts values from main.py, parses the tree in tree_parser.py, starts a process by discrete_tree_handler.py and returns the result in the format of either csv or geojson.
 
 **tree_parser.py** parses the MCC tree using two third-party modules: TreeSwift & Bio.Phylo.
 
