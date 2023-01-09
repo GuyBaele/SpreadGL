@@ -6,31 +6,27 @@ In this directory, you can find all the scripts that will be used to process max
 
 **main.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
 
-**continuous_space_processor.py** accepts values from main.py, parses the tree in tree_parser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
+**continuous_space_processor.py** accepts values from main.py, parses the tree by calling the code in tree_parser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
 
 **discrete_space_processor.py** accepts values from main.py, parses the tree in tree_parser.py, starts a process by discrete_tree_handler.py and returns the result in the format of either csv or geojson.
 
 **tree_parser.py** parses the MCC tree using two third-party modules: TreeSwift & Bio.Phylo.
 
-**continuous_tree_handler.py** deals with MCC trees with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step, the method of find_clades, provided by Bio.Phylo package, will be called to traverse the tree and gather the exsiting information from each node/tip. It implements the depth-first (preorder) search algorithm. For each node / tip, the location information in the annotation can be extracted by coordinate_conversion.py. The time information of tips can also be obtained from the sequence name by time_conversion.py.
+**continuous_tree_handler.py** deals with MCC trees with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step, the method of find_clades, provided by the Bio.Phylo package, will be called to traverse the tree and gather the existing information from each node/tip using a depth-first (pre-order) search algorithm. For each node / tip, the location information in the annotation will be extracted using the coordinate_conversion.py script. The time information of tips can also be obtained from the sequence name (if the information is available there) by using the time_conversion.py script.
 
-In order to better reflect the relationship of parent node and child node, we used starting point & ending point to denote them respectively and put their information (key-value pairs) together in the same dictionary, denoted as branch. Branches will be nested in a list. Then, we processed these branches via tree_processor.py. Eventually, the list of branches (dictionaries) will be returned as a result.
-
-**tree_processor.py** was mainly designed to infer the dates of each node by recursively referring to the date of its child node and their distance (length of branch). As the branches were stored in the way of pre-order traversal, we created a stack and pushed them into it. While the branch at the top of the stack has a tip as its ending point or been visited twice (no more sub-branch in the stack), the method of *exchange_branch_information will be called. The goal is to exchange information and infer the values of date between each branch and its sub-branch.
-
-**exchange_branch_information:* In this method, the current branch at the top of the stack will be poped out. The time of the ending point of its previous branch should be equal to that of the starting point of the current branch. The starting point of the previous branch can hence be calculated by referring to the branch length. As for the location of the starting point of the current branch, it is the same as that of the ending point of its previous branch. Until now, all the information of both branches is completely recorded. The visit times of the previous branch will be added by one.
+**tree_processor.py** was mainly designed to infer the dates of each node by recursively traversing the MCC tree.
 
 **time_conversion.py** is used to perform conversions between different time formats.
 
 **coordinate_conversion.py** is used to parse coordinates in the tree annotation or from the location list.
 
-**pattern_management.py** stores different regular expressions that can match dates, floating point numbers, coordinates or strings.
+**pattern_management.py** contains different regular expressions that can match dates, floating point numbers, coordinates or strings.
 
 **discrete_tree_handler.py** works similarly as continuous_tree_handler.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
 
-**geojson_file_generator.py:** By default, the format of output file is set as GeoJSON. Feature and FeatureCollection are two types of GeoJSON. A FeatureCollection contains an array of Feature Objects. A Feature object represents a spatially bounded entity and contains several members, such as "geometry" and "properties". The value of the properties member can be any JSON object. As the tree information is recorded in many branches (dictionaries), each branch can serve as the properties member of a Feature object. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, it can be reflected as contours surrounding the points. In this case, each ending point of the branches may correspond to one or multiple polygons, which can become the geometry memebr of the Feature object(s). To conclude, we created one or several Feature object(s) for each branch, put all of them into a FeatureCollection and exported a GeoJSON file.
+**geojson_file_generator.py** generates geographic data structures for each branch in the MCC tree. By default, the format of output file is set as GeoJSON, which is a format for encoding a variety of geographic data structures. Feature and FeatureCollection are two types of objects within the GeoJSON format. A FeatureCollection contains an array of Feature objects. A Feature object represents a spatially bounded entity and contains several members, such as "geometry" and "properties". The value of the properties member can be any JSON object. As the tree information is recorded via its branches, each branch can serve as the properties member of a Feature object. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, this uncertainty can be visualised as contours or polygons.
 
-<details><summary>CLICK ME to see an example.</summary>
+<details><summary>CLICK ME to see an example of a FeatureCollection with two Feature objects.</summary>
 
 ```
 {
