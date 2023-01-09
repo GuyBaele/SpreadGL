@@ -82,23 +82,20 @@ In this directory, you can find all the scripts that will be used to process max
 
 # Tutorial
 
-If you type "python3 main.py --help" in a terminal at the current folder, you should be able to see the following text.
+If you type "python3 main.py --help" in a terminal in this folder, you should be able to see the following text.
 
     Welcome to this processing tool! You can convert MCC trees to acceptable input files for Kepler.gl.
 
     optional arguments:
     
-    -h, --help             show this help message and exit
+    -h, --help             Show this help message and exit.
   
-    --tree TREE, -t TREE   Specify the file name of your MCC tree with filename extension.
+    --tree TREE, -t TREE   Specify the file name of your MCC tree.
   
-    --date {decimal,yyyy-mm-dd}, -d {decimal,yyyy-mm-dd}  At the end of sequence names, find the date format. If it is a decimal number, enter "decimal". 
-      If it is ISO-8601 (Year-Month-Day), enter "yyyy-mm-dd". When it is incomplete, the first day of the corresponding month or year will be applied.
+    --date {decimal,yyyy-mm-dd}, -d {decimal,yyyy-mm-dd}  At the end of sequence names, you can typically find the date format. If it is a decimal number, enter "decimal". If it is ISO-8601 (year-month-day), enter "yyyy-mm-dd". When it is incomplete, the first day of the corresponding month or year will be used.
     
-    --location LOCATION, -l LOCATION  Enter the two annotations, storing latitudes and longitudes in this order, with a comma separator.
-      If there is only one annotation that stores either coordinates or location names, enter this annotation without comma.
+    --location LOCATION, -l LOCATION  Enter the two annotations, storing latitudes and longitudes (in this order), with a comma separator. If there is only one annotation that stores either coordinates or location names, enter this annotation without a comma.
   
-    --list LIST, -li LIST  Optional, only mandatory for discrete space: Specify the file name of your list of coordinates with filename extension. This file
-      should be in the format of ".csv" with the separator of "," and comprised of three columns with a specific header of "location,latitude,longitude".
+    --list LIST, -li LIST  Optional, only mandatory for discrete space. Specify the file name of your list of coordinates. This file should be in the csv  format with a comma (",") separator, and should be comprised of three columns with a specific header of "location,latitude,longitude".
   
     --type {csv}, -t {csv} Optional: Type in "csv" if you would like to inspect your output file in a tabular format.
