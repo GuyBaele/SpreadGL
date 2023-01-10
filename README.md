@@ -18,7 +18,8 @@ npm start
 
 # Processing MCC Tree Files
 1. Drag or copy the contents of the scripts folder to the directory where the maximum clade credibility (MCC) tree and its location list (optional) are situated. More information regarding the different scripts can be found in the README of the scripts folder.
-2. Install the required python packages in a new terminal in the scripts folder. You only have to do it once. Note: Please make sure that you have already installed Python 3. 
+2. Install the required python packages in a new terminal in the scripts folder. You only have to do it once.  
+   Note: Please make sure that you have already installed Python 3. 
 ```
 pip install -r requirements.txt
 ```
@@ -37,7 +38,8 @@ python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location -
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-After processing the tree file of 'B.1.1.7_England.MCC.tree' at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England', you will find a file called 'Output_UK_Projection_1st.csv'. Then, execute the following steps to convert its coordinates to another format supported by Spread.gl. Note: Please make sure that you have already installed R.
+After processing the tree file of 'B.1.1.7_England.MCC.tree' at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England', you will find a file called 'Output_UK_Projection_1st.csv'. Then, execute the following steps to convert its coordinates to a supported format.  
+Note: Please make sure that you have already installed R.
 
 1. Reproject coordinates using R.
 ```
@@ -50,27 +52,34 @@ Rscript Projection_Transformation.R
 # Install the packages of sp & rgdal to deal with spatial data in R.
 library(sp)
 library(rgdal)
+    
 # Load data from the CSV file into a DataFrame.
 input <- read.csv("Output_UK_Projection_1st.csv", header=TRUE, stringsAsFactors=FALSE)
+         
 # Create two data frames for the coordinates of the starting & ending points.
 coords_uk_start = data.frame(start_lon=input[, c("start_longitude")], start_lat=input[, c("start_latitude")])
 coords_uk_end = data.frame(end_lon=input[, c("end_longitude")], end_lat=input[, c("end_latitude")])
+         
 # Set spatial coordinates to create a Spatial object.
 coordinates(coords_uk_start) = c("start_lon", "start_lat")
 coordinates(coords_uk_end) = c("end_lon", "end_lat")
+         
 # Assign a particular CRS to spatial data by referring to its EPSG code.
 uk_projection = CRS("+init=epsg:27700")
 proj4string(coords_uk_start) = uk_projection
 proj4string(coords_uk_end) = uk_projection
+         
 # Transform from one CRS (British National Grid) to another (WGS84).
 wgs84 = CRS("+init=epsg:4326")
 coords_wgs84_start = spTransform(coords_uk_start, wgs84)
 coords_wgs84_end = spTransform(coords_uk_end, wgs84)
+         
 # Get the results and combine them.
 coords_wgs84_start = coords_wgs84_start@coords
 coords_wgs84_end = coords_wgs84_end@coords
 coords_wgs84_start_end <-cbind(coords_wgs84_start, coords_wgs84_end)
 output <-cbind(input, coords_wgs84_start_end)
+                      
 # Export the output as a CSV file using the name of 'Output_Converted_2nd.csv'.
 write.csv(output,"Output_Converted_2nd.csv", row.names = FALSE)
 ```
