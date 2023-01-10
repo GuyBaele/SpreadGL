@@ -90,12 +90,12 @@ If you type "python3 main.py --help" in a terminal in this folder, you should be
     
     -h, --help             Show this help message and exit.
   
-    --tree TREE, -t TREE   Specify the file name of your MCC tree.
+    --tree TREE, -t TREE   Specify the file name of your MCC tree with filename extension.
   
-    --date {decimal,yyyy-mm-dd}, -d {decimal,yyyy-mm-dd}  At the end of sequence names, you can typically find the date format. If it is a decimal number, enter "decimal". If it is ISO-8601 (year-month-day), enter "yyyy-mm-dd". When it is incomplete, the first day of the corresponding month or year will be used.
+    --date {float,datetime}, -d {float,datetime}  At the end of sequence names, you can typically find the date format. If it is a floating-point number number, enter "float". If it is ISO-8601 (Year-Month-Day/yyyy-mm-dd), enter "datetime". When it is incomplete, the first day of the corresponding month or year will be used.
     
     --location LOCATION, -l LOCATION  Enter the two annotations, storing latitudes and longitudes (in this order), with a comma separator. If there is only one annotation that stores either coordinates or location names, enter this annotation without a comma.
   
-    --list LIST, -li LIST  Optional, only mandatory for discrete space. Specify the file name of your list of coordinates. This file should be in the csv  format with a comma (",") separator, and should be comprised of three columns with a specific header of "location,latitude,longitude".
+    --list LIST, -li LIST  Optional, only mandatory for discrete space. Specify the file name of your list of coordinates. This file should be in the csv format with a comma (",") separator, and should be comprised of three columns with a specific header of "location,latitude,longitude".
   
     --type {csv}, -t {csv} Optional: Type in "csv" if you would like to inspect your output file in a tabular format.
