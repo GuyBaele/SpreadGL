@@ -4,7 +4,7 @@ from discrete_space_processor import *
 
 
 def main():
-    welcome = "Welcome to this processing tool! You can convert MCC trees to acceptable input files for Kepler.gl."
+    welcome = "Welcome to this processing tool! You can convert MCC trees to acceptable input files for Spread.gl."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--tree', '-tr', required=True,
                         help='Specify the file name of your MCC tree with filename extension.')
