@@ -84,7 +84,7 @@ In this directory, you can find all the scripts that will be used to process max
 
 If you type "python3 main.py --help" in a terminal in this folder, you should be able to see the following text.
 
-    Welcome to this processing tool! You can convert MCC trees to acceptable input files for Kepler.gl.
+    Welcome to this processing tool! You can convert MCC trees to acceptable input files for Spread.gl.
 
     optional arguments:
     
