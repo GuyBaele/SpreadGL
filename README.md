@@ -19,7 +19,7 @@ npm start
 # Processing MCC Tree Files
 1. Drag or copy the contents of the scripts folder to the directory where the maximum clade credibility (MCC) tree and its location list (optional) are situated. More information regarding the different scripts can be found in the README of the scripts folder.
 2. Install the required python packages in a new terminal in the scripts folder. You only have to do it once.  
-   Note: Please make sure that you have already installed Python 3. 
+   Note: Please make sure that you have already installed Python 3 before this step. 
 ```
 pip install -r requirements.txt
 ```
@@ -38,10 +38,12 @@ python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location -
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-After processing the tree file of 'B.1.1.7_England.MCC.tree' at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England', you will find a file called 'Output_UK_Projection_1st.csv'. Then, execute the following steps to convert its coordinates to a supported format.  
-Note: Please make sure that you have already installed R.
+After processing the tree file of 'B.1.1.7_England.MCC.tree' using the command line mentioned above, you will find a file called 'B.1.1.7_England.MCC.tree.output.csv'. As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
 
-1. Reproject coordinates using R.
+1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
+
+2. Reproject coordinates using R.  
+Note: Please make sure that you have already installed R before this step.
 ```
 Rscript Projection_Transformation.R
 ```
@@ -54,7 +56,7 @@ library(sp)
 library(rgdal)
     
 # Load data from the CSV file into a DataFrame.
-input <- read.csv("Output_UK_Projection_1st.csv", header=TRUE, stringsAsFactors=FALSE)
+input <- read.csv("B.1.1.7_England.MCC.tree.output.csv", header=TRUE, stringsAsFactors=FALSE)
          
 # Create two data frames for the coordinates of the starting & ending points.
 coords_uk_start = data.frame(start_lon=input[, c("start_longitude")], start_lat=input[, c("start_latitude")])
@@ -80,12 +82,12 @@ coords_wgs84_end = coords_wgs84_end@coords
 coords_wgs84_start_end <-cbind(coords_wgs84_start, coords_wgs84_end)
 output <-cbind(input, coords_wgs84_start_end)
                       
-# Export the output as a CSV file using the name of 'Output_Converted_2nd.csv'.
-write.csv(output,"Output_Converted_2nd.csv", row.names = FALSE)
+# Export the output as a CSV file using the name of 'B.1.1.7_England_reprojected_output.csv'.
+write.csv(output,"B.1.1.7_England_reprojected_output.csv", row.names = FALSE)
 ```
 </details>
 
-2. Remove geographical outliers using Python.
+3. Remove geographical outliers using Python.
 ```
 python3 Outlier_Detection.py
 ```
@@ -96,7 +98,7 @@ python3 Outlier_Detection.py
 import pandas as pd
 
 # Load data from the CSV file to a DataFrame.
-file1 = open("Output_Converted_2nd.csv")
+file1 = open("B.1.1.7_England_reprojected_output.csv")
 df1 = pd.read_csv(file1, delimiter=",")
 arr1 = []
 arr2 = []
@@ -122,13 +124,13 @@ for i in range(len(arr1)):
     if arr1[i] in arr3 or arr2[i] in arr4:
         df1.drop(i, inplace=True)
 
-# Clean the result and export the output as a CSV file using the name of 'Output_WGS_84_3rd.csv'.
+# Clean the result and export the output as a CSV file using the name of 'B.1.1.7_England_final_output.csv'.
 df1 = df1.drop(columns=['id', 'start_latitude', 'start_longitude', 'end_latitude', 'end_longitude'])
-df1.to_csv("Output_WGS_84_3rd.csv", sep=",", index=False)
+df1.to_csv("B.1.1.7_England_final_output.csv", sep=",", index=False)
 ```
 </details>
 
-Now, you can load the final output file of 'Output_WGS_84_3rd.csv' in Spread.gl. Feel free to customise the visualisation as you want.
+Now, you can load the file of 'B.1.1.7_England_final_output.csv' in Spread.gl. Feel free to customise the visualisation as you want.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
