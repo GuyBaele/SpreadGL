@@ -1,7 +1,7 @@
 # Install the packages of sp & rgdal to deal with spatial data in R.
 library(sp)
-library(rgdal)
-    
+options(warn=-1)
+
 # Load data from the CSV file into a DataFrame.
 input <- read.csv("Output_UK_Projection_1st.csv", header=TRUE, stringsAsFactors=FALSE)
          
@@ -14,12 +14,12 @@ coordinates(coords_uk_start) = c("start_lon", "start_lat")
 coordinates(coords_uk_end) = c("end_lon", "end_lat")
          
 # Assign a particular CRS to spatial data by referring to its EPSG code.
-uk_projection = CRS("+init=epsg:27700")
-proj4string(coords_uk_start) = uk_projection
-proj4string(coords_uk_end) = uk_projection
+uk_projection = CRS(SRS_string = "EPSG:27700")
+slot(coords_uk_start, "proj4string") = uk_projection
+slot(coords_uk_end, "proj4string") = uk_projection
          
 # Transform from one CRS (British National Grid) to another (WGS84).
-wgs84 = CRS("+init=epsg:4326")
+wgs84 = CRS(SRS_string = "EPSG:4326")
 coords_wgs84_start = spTransform(coords_uk_start, wgs84)
 coords_wgs84_end = spTransform(coords_uk_end, wgs84)
          
