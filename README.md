@@ -39,7 +39,7 @@ python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location -
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-After processing the tree file of 'B.1.1.7_England.MCC.tree' using the command line mentioned above, you will find a file called 'B.1.1.7_England.MCC.tree.output.csv'. As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
+After processing the tree file of 'B.1.1.7_England.MCC.tree' using the corresponding command mentioned above, you will find a file called 'B.1.1.7_England.MCC.tree.output.csv'. As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
 
 1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
 
