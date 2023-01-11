@@ -12,7 +12,7 @@ npm install
 ```
 3. Sign up for a Mapbox account and create an access token at mapbox.com.  
    Modify the file of 'mapbox.js' and insert your own token there.
-4. Start the Project
+4. Start the project
 ```
 npm start
 ```
