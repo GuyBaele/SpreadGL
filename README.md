@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-# Processing MCC Tree Files
+# Processing MCC tree files
 1. Drag or copy the contents of the scripts folder to the directory where the maximum clade credibility (MCC) tree and its location list (optional) are situated. More information regarding the different scripts can be found in the README of the scripts folder.
 2. Install the required python packages in a new terminal in the scripts folder. You only have to do it once.  
    Note: Please make sure that you have already installed Python 3 before this step. 
