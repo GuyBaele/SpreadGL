@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load data from the CSV file to a DataFrame.
-file1 = open("Output_Converted_2nd.csv")
+file1 = open("B.1.1.7_England_reprojected_output.csv")
 df1 = pd.read_csv(file1, delimiter=",")
 arr1 = []
 arr2 = []
@@ -27,6 +27,6 @@ for i in range(len(arr1)):
     if arr1[i] in arr3 or arr2[i] in arr4:
         df1.drop(i, inplace=True)
 
-# Clean the result and export the output as a CSV file using the name of 'Output_WGS_84_3rd.csv'.
+# Clean the result and export the output as a CSV file using the name of 'B.1.1.7_England_final_output.csv'.
 df1 = df1.drop(columns=['id', 'start_latitude', 'start_longitude', 'end_latitude', 'end_longitude'])
-df1.to_csv("Output_WGS_84_3rd.csv", sep=",", index=False)
+df1.to_csv("B.1.1.7_England_final_output.csv", sep=",", index=False)
