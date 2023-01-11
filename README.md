@@ -2,11 +2,11 @@
 Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples.
 
 # Installation
-1. Clone Repository
+1. Clone repository
 ```
 git clone git@github.com:FlorentLee/SpreadGL.git
 ```
-2. Install Packages
+2. Install packages
 ```
 npm install
 ```
