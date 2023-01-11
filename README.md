@@ -1,5 +1,5 @@
 # Spread.gl - Visualising Pathogen Dispersal in a High-performance Browser Application
-Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples.
+Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples along with short tutorials and example output videos.
 
 # Installation
 1. Clone repository
