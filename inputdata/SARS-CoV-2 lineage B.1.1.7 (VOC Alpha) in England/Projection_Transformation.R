@@ -1,9 +1,9 @@
-# Install the packages of sp & rgdal to deal with spatial data in R.
+# Install the sp package to deal with spatial data in R.
 library(sp)
 options(warn=-1)
-
+    
 # Load data from the CSV file into a DataFrame.
-input <- read.csv("Output_UK_Projection_1st.csv", header=TRUE, stringsAsFactors=FALSE)
+input <- read.csv("B.1.1.7_England.MCC.tree.output.csv", header=TRUE, stringsAsFactors=FALSE)
          
 # Create two data frames for the coordinates of the starting & ending points.
 coords_uk_start = data.frame(start_lon=input[, c("start_longitude")], start_lat=input[, c("start_latitude")])
@@ -29,5 +29,5 @@ coords_wgs84_end = coords_wgs84_end@coords
 coords_wgs84_start_end <-cbind(coords_wgs84_start, coords_wgs84_end)
 output <-cbind(input, coords_wgs84_start_end)
                       
-# Export the output as a CSV file using the name of 'Output_Converted_2nd.csv'.
-write.csv(output,"Output_Converted_2nd.csv", row.names = FALSE)
+# Export the output as a CSV file using the name of 'B.1.1.7_England_reprojected_output.csv'.
+write.csv(output,"B.1.1.7_England_reprojected_output.csv", row.names = FALSE)
