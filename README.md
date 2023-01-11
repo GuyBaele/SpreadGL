@@ -10,7 +10,8 @@ git clone git@github.com:FlorentLee/SpreadGL.git
 ```
 npm install
 ```
-3. Sign up for a Mapbox account and create an access token at mapbox.com. Modify the file of 'mapbox.js' and insert your own token.
+3. Sign up for a Mapbox account and create an access token at mapbox.com.  
+   Modify the file of 'mapbox.js' and insert your own token there.
 4. Start the Project
 ```
 npm start
@@ -140,7 +141,7 @@ Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer. (To Be 
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 ## Porcine epidemic diarrhea virus (PEDV) in China
-1. Generate the file of 'Pig_Population_Involved_Provinces.geojson' as an environmental layer.(To Be Continued)
+1. Generate the file of 'Pig_Population_Involved_Provinces.geojson' as an environmental layer. (To Be Continued)
 2. Add a custom map style created on your own via Mapbox (https://studio.mapbox.com).
 
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
