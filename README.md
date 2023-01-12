@@ -40,7 +40,7 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 
-1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
+1. Open a new terminal in the folder 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
 
 2. As mentioned before, we first process the tree file 'B.1.1.7_England.single.tree' using the following command:
 ```
