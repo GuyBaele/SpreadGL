@@ -42,29 +42,29 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 
 1. Open a new terminal in the folder 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
 
-2. As mentioned before, we first process the tree file 'B.1.1.7_England.single.tree' using the following command:
+2. As mentioned above, we first process the tree file 'B.1.1.7_England.single.tree' using the following command:
 ```
 python3 main.py --tree B.1.1.7_England.single.tree --date datetime --location coordinates --type csv
 ```
 This command does the following: ...
-When this processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created. Due to the original tree file 
-
-As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
-
-
+When this first processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform the next step (using the .csv file that was just created) to convert it to another CRS (i.e., the orld Geodetic System 1984; WGS84). Please make sure that you have already installed R before performing this step.
 
 3. Reproject coordinates using R.  
-Note: Please make sure that you have already installed R before this step.
+Note: 
 ```
-Rscript Projection_Transformation.R
-```
-
-3. Remove geographical outliers using Python.
-```
-python3 Outlier_Detection.py
+Rscript Projection_Transformation.R B.1.1.7_England.single.tree.output.csv B.1.1.7_England_reprojected_output.csv
 ```
 
-Now, you can load the file of 'B.1.1.7_England_final_output.csv' in Spread.gl. Feel free to customise the visualisation as you want.
+4. Remove the geographical outliers.
+Explanation: ...
+```
+python3 Outlier_Detection.py B.1.1.7_England_reprojected_output.csv
+```
+
+5. Visualise the end result.
+Now, you can load the file of 'B.1.1.7_England_final_output.csv' in Spread.gl. 
+How?
+Feel free to customise the visualisation as you want.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
