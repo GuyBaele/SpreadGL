@@ -47,10 +47,9 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 python3 main.py --tree B.1.1.7_England.single.tree --date datetime --location coordinates --type csv
 ```
 This command does the following: ...
-When this first processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform the next step (using the .csv file that was just created) to convert it to another CRS (i.e., the orld Geodetic System 1984; WGS84). Please make sure that you have already installed R before performing this step.
+When this first processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created. 
 
-3. Reproject coordinates using R.  
-Note: 
+3. Reproject coordinates using R. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the B.1.1.7_England.single.tree.output.csv file that was created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84). Please make sure that you have already installed R before performing this step.
 ```
 Rscript Projection_Transformation.R B.1.1.7_England.single.tree.output.csv B.1.1.7_England_reprojected_output.csv
 ```
