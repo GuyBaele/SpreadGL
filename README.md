@@ -30,7 +30,7 @@ python3 main.py --help
 ```
 4. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the commands required (but see the scripts directory for more information).
 ```
-python3 main.py --tree B.1.1.7_England.MCC.tree --date datetime --location coordinates --type csv
+python3 main.py --tree B.1.1.7_England.single.tree --date datetime --location coordinates --type csv
 python3 main.py --tree YFV.MCC.tree --date datetime --location location1,location2
 python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location --list Capital_Coordinates_Involved_Provinces.csv
 ```
@@ -39,11 +39,21 @@ python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location -
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
 
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-After processing the tree file of 'B.1.1.7_England.MCC.tree' using the corresponding command mentioned above, you will find a file called 'B.1.1.7_England.MCC.tree.output.csv'. As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
 
 1. Open a new terminal at the folder of 'SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England'.
 
-2. Reproject coordinates using R.  
+2. As mentioned before, we first process the tree file 'B.1.1.7_England.single.tree' using the following command:
+```
+python3 main.py --tree B.1.1.7_England.single.tree --date datetime --location coordinates --type csv
+```
+This command does the following: ...
+When this processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created. Due to the original tree file 
+
+As its CRS (British National Grid) is not supported in Spread.gl, you need to take the following steps to convert it to another CRS (WGS84).
+
+
+
+3. Reproject coordinates using R.  
 Note: Please make sure that you have already installed R before this step.
 ```
 Rscript Projection_Transformation.R
