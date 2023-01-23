@@ -43,7 +43,7 @@ Please make sure that you have already installed R before processing.
 
 1. Oepn a terminal at the scripts folder. As 'B.1.1.7_England.single.tree' is a BEAST .trees output file, we need to parse the geographical infomation from it using the following command:
 ```
-Rscript geoinfo_generator.r continuous coordinates B.1.1.7_England.single.tree B.1.1.7_England.single.tree.geo.info.csv
+Rscript geoinfo_generator.R --type continuous --annotation coordinates --input B.1.1.7_England.single.tree --output B.1.1.7_England.single.tree.geo.info.csv
 ```
 This command does the following: Execute the R script of geoinfo_generator.r with four arguments, which represents the type of space in phylogeography, the annotation that stores location data, the input filename, and the output filename respectively. When this first step has completed, a file 'B.1.1.7_England.single.tree.geo.info.csv' will have been created.
 
