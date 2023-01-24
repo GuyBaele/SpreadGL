@@ -3,11 +3,11 @@ from continuous_tree_handler import *
 from geojson_file_generator import *
 
 
-def process_continuous_phylogeography(tree, date, location, extension):
+def process_continuous_phylogeography(tree, date, location, geo_info, extension):
     print("Processing, please wait...")
     tree_path = '../' + tree
-    parsed_tree = parse_tree(tree_path)
-    tree_info = handle_continuous_tree(parsed_tree, date, location)
+    parsed_tree, labels, edges = parse_tree(tree_path)
+    tree_info = handle_continuous_tree(parsed_tree, labels, edges, date, location, geo_info)
     if extension == "csv":
         df = pd.DataFrame(tree_info)
         output_name = tree + '.output.csv'
