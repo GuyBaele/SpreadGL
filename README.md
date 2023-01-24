@@ -8,6 +8,7 @@ git clone git@github.com:FlorentLee/SpreadGL.git
 ```
 2. Install packages
 ```
+cd SpreadGL
 npm install
 ```
 3. Sign up for a Mapbox account and create an access token at mapbox.com.  
