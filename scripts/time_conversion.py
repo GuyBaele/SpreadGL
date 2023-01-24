@@ -67,3 +67,11 @@ def get_time_info_by_float(end_name, duration):
         start_time = 0.0
         end_time = 0.0
     return start_time, end_time
+
+
+def process_time_info(date, end_name, duration):
+    if date == 'datetime':
+        start_time, end_time = get_time_info_by_datetime(end_name, duration)
+    if date == 'float':
+        start_time, end_time = get_time_info_by_float(end_name, duration)
+    return start_time, end_time
