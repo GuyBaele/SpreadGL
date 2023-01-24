@@ -28,7 +28,7 @@ In this directory, you can find all the scripts that will be used to process max
 
 **geojson_file_generator.py** generates geographic data structures for each branch in the MCC tree. By default, the format of output file is set as GeoJSON, which is a format for encoding a variety of geographic data structures. Feature and FeatureCollection are two types of objects within the GeoJSON format. A FeatureCollection contains an array of Feature objects. A Feature object represents a spatially bounded entity and contains several members, such as "geometry" and "properties". The value of the properties member can be any JSON object. As the tree information is recorded via its branches, each branch can serve as the properties member of a Feature object. For continuous phylogeographic analysis, we may need to accommodate uncertainty using the 80% HPD (highest posterior density), which is the shortest interval that contains 80% of the sampled values. On the map, this uncertainty can be visualised as contours or polygons.
 
-<details><summary>CLICK ME to see an example of a FeatureCollection with two Feature objects.</summary>
+<details><summary>Click here to see an example of a FeatureCollection with two Feature objects.</summary>
 
 ```
 {
