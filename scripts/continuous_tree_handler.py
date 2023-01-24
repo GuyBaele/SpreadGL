@@ -3,35 +3,32 @@ from coordinate_conversion import *
 from tree_processor import *
 
 
-def handle_continuous_tree(parsed_tree, date, location):
+def handle_continuous_tree(parsed_tree, labels, edges, date, location, geo_info):
     clades = []
-    counter = 1
+    counter = 0
+    if geo_info != 'None':
+        geo_info = '../' + geo_info
+        df_geo = pd.read_csv(geo_info)
 
-    for clade in parsed_tree.find_clades():
-        end_name = str(clade.name)
-        duration = float(0.0 if clade.branch_length is None else clade.branch_length)
+    for clade in parsed_tree.find_clades(order='postorder'):
+        end_name = labels[counter]
+        duration = edges[counter]
         details = clade.comment.split(',')
-        start_time = 0.0
-        end_time = 0.0
-        end_latitude = 0.0
-        end_longitude = 0.0
         # Extract and process time information
-        if date == 'datetime':
-            start_time, end_time = get_time_info_by_datetime(end_name, duration)
-        if date == 'float':
-            start_time, end_time = get_time_info_by_float(end_name, duration)
+        start_time, end_time = process_time_info(date, end_name, duration)
         # Extract and process location information
-        if len(location) == 2:
+        if geo_info == 'None':
             end_latitude, end_longitude = parse_coordinates_from_two_annotations(details, location)
-        if len(location) == 1:
-            end_latitude, end_longitude = parse_coordinates_from_one_annotation(details, location)
+        else:
+            end_location_info = np.asarray(df_geo.iloc[counter].values)
+            end_latitude, end_longitude = end_location_info[0], end_location_info[1]
+        counter += 1
         clade_info = {'id': counter, 'visited_times': 0, 'duration': duration, 'name': end_name, 'start_time': start_time, 'end_time': end_time,
                       'start_latitude': 0.0, 'start_longitude': 0.0, 'end_latitude': end_latitude, 'end_longitude': end_longitude}
         clades.append(clade_info)
-        counter += 1
 
     # DFS traverse the whole MCC tree to exchange information and infer values between tree branches
-    iterate_tree(clades)
+    iterate_tree(clades[::-1])
 
     for clade in clades:
         clade['start_time'] = convert_decimal_year_to_datetime(clade['start_time'])
