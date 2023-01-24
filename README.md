@@ -13,9 +13,14 @@ npm install
 ```
 3. Sign up for a Mapbox account and create an access token at mapbox.com.  
    Open the 'mapbox.js' file in the src directory to insert your own token, and save the file.
-4. Start the project
+4. Start the project, which will open a browser window
 ```
 npm start
+```
+In case of any problems running 'npm start', you may have to install the 'assert' and 'url' packages as well
+```
+npm install assert
+npm install url
 ```
 
 # Processing MCC tree files
