@@ -30,7 +30,7 @@ python3 main.py --help
 ```
 4. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the commands required (but see the scripts directory for more information).
 ```
-python3 main.py --tree B.1.1.7_England.single.tree --date datetime --location coordinates --type csv
+python3 main.py --tree B.1.1.7_England.single.tree --date datetime --geoinfo B.1.1.7_England.single.tree.geo.info.csv --format csv
 python3 main.py --tree YFV.MCC.tree --date datetime --location location1,location2
 python3 main.py --tree PEDV_China.MCC.tree --date datetime --location location --list Capital_Coordinates_Involved_Provinces.csv
 ```
@@ -49,24 +49,39 @@ This command does the following: Execute the R script of geoinfo_generator.r wit
 
 2. As mentioned above, we need to process the treefile using the following command:
 ```
-python3 main.py --tree B.1.1.7_England.single.tree --date datetime --geoinfo B.1.1.7_England.single.tree.geo.info.csv --type csv
+python3 main.py --tree B.1.1.7_England.single.tree --date datetime --geoinfo B.1.1.7_England.single.tree.geo.info.csv --format csv
 ```
 This command does the following: Execute the Python script of main.py with four arguments, which represents the input filename, the date format, the  geoinformation file created in step 1, and the table format of output file respectively. When this processing step has completed, a file 'B.1.1.7_England.single.tree.output.csv' will have been created.
 
-3. Reproject coordinates. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the B.1.1.7_England.single.tree.output.csv file that was created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84). Use this command:
+3. Reproject coordinates. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84) with the R script 'projection_transformation.r'. Use the following command:
 ```
-Rscript Projection_Transformation.R B.1.1.7_England.single.tree.output.csv B.1.1.7_England_reprojected_output.csv
+Rscript projection_transformation.r B.1.1.7_England.single.tree.output.csv B.1.1.7_England.single.tree.reprojected.output.csv
 ```
+Make sure to enter the input filename as the first argument and the output filename as the second argument. When this first step has completed, a file 'B.1.1.7_England.single.tree.reprojected.output.csv' will have been created.
 
-4. Remove geographic outliers. If you visualise the reprojected output file that was created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to the file TreeTime_270221.csv, which is an analysis result from the original study (Moritz et al.) This file contains the location information of each point, i.e. UTLA (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is 'NA', that point will fall outside of England. Therefore, the corresponding branches have to be removed. Use this command:
+4. Remove geographic outliers. If you visualise the reprojected output file that was created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Moritz et al.). This file contains the location information of each point, i.e. UTLA (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is 'NA', that point will fall outside of England. Therefore, the corresponding branch has to be removed. The python script 'outlier_detection.py' deals with this task.
 ```
-python3 Outlier_Detection.py B.1.1.7_England_reprojected_output.csv
+python3 outlier_detection.py --help
 ```
-You can find TreeTime_270221.csv on the following GitHub repository:  
+Enter the above command to see the help messages as below.
+```
+  --input INPUT, -i INPUT
+                        Enter the input file name with filename extension.
+  --reference REFERENCE, -r REFERENCE
+                        Enter the reference dataset name with filename extension.
+  --output OUTPUT, -o OUTPUT
+                        Enter the output file name with filename extension.
+```
+Use the following command to execute this script:
+```
+python3 outlier_detection.py --input B.1.1.7_England.single.tree.reprojected.output.csv --reference TreeTime_270221.csv --output B.1.1.7_England.single.tree.final.output.csv
+```
+When this first step has completed, the end result file 'B.1.1.7_England.single.tree.final.output.csv' will have been created.
+For the dataset file 'TreeTime_270221.csv', you can find it on the following GitHub repository:  
 https://github.com/COG-UK/B.1.1.7_spatial_analysis_UK
 
 5. Visualise the end result.
-Now, you can load the end result in Spread.gl. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. Feel free to customise the visualisation as you want.
+Now, you can load the end result in Spread.gl. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing/hiding/creating/deleting/reordering/colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style. etc.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
