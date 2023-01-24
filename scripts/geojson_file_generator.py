@@ -7,7 +7,7 @@ def generate_geojson_file(parsed_tree, tree_info):
     features = []
     tree_info_id = 0
 
-    for clade in parsed_tree.find_clades():
+    for clade in parsed_tree.find_clades(order='postorder'):
 
         details = clade.comment.split('},')
         loc_1 = {}
@@ -49,4 +49,3 @@ def generate_geojson_file(parsed_tree, tree_info):
 
     feature_collection = geojson.FeatureCollection(features)
     return feature_collection
-
