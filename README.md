@@ -41,7 +41,7 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 ## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 Please make sure that you have already installed R before processing.
 
-1. Oepn a terminal at the scripts folder. As 'B.1.1.7_England.single.tree' is a BEAST .trees output file, we need to parse the geographical infomation from it using the following command:
+1. Oepn a terminal at the scripts folder. As 'B.1.1.7_England.single.tree' is a BEAST .trees output file and not an actual MCC tree (from TreeAnnotator), we need to parse the geographical infomation from it using the following command:
 ```
 Rscript geoinfo_generator.R --type continuous --annotation coordinates --input B.1.1.7_England.single.tree --output B.1.1.7_England.single.tree.geo.info.csv
 ```
