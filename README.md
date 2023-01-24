@@ -57,7 +57,7 @@ This command does the following: Execute the Python script of main.py with four 
 ```
 Rscript projection_transformation.r B.1.1.7_England.single.tree.output.csv B.1.1.7_England.single.tree.reprojected.output.csv
 ```
-Make sure to enter the input filename as the first argument and the output filename as the second argument. When this first step has completed, a file 'B.1.1.7_England.single.tree.reprojected.output.csv' will have been created.
+Make sure to enter the input filename as the first argument and the output filename as the second argument. When this step has completed, a file 'B.1.1.7_England.single.tree.reprojected.output.csv' will have been created.
 
 4. Remove geographic outliers. If you visualise the reprojected output file that was created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. UTLA (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is 'NA', that point will fall outside of England. Therefore, the corresponding branch has to be removed. The python script 'outlier_detection.py' deals with this task.
 ```
@@ -76,12 +76,10 @@ Use the following command to execute this script:
 ```
 python3 outlier_detection.py --input B.1.1.7_England.single.tree.reprojected.output.csv --reference TreeTime_270221.csv --output B.1.1.7_England.single.tree.final.output.csv
 ```
-When this first step has completed, the end result file 'B.1.1.7_England.single.tree.final.output.csv' will have been created.
-For the dataset file 'TreeTime_270221.csv', you can find it on the following GitHub repository:  
-https://github.com/COG-UK/B.1.1.7_spatial_analysis_UK
+When this step has completed, the end result file 'B.1.1.7_England.single.tree.final.output.csv' will have been created.
 
 5. Visualise the end result.
-Now, you can load the end result in Spread.gl. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing/hiding/creating/deleting/reordering/colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style. etc.
+Now, you can load the end result in Spread.gl. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style, etc.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
