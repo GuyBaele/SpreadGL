@@ -4,7 +4,7 @@ Main development repository and webpage for spread.gl, hosting installation file
 # Installation
 1. Clone repository
 ```
-git clone git@github.com:FlorentLee/SpreadGL.git
+git clone git@github.com:GuyBaele/SpreadGL.git
 ```
 2. Install packages
 ```
