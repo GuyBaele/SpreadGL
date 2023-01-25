@@ -34,7 +34,7 @@ pip install -r requirements.txt
 ```
 python3 main.py --help
 ```
-4. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the commands required (but see the scripts directory for more information).
+4. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the commands required (but see the examples below and the scripts directory for more information).
 ```
 python3 main.py --tree B.1.1.7_England.single.tree --date datetime --geoinfo B.1.1.7_England.single.tree.geo.info.csv --format csv
 python3 main.py --tree YFV.MCC.tree --date datetime --location location1,location2
