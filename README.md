@@ -1,7 +1,7 @@
 # Spread.gl - Visualising Pathogen Dispersal in a High-performance Browser Application
 Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples along with short tutorials and example output videos.
 
-# Installation
+## Installation
 Before installation, please make sure you have already installed Python3, Git and npm in your device.
 1. Clone Github repository in your working directory and then install packages.
 ```
@@ -21,7 +21,7 @@ npm install assert
 npm install url
 ```
 
-# Processing MCC tree files
+## Processing MCC tree files
 1. Install the processing toolkit. More information about different scripts can be found in the README of the scripts folder.
 ```
 cd scripts
@@ -38,9 +38,10 @@ spatial --tree YFV.MCC.tree --location location1,location2
 spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincial_capital_coordinates.csv
 ```
 
-# Animation examples in spread.gl
+## Animation examples in spread.gl
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
-## SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
+
+### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the tree file using the following command:
 ```
 spatial --tree B.1.1.7_England.single.tree --location coordinates --format csv
@@ -66,7 +67,7 @@ Now, you can load the end result in Spread.gl in your browser. Click the buttom 
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
 
-## Yellow fever virus in Brazil
+### Yellow fever virus in Brazil
 1. Process the tree file using the following command:
 ```
 spatial --tree YFV.MCC.tree --location location1,location2
@@ -80,7 +81,7 @@ This command does the following: Execute the Python script of spatial.py with 2 
 
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
-## Porcine epidemic diarrhea virus (PEDV) in China
+### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the tree file using the following command:
 ```
 spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincial_capital_coordinates.csv
