@@ -2,7 +2,12 @@
 Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples along with short tutorials and example output videos.
 
 ## Installation
-Before installation, please make sure you have already installed Python3, Git and npm in your device.
+Before start, make sure you have already installed Git, npm, and Python3 in your device.  
+Otherwise, please refer to the following links for installation.  
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
+https://www.python.org/downloads
+
 1. Clone Github repository in your working directory and then install packages.
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
@@ -39,7 +44,8 @@ spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincia
 ```
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.
+In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.  
+We also provide an animated video for each example by recording the screen on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the tree file using the following command:
@@ -95,6 +101,6 @@ environmental --region China_map.geojson --key name --data National_pig_stocks.c
 ```
 This command does the following: Execute the Python script of environmental.py with 5 required arguments: input map (.GeoJSON), foreign key field name in the properties part of input, environmental data (.csv), foreign field name in data, and output map (.GeoJSON). When this step is done, a file 'Pig_stocks_on_map.geojson' will have been created.
 
-3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via the following link (https://docs.mapbox.com/studio-manual/guides/). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
+3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via the following link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
