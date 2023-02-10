@@ -3,35 +3,35 @@ In this directory, you can find all the scripts that will be used to process max
 
 # Script descriptions
 
-**setup.py** ...
+**setup.py** describes moudle contents and distribution. It is used for installation.
 
-**requirements.txt** lists all the required Python dependencies for the spread.gl processing scripts.
+**requirements.txt** lists all the required Python dependencies for the Spread.gl processing scripts.
 
 ## spatial_layer_generator
 
 **spatial.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
 
-**continuous_space_processor.py** accepts values from main.py, parses the tree by calling the code in tree_parser.py, starts a process by continuous_tree_handler.py and returns the result in the format of either csv or geojson.
+**continuous_space_processor.py** accepts values from spatial.py, processes the tree by calling the code in continuous_tree_handler.py and returns the result in the format of either csv or geojson. By default, the format of output file is set as GeoJSON, which is a format for encoding a variety of geographic data structures. If the users would like to inspect the result in the table, an output file of the CSV format will be provided by using an additional argument for output.
 
-**continuous_tree_handler.py** deals with a tree file with annotated geographic coordinates in the context of continuous phylogeographic analysis. As the first step, the method of find_clades, provided by the Bio.Phylo package, will be called to traverse the tree and gather the existing information from each node/tip using a depth-first (pre-order) search algorithm. The time information of tips can be obtained from the sequence name (if the information is available there) by using the time_conversion.py script. For each node / tip pf an MCC tree, the location information in the annotation will be extracted using the coordinate_conversion.py script. In the case of processing a BEAST single tree, an output file of geoinfo_generator.r will be used as an additional input parameter.
+**continuous_tree_handler.py** deals with a tree file with annotated geographic coordinates in the context of continuous phylogeographic analysis. Some methods from the baltic 0.1.6 library will be called to traverse the tree and gather the existing information (time & location) from each node/tip using a depth-first search algorithm. The time information of tips can be obtained from the sequence name (if the information is available there) and then formated by using time_conversion.py script. To accommodate potentially geographic uncertainty by the 80% HPD (highest posterior density), i.e. the shortest interval that contains 80% of the sampled values, we use GeoJSON polygons for representation of contours. Each branch information as well as its polygons (if existing) will be put into a spatially bounded entity, called Feature. All the feature objects made from the tree will be stored in a FeatureCollection.
 
-**discrete_space_processor.py** accepts values from main.py, parses the tree in tree_parser.py, starts a process by discrete_tree_handler.py and returns the result in the format of either csv or geojson.
+**discrete_space_processor.py** accepts values from spatial.py, processes the tree by calling the code in discrete_tree_handler.py and returns the result in the format of either csv or geojson.
 
 **discrete_tree_handler.py** works similarly as continuous_tree_handler.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
 
-**time_conversion.py** is used to perform conversions between different time formats.
+**time_conversion.py** converts time from decimal years to datetime.
 
 ## environmental_layer_generator
 
-**environmental.py** ...
+**environmental.py** creates environmental layers by adding data to GeoJSON maps.
 
 ## projection_transformation
 
-**reprojection.py** ...
+**reprojection.py** converts geographic data between different coordinate reference systems.
 
 ## outlier_detection
 
-**trimming.py** ...
+**trimming.py** detects outliers of the current dataset by performing NULL queries on the specified fields of another referenced dataset. As for the example of SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England, it filters out all the branches in lack of information about UTLA (English Upper Tier Local Authorities).
 
 
 # Tutorials
