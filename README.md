@@ -94,13 +94,13 @@ spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincia
 ```
 This command does the following: Execute the Python script of spatial.py with 3 arguments: input tree file, the annotation containing location (province) information, and a list of capital coordinates of involved provinces. When this step is done, a file 'PEDV_China.MCC.output.geojson' will have been created.
 
-2. Create an environmental layer. Type in the following commands to check description and start execution:
+2. Create an environmental layer. You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Type in the following commands to check description and start execution:
 ```
 environmental --help
-environmental --region China_map.geojson --key name --data National_pig_stocks.csv --foreign location --output Pig_stocks_on_map.geojson
+environmental --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
 ```
-This command does the following: Execute the Python script of environmental.py with 5 required arguments: input map (.GeoJSON), foreign key field name in the properties part of input, environmental data (.csv), foreign field name in data, and output map (.GeoJSON). When this step is done, a file 'Pig_stocks_on_map.geojson' will have been created.
+This command does the following: Execute the Python script of environmental.py with 5 required arguments: input map (.GeoJSON), foreign key field name in the properties part of input, environmental data (.csv), foreign field name in data, and output map (.GeoJSON). When this step is done, a file 'Swine_stocks_on_map.geojson' will have been created.
 
-3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via the following link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
+3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
