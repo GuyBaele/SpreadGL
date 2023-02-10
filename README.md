@@ -45,7 +45,7 @@ spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincia
 
 ## Animation examples in spread.gl
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.  
-We also provide animated videos for them by recording the screen on Mac using Screenshot.
+We also provide example output videos by recording the screen on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the tree file using the following command:
