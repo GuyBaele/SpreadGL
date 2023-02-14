@@ -14,13 +14,15 @@ git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install
 ```
-2. Sign up for a Mapbox account and create an access token at mapbox.com.  
-   Open the 'mapbox.js' file in the src directory to insert your own token, and save the file.
+2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token. Then, you need to apply your token in Spread.gl.
+```
+./addToken.js <insert_your_token>
+```
 3. Start the project, which will open a browser window.
 ```
 npm start
 ```
-In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages.
+Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages.
 ```
 npm install assert
 npm install url
