@@ -16,7 +16,7 @@ npm install
 ```
 2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token. Then, you need to apply your token in Spread.gl.
 ```
-chmod +x script.js
+chmod +x addToken.js
 ./addToken.js <insert_your_token>
 ```
 3. Start the project, which will open a browser window.
