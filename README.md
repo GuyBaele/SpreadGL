@@ -1,45 +1,45 @@
-# Spread.gl - Visualising Pathogen Dispersal in a High-performance Browser Application
-Main development repository and webpage for spread.gl, hosting installation files and input data files for several visualisation examples along with short tutorials and example output videos.
+# Spread.gl - visualising pathogen dispersal in a high-performance browser application
+Main development repository and webpage for spread.gl, hosting installation files, input data files and tutorials for several visualisation examples.
 
 ## Installation
-Before start, make sure you have already installed Git, npm, and Python3 in your device.  
-Otherwise, please refer to the following links for installation.  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+Before start, make sure you have already installed Git, npm, and Python3 on your device.  
+Otherwise, please refer to the following links for installation:
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git 
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
 https://www.python.org/downloads
 
-1. Clone Github repository in your working directory and then install packages.
+1. Clone Github repository in your working directory and then install the package 'npm':
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install
 ```
-2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token. Then, you need to apply your token in Spread.gl.
+2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token. Then, you need to associate your token with Spread.gl:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
 ```
-3. Start the project, which will open a browser window.
+3. Start the project, which will open a browser window:
 ```
 npm start
 ```
-Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages.
+Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages:
 ```
 npm install assert
 npm install url
 ```
 
 ## Processing MCC tree files
-1. Install the processing toolkit. More information about different scripts can be found in the README of the scripts folder.
+1. Install the processing toolkit (more information about different scripts can be found in the README of the scripts folder):
 ```
 cd scripts
 python3 setup.py install
 ```
-2. Check the description of the main tool: spatial_layer_generator.
+2. Check the description of the main tool (spatial_layer_generator):
 ```
 spatial --help
 ```
-3. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the basic commands required (but see the examples below for more processing steps and the scripts directory for more detailed information).
+3. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the basic commands required (but see the examples below for more processing steps and the scripts directory for more detailed information):
 ```
 spatial --tree B.1.1.7_England.single.tree --location coordinates --format csv
 spatial --tree YFV.MCC.tree --location location1,location2
