@@ -4,4 +4,4 @@ geojson==3.0.1
 geopandas~=0.12.2
 setuptools==67.4.0
 pyproj~=3.4.1
-baltic @ https://github.com/evogytis/baltic.git
+baltic~=0.1.6
