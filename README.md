@@ -2,24 +2,32 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files and tutorials for several visualisation examples.
 
 ## Installation
-Before start, make sure you have already installed Git, npm, and Python3 on your device.  
-Otherwise, please refer to the following links for installation:
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git 
+Before start, make sure you have already installed Git, npm, and Python3 on your device. Otherwise, please refer to the following links for installation:  
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
 https://www.python.org/downloads
 
-1. Clone Github repository in your working directory and then install the package 'npm':
+1. Clone Github repository in your working directory and then use npm to install the web application:
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install
 ```
-2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token. Then, you need to associate your token with Spread.gl:
+2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token.  
+You will need to associate your token with Spread.gl:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
 ```
-3. Start the project, which will open a browser window:
+3. Install the processing toolkit (more information about different scripts can be found in the README of the scripts folder):
+```
+cd scripts
+python -m venv my_env
+source my_env/bin/activate (Linux/Mac)
+.\my_env\Scripts\activate (Windows)
+python setup.py install
+```
+4. Start the project, which will open a browser window:
 ```
 npm start
 ```
@@ -29,26 +37,48 @@ npm install assert
 npm install url
 ```
 
-## Processing MCC tree files
-1. Install the processing toolkit (more information about different scripts can be found in the README of the scripts folder):
+## Tree Processing
+Process the MCC trees you want to visualise. For example, for each of the three visualisations shown below, these are the basic commands required (but see the examples below for more processing steps and the scripts directory for more detailed information):
 ```
-cd scripts
-python3 setup.py install
-```
-2. Check the description of the main tool (spatial_layer_generator):
-```
-spatial --help
-```
-3. Process the MCC tree you want to visualise. For example, for each of the three visualisations shown below, these are the basic commands required (but see the examples below for more processing steps and the scripts directory for more detailed information):
-```
-spatial --tree B.1.1.7_England.single.tree --location coordinates --format csv
-spatial --tree YFV.MCC.tree --location location1,location2
 spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincial_capital_coordinates.csv
+spatial --tree YFV.MCC.tree --location location1,location2
+spatial --tree B.1.1.7_England.single.tree --location coordinates --format csv
 ```
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript.  
-We also provide example output videos by recording the screen on Mac using Screenshot.
+In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript. We also provide example output videos by recording the screen on Mac using Screenshot.
+
+### Porcine epidemic diarrhea virus (PEDV) in China
+1. Process the tree file using the following command:
+```
+spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincial_capital_coordinates.csv
+```
+This command does the following: Execute the Python script of spatial.py with 3 arguments: input tree file, the annotation containing location (province) information, and a list of capital coordinates of involved provinces. When this step is done, a file 'PEDV_China.MCC.output.geojson' will have been created.
+
+2. Create an environmental layer. You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Type in the following commands to check description and start execution:
+```
+environmental --help
+environmental --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
+```
+This command does the following: Execute the Python script of environmental.py with 5 required arguments: input map (.GeoJSON), foreign key field name in the properties part of input, environmental data (.csv), foreign field name in data, and output map (.GeoJSON). When this step is done, a file 'Swine_stocks_on_map.geojson' will have been created.
+
+3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
+
+https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
+
+### Yellow fever virus in Brazil
+1. Process the tree file using the following command:
+```
+spatial --tree YFV.MCC.tree --location location1,location2
+```
+This command does the following: Execute the Python script of spatial.py with 2 arguments: input tree file and two annotations containing coordinates information (comma separator in between). When this step is done, a file 'YFV.MCC.tree.output.geojson' will have been created.
+
+2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
+(To Be Continued)
+
+3. Visualise the spatial layer and the environmental layer together in Spread.gl.
+
+https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the tree file using the following command:
@@ -75,35 +105,3 @@ This command does the following: Execute the Python script of trimming.py with 6
 Now, you can load the end result in Spread.gl in your browser. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style, etc.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
-
-### Yellow fever virus in Brazil
-1. Process the tree file using the following command:
-```
-spatial --tree YFV.MCC.tree --location location1,location2
-```
-This command does the following: Execute the Python script of spatial.py with 2 arguments: input tree file and two annotations containing coordinates information (comma separator in between). When this step is done, a file 'YFV.MCC.tree.output.geojson' will have been created.
-
-2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
-(To Be Continued)
-
-3. Visualise the spatial layer and the environmental layer together in Spread.gl.
-
-https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
-
-### Porcine epidemic diarrhea virus (PEDV) in China
-1. Process the tree file using the following command:
-```
-spatial --tree PEDV_China.MCC.tree --location location --list Involved_provincial_capital_coordinates.csv
-```
-This command does the following: Execute the Python script of spatial.py with 3 arguments: input tree file, the annotation containing location (province) information, and a list of capital coordinates of involved provinces. When this step is done, a file 'PEDV_China.MCC.output.geojson' will have been created.
-
-2. Create an environmental layer. You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Type in the following commands to check description and start execution:
-```
-environmental --help
-environmental --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
-```
-This command does the following: Execute the Python script of environmental.py with 5 required arguments: input map (.GeoJSON), foreign key field name in the properties part of input, environmental data (.csv), foreign field name in data, and output map (.GeoJSON). When this step is done, a file 'Swine_stocks_on_map.geojson' will have been created.
-
-3. Visualise the spatial layer and the environmental layer together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
-
-https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
