@@ -1,9 +1,9 @@
 from spatial_layer_generator.continuous_tree_handler import *
 
 
-def process_continuous_phylogeography(tree, location, extension):
+def process_continuous_phylogeography(tree, mostRecentTip, location, extension):
     print("Started processing, please wait...")
-    data_frame, feature_collection = handle_continuous_tree(tree, location)
+    data_frame, feature_collection = handle_continuous_tree(tree, mostRecentTip, location)
     if extension == "csv":
         output = tree + '.output.csv'
         with open(output, 'w') as f:
