@@ -1,7 +1,7 @@
 numpy==1.24.2
 pandas==1.5.3
-geojson==3.0.0
-baltic~=0.1.6
+geojson==3.0.1
 geopandas~=0.12.2
-setuptools==67.2.0
+setuptools==67.4.0
 pyproj~=3.4.1
+DendroPy==4.5.2

@@ -1,9 +1,9 @@
 from spatial_layer_generator.discrete_tree_handler import *
 
 
-def process_discrete_phylogeography(tree, location, location_list, extension):
+def process_discrete_phylogeography(tree, mostRecentTip, location, location_list, extension):
     print("Started processing, please wait...")
-    data_frame, feature_collection = handle_discrete_tree(tree, location, location_list)
+    data_frame, feature_collection = handle_discrete_tree(tree, mostRecentTip, location, location_list)
     if extension == "csv":
         output = tree + '.output.csv'
         with open(output, 'w') as f:
