@@ -9,7 +9,7 @@ In this directory, you can find all the scripts that will be used to process max
 
 ## spatial_layer_generator
 
-**spatial.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
+**space.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
 
 **continuous_space_processor.py** accepts values from spatial.py, processes the tree by calling the code in continuous_tree_handler.py and returns the result in the format of either csv or geojson. By default, the format of output file is set as GeoJSON, which is a format for encoding a variety of geographic data structures. If the users would like to inspect the result in the table, an output file of the CSV format will be provided by using an additional argument for output.
 
@@ -19,11 +19,13 @@ In this directory, you can find all the scripts that will be used to process max
 
 **discrete_tree_handler.py** works similarly as continuous_tree_handler.py, but the users have to provide an extra location list (with geographic coordinates for the discrete locations) in the context of discrete phylogeographic analysis.
 
+**branch_processor.py** calculates the time of the parent tree branches.
+
 **time_conversion.py** converts time from decimal years to datetime.
 
 ## environmental_layer_generator
 
-**environmental.py** creates environmental layers by adding data to GeoJSON maps.
+**environment.py** creates environmental layers by adding data to GeoJSON maps.
 
 ## projection_transformation
 
@@ -37,27 +39,30 @@ In this directory, you can find all the scripts that will be used to process max
 # Tutorials
 
 ```
-spatial --help
+space --help
 ```
 ```
 Welcome to the spatial layer generator! You can create a spatial layer for a phylogenetic tree to display in Spread.gl.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --tree TREE, -t TREE  Specify the file name of your phylogenetic tree with filename extension.
-  --location LOCATION, -l LOCATION
-                        Type in the annotation that stores the location information or coordinates. Or type in the two annotations storing latitude and longitude
-                        (in this order) with a comma separator.
+  --tree TREE, -tr TREE
+                        Specify the name of your input tree file with filename extension.
+  --time TIME, -ti TIME
+                        Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.
+  --location LOCATION, -lo LOCATION
+                        Type in the annotation that stores the location information (names or coordinates). If there are two annotations to store
+                        coordinates, enter them in the order of latitude and longitude with a comma separator.
   --list LIST, -li LIST
-                        Optional, only mandatory in the case of discrete space. Specify the file name of your list of coordinates with filename extension. This
-                        file should be in the csv format with a comma (",") separator, and should be comprised of three columns with a specific header of
+                        Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be
+                        in the csv format with a comma (",") separator, and comprised of three columns with a specific header of
                         "location,latitude,longitude".
   --format {csv}, -f {csv}
-                        Optional: Type in "csv" if you would like to inspect your output file in a tabular format.
+                        It is optional. If you want to check the output in a table, use "csv" in this argument.
 ```
 
 ```
-environmental --help
+environment --help
 ```
 ```
 Welcome to the environmental layer generator! You can create the environmental layers with environmental data to display in Spread.gl.
