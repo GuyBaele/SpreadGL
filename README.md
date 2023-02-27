@@ -63,7 +63,9 @@ This command executes the space.py script with 4 arguments:
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 When this processing step is done, you should be able to see a file called 'rep1.mcc.tre.output.geojson'. It represents the spatial layer.
 
-2. Visualise the spatial layer in Spread.gl. (To Be Continued)
+2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in discrete space)
+
+https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
 ### Rabies virus (RABV) in the United States
 1. Process the tree file using the following command:
@@ -73,7 +75,9 @@ space --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location
 This step works in the similar way as the A.27 example. Please take notice of the "--location" argument:  
 As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 
-2. Visualise the spatial layer in Spread.gl. (To Be Continued)
+2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in continuous space)
+
+https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the tree file using the following command:
@@ -106,9 +110,9 @@ space --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 This step works in the same way as the RABV example. Since the tree annotations also include the information about regions of highest posterior density (HPD), some more relevant data will automatically be saved in the output GeoJSON file.
 
 2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
-(To Be Continued)
+(To Be Continued: how to create)
 
-3. Visualise the spatial and environmental layers together in Spread.gl.
+3. Visualise the spatial and environmental layers together in Spread.gl. (To Be Continued: tutorial of the contour layer)
 
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
@@ -132,7 +136,7 @@ trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending
 ```
 This command executes the trimming.py script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between if needed), and output csv file. When this step is done, a file 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv' will be created.
 
-4. Visualise the end result.
+4. Visualise the end result. (To be continued: more explanations of the time bar)  
 Now, you can load the end result in Spread.gl in your browser. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style, etc.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
