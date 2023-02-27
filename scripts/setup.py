@@ -12,8 +12,8 @@ setup(
     packages=find_packages(),
     entry_points={
             'console_scripts': [
-                'spatial = spatial_layer_generator.spatial:main',
-                'environmental = environmental_layer_generator.environmental:main',
+                'space = spatial_layer_generator.space:main',
+                'environment = environmental_layer_generator.environment:main',
                 'reprojection = projection_transformation.reprojection:main',
                 'trimming = outlier_detection.trimming:main'
             ]},
