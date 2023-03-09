@@ -65,6 +65,7 @@ When this processing step is done, you should be able to see a file called 'rep1
 
 2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in discrete space)
 
+
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
 ### Rabies virus (RABV) in the United States
@@ -136,7 +137,7 @@ trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending
 ```
 This command executes the trimming.py script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between if needed), and output csv file. When this step is done, a file 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv' will be created.
 
-4. Visualise the end result. (To be continued: more explanations of the time bar)  
-Now, you can load the end result in Spread.gl in your browser. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers, adding the end_time as a filter to create animation, and applying your favourite map style, etc.
+4. Visualise the end result.
+Now, you can load the end result in Spread.gl in your browser. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers. To create an animation for the dispersal, you need to add the filter to your map. First, select Filters from the navigation bar. Then, click Add Filter. Choose the result dataset, and then a field on which to filter your data. In this case, it should be a timestamp called "ending_time". After that, this filter will be applied on your map. You can see a time bar at the bottom of the screen. Set the time window to increment and click the play buttom. You will eventually see an animation.
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
