@@ -128,7 +128,7 @@ library(rgdal) #load neccesary libraries
 tmax_data <- getData(name = "worldclim", var = "tmax", res = 0.5) #download climate data
 tmax_mean <- mean(tmax_data) #calculate mean
 brazil_sf <- geoboundaries("Brazil", "adm1") #download a shapefile of only Brazil, with administrative borders on the province level
-brazil_sf<- nigeria_sf[brazil_sf$shapeName %in% c("Minas Gerais","Espírito Santo",
+brazil_sf<- brazil_sf[brazil_sf$shapeName %in% c("Minas Gerais","Espírito Santo",
                                                     "Rio de Janeiro",  "São Paulo",
                                                     "Goiás",  "Bahia",
                                                     "Federal District",
