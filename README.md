@@ -65,6 +65,7 @@ When this processing step is done, you should be able to see a file called 'rep1
 
 2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in discrete space)
 
+
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
 ### Rabies virus (RABV) in the United States
@@ -76,6 +77,8 @@ This step works in the similar way as the A.27 example. Please take notice of th
 As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 
 2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in continuous space)
+
+
 
 https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
 
@@ -114,6 +117,24 @@ This step works in the same way as the RABV example. Since the tree annotations 
 
 3. Visualise the spatial and environmental layers together in Spread.gl. (To Be Continued: tutorial of the contour layer)
 
+Download the environmental raster data layer from here: https://www.worldclim.org/data/monthlywth.html. In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world) we can apply a mask to this raster layer using R:
+
+```
+tmax_data <- getData(name = "worldclim", var = "tmax", res = 0.5) #download climate data
+tmax_mean <- mean(tmax_data) #calculate mean
+brazil_sf <- geoboundaries("Brazil", "adm1") #download a shapefile of only Brazil, with administrative borders on the province level
+brazil_sf<- nigeria_sf[brazil_sf$shapeName %in% c("Minas Gerais","Espírito Santo",
+                                                    "Rio de Janeiro",  "São Paulo",
+                                                    "Goiás",  "Bahia",
+                                                    "Federal District",
+                                                    "Rio Grande do Sul",
+                                                    "Paraná", "Santa Catarina" ),] #select only the provinces you want to visualise
+library(raster) 
+tmax_mean_brazil <- raster::mask(tmax_mean, as_Spatial(brazil_sf)) #apply mask of Brazilian provinces to temperature layer
+polygon=rasterToPolygons(tmax_mean_brazil, fun=NULL, n=4, na.rm=TRUE, digits=2, dissolve=FALSE) #convert to a polygon file
+library(rgdal)
+writeOGR(polygon, "test_geojson3_resolution", layer="layer", driver="GeoJSON") #save polygon file as GeoJSON file
+```
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
