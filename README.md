@@ -120,6 +120,11 @@ This step works in the same way as the RABV example. Since the tree annotations 
 Download the environmental raster data layer from here: https://www.worldclim.org/data/monthlywth.html. In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world) we can apply a mask to this raster layer using R. You can modify the code below for most other environmental layers in raster format and other locations.
 
 ```
+library(sf)
+library(rgeoboundaries)
+library(raster) 
+library(rgdal) #load neccesary libraries
+
 tmax_data <- getData(name = "worldclim", var = "tmax", res = 0.5) #download climate data
 tmax_mean <- mean(tmax_data) #calculate mean
 brazil_sf <- geoboundaries("Brazil", "adm1") #download a shapefile of only Brazil, with administrative borders on the province level
@@ -129,10 +134,9 @@ brazil_sf<- nigeria_sf[brazil_sf$shapeName %in% c("Minas Gerais","Espírito Sant
                                                     "Federal District",
                                                     "Rio Grande do Sul",
                                                     "Paraná", "Santa Catarina" ),] #select only the provinces you want to visualise
-library(raster) 
+
 tmax_mean_brazil <- raster::mask(tmax_mean, as_Spatial(brazil_sf)) #apply mask of Brazilian provinces to temperature layer
 polygon=rasterToPolygons(tmax_mean_brazil, fun=NULL, n=4, na.rm=TRUE, digits=2, dissolve=FALSE) #convert to a polygon file
-library(rgdal)
 writeOGR(polygon, "geojson_maxtemp_Brazil, layer="layer", driver="GeoJSON") #save polygon file as GeoJSON file
 ```
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
