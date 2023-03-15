@@ -63,8 +63,11 @@ This command executes the space.py script with 4 arguments:
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 When this processing step is done, you should be able to see a file called 'rep1.mcc.tre.output.geojson'. It represents the spatial layer.
 
-2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in discrete space)
-
+2. Visualise the spatial layer in Spread.gl.  
+Click the "Add Data" button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
+(1) Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.  
+(2) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
+(3) Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
 
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
@@ -76,9 +79,9 @@ space --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location
 This step works in the similar way as the A.27 example. Please take notice of the "--location" argument:  
 As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 
-2. Visualise the spatial layer in Spread.gl. (To Be Continued: tutorial of visualisation in continuous space)
-
-
+2. Visualise the spatial layer in Spread.gl.  
+Click the "Add Data" button and import the file named 'RABV_US1_gamma_MCC.tree.output.geojson' by drag-and-drop.  
+In this example, you can create an additional layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.
 
 https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
 
@@ -114,11 +117,7 @@ This step works in the same way as the RABV example. Since the tree annotations 
 
 2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
 (To Be Continued: how to create)
-
-3. Visualise the spatial and environmental layers together in Spread.gl. (To Be Continued: tutorial of the contour layer)
-
 Download the environmental raster data layer from here: https://www.worldclim.org/data/monthlywth.html. In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world) we can apply a mask to this raster layer using R. You can modify the code below for most other environmental layers in raster format and other locations.
-
 ```
 library(sf)
 library(rgeoboundaries)
@@ -139,6 +138,10 @@ tmax_mean_brazil <- raster::mask(tmax_mean, as_Spatial(brazil_sf)) #apply mask o
 polygon=rasterToPolygons(tmax_mean_brazil, fun=NULL, n=4, na.rm=TRUE, digits=2, dissolve=FALSE) #convert to a polygon file
 writeOGR(polygon, "geojson_maxtemp_Brazil, layer="layer", driver="GeoJSON") #save polygon file as GeoJSON file
 ```
+
+3. Visualise the spatial and environmental layers together in Spread.gl.  
+(To Be Continued: tutorial of the contour layer)
+
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
