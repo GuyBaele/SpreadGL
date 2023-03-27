@@ -116,28 +116,13 @@ space --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 This step works in the same way as the RABV example. Since the tree annotations also include the information about regions of highest posterior density (HPD), some more relevant data will automatically be saved in the output GeoJSON file.
 
 2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
-(To Be Continued: how to create)
-Download the environmental raster data layer from here: https://www.worldclim.org/data/monthlywth.html. In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world) we can apply a mask to this raster layer using R. You can modify the code below for most other environmental layers in raster format and other locations.
+Download the environmental raster data & boundaries data via the links below:
+1)https://www.worldclim.org/data/monthlywth.html; 2)https://www.geoboundaries.org/index.html#getdata.
+In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world), we can apply a mask to this raster layer. You can modify the arguments below for most other environmental layers in raster format and other locations.
 ```
-library(sf)
-library(rgeoboundaries)
-library(raster) 
-library(rgdal) #load neccesary libraries
-
-tmax_data <- getData(name = "worldclim", var = "tmax", res = 0.5) #download climate data
-tmax_mean <- mean(tmax_data) #calculate mean
-brazil_sf <- geoboundaries("Brazil", "adm1") #download a shapefile of only Brazil, with administrative borders on the province level
-brazil_sf<- brazil_sf[brazil_sf$shapeName %in% c("Minas Gerais","Espírito Santo",
-                                                    "Rio de Janeiro",  "São Paulo",
-                                                    "Goiás",  "Bahia",
-                                                    "Federal District",
-                                                    "Rio Grande do Sul",
-                                                    "Paraná", "Santa Catarina" ),] #select only the provinces you want to visualise
-
-tmax_mean_brazil <- raster::mask(tmax_mean, as_Spatial(brazil_sf)) #apply mask of Brazilian provinces to temperature layer
-polygon=rasterToPolygons(tmax_mean_brazil, fun=NULL, n=4, na.rm=TRUE, digits=2, dissolve=FALSE) #convert to a polygon file
-writeOGR(polygon, "geojson_maxtemp_Brazil, layer="layer", driver="GeoJSON") #save polygon file as GeoJSON file
+raster --folder wc2.1_2.5m_tmax --region geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --output output.csv
 ```
+(To Be Continued: how to use)
 
 3. Visualise the spatial and environmental layers together in Spread.gl.  
 (To Be Continued: tutorial of the contour layer)
