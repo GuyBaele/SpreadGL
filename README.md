@@ -94,7 +94,7 @@ This step works in the same way as the A.27 example.
 
 2. Create an environmental layer. You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
 ```
-environment --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
+table --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
 ```
 This command executes the environment.py script with 5 required arguments:  
 --region: Specify the input map (.GeoJSON).  
