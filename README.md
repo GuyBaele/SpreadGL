@@ -39,8 +39,12 @@ source my_env/bin/activate (Linux/Mac)
 python setup.py install
 ```
 
-## Visualising a geographical spread layer in Spread.gl
+## Visualising a geographical spread layer in spread.gl
+Here we should discuss the common step(s) - i.e. after the tree has been processed - for all geographical spread visualisations for how to show the arcs and data points that we obtained from the tree.
 
+
+## Visualising an environmental data layer in spread.gl
+Here we should discuss the common step(s) for the environmental data layer visualisations.
 
 
 ## Animation examples in spread.gl
