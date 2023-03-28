@@ -38,21 +38,16 @@ source my_env/bin/activate (Linux/Mac)
 .\my_env\Scripts\activate (Windows)
 python setup.py install
 ```
-## Tree Processing
-Process the MCC trees you want to visualise. For example, for each of the three visualisations shown below, these are the basic commands required (but see the examples below for more processing steps and the scripts directory for more detailed information):
-```
-space --tree rep1.mcc.tre --time 2021-06-01 --location region --list A.27.location.list.csv
-space --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
-space --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
-space --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
-space --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
-```
+
+## Visualising a geographical spread layer in Spread.gl
+
+
 
 ## Animation examples in spread.gl
 In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript. We also provide example output videos by recording the screen on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
-1. Process the tree file using the following command:
+1. Process the MCC tree file using the following command:
 ```
 space --tree rep1.mcc.tre --time 2021-06-01 --location region --list A.27.location.list.csv
 ```
@@ -72,7 +67,7 @@ Click the "Add Data" button and import the file named 'rep1.mcc.tre.output.geojs
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
 ### Rabies virus (RABV) in the United States
-1. Process the tree file using the following command:
+1. Process the MCC tree file using the following command:
 ```
 space --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
@@ -86,7 +81,7 @@ In this example, you can create an additional layer that enables the differentia
 https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
-1. Process the tree file using the following command:
+1. Process the MCC tree file using the following command:
 ```
 space --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
@@ -109,7 +104,7 @@ When this step is done, a file called 'Swine_stocks_on_map.geojson' will be crea
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
 
 ### Yellow fever virus (YFV) in Brazil
-1. Process the tree file using the following command:
+1. Process the MCC tree file using the following command:
 ```
 space --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
@@ -130,7 +125,7 @@ raster --folder wc2.1_2.5m_tmax --region geoBoundaries-BRA-ADM1.geojson --mask I
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-1. Process the tree file using the following command:
+1. Process the single tree file using the following command:
 ```
 space --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
 ```
