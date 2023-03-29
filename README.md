@@ -126,7 +126,7 @@ Regarding the boundary map, you will need to provide a GeoJSON file. Since we on
 ```
 raster --data wc2.1_2.5m_tmax --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
 ```
-This command executes the raster.py script with 4 required arguments:
+This command executes the raster.py script with 4 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.GeoJSON).  
 --mask: Provide a list of locations of interest (.txt, comma-delimited).  
@@ -135,7 +135,7 @@ When this step is done, a file called 'brazil_region_maxtemp.csv' will be create
 
 3. Visualise the spatial and environmental layers together in Spread.gl.  
 Follow the previous steps to get different visuals. Note that you should choose 'Point' in Basic for the environmental layer.  
-To create a contour layer as one spatial layer, select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. When playing the animation, contours will gradually appear in chronological order.
+To create a contour layer as one of the spatial layers, select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. When playing the animation, contours will gradually appear in chronological order.
 
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
