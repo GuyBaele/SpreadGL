@@ -62,10 +62,10 @@ This command executes the space.py script with 4 arguments:
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 When this processing step is done, you should be able to see a file called 'rep1.mcc.tre.output.geojson'. It represents the spatial layer.
 
-2. Visualise the spatial layer in Spread.gl.  
-Click the "Add Data" button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
-(1) Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.  
-(2) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
+2. Visualise the spatial layers in Spread.gl.  
+Click the 'Add Data' button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
+(1) Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.  
+(2) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
 (3) Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
 
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
@@ -78,9 +78,9 @@ spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,locatio
 This step works in the similar way as the A.27 example. Please take notice of the "--location" argument:  
 As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 
-2. Visualise the spatial layer in Spread.gl.  
-Click the "Add Data" button and import the file named 'RABV_US1_gamma_MCC.tree.output.geojson' by drag-and-drop.  
-In this example, you can create an additional layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, then clicking 'Add Layer' and choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.
+2. Visualise the spatial layers in Spread.gl.  
+Follow the previous steps to get different visuals. You can set the time window of animation as incremental for better observation of dispersal in continuous space.  
+In this example, you can create an additional layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.
 
 https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
 
@@ -91,19 +91,23 @@ spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list I
 ```
 This step works in the same way as the A.27 example.
 
-2. Create an environmental layer. You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
+2. Create an environmental layer.  
+You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
 ```
-table --region China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
+table --map China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
 ```
 This command executes the environment.py script with 5 required arguments:  
---region: Specify the input map (.GeoJSON).  
---key: Enter the foreign key field name in the properties part of input.  
---data: Use environmental data (.csv).  
---foreign: Enter the foreign field name in your data.  
---output: Give a name for the output map (.GeoJSON).  
+--map: Specify the input boundary map (.GeoJSON).  
+--key: Enter the key field of the GeoJSON file. In this case, it can be "name" in the properties.  
+--data: Use environmental data (.csv, comma-delimited).  
+--foreign: Enter the foreign field of the CSV file. In this case, it can be the "location" column.  
+--output: Give a name to the output environmental layer (.GeoJSON).  
 When this step is done, a file called 'Swine_stocks_on_map.geojson' will be created.
 
-3. Visualise the spatial and environmental layers together in Spread.gl. To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
+3. Visualise the spatial and environmental layers together in Spread.gl.  
+Follow the previous steps to get different visuals of the spatial layers.  
+1)To create an environmental layer, select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Fill the colours based on your desired field, 'mean' for this case. You can also set the colour scale as quantize and lower the opacity to increase the contrast between this layer and the base map layer. It is also possible to hide the stroke, change its colour and width.  
+2)To add a custom base map style, you need to create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
 
@@ -115,16 +119,23 @@ spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 This step works in the same way as the RABV example. Since the tree annotations also include the information about regions of highest posterior density (HPD), some more relevant data will automatically be saved in the output GeoJSON file.
 
 2. Generate the file of 'brazil_region_maxtemp.csv' as a temperature layer.  
-Download the environmental raster data & boundaries data via the links below:
-1)https://www.worldclim.org/data/monthlywth.html; 2)https://www.geoboundaries.org/index.html#getdata.
-In this case, we chose to visualise the maximum temperature. Note that this is monthly data, so we take the mean for the years 2010 to 2018. Since we only wish to visualise a few Brazilian provinces (and not the entire world), we can apply a mask to this raster layer. You can modify the arguments below for most other environmental layers in raster format and other locations.
+You can download the environmental raster data & a GeoJSON boundary map via the following links respectively:  
+1)https://www.worldclim.org/data/monthlywth.html; 2)https://www.geoboundaries.org/index.html#getdata  
+In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
+Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 ```
-raster --folder wc2.1_2.5m_tmax --region geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --output output.csv
+raster --data wc2.1_2.5m_tmax --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
 ```
-(To Be Continued: how to use)
+This command executes the raster.py script with 4 required arguments:
+--data: Enter the folder that contains raster data files (.tif).  
+--map: Specify the input boundary map (.GeoJSON).  
+--mask: Provide a list of locations of interest (.txt, comma-delimited).  
+--output: Give a name to the output environmental layer (.csv).  
+When this step is done, a file called 'brazil_region_maxtemp.csv' will be created.
 
 3. Visualise the spatial and environmental layers together in Spread.gl.  
-(To Be Continued: tutorial of the contour layer)
+Follow the previous steps to get different visuals. Note that you should choose 'Point' in Basic for the environmental layer.  
+To create a contour layer as one spatial layer, select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. When playing the animation, contours will gradually appear in chronological order.
 
 https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
 
@@ -148,7 +159,7 @@ trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending
 ```
 This command executes the trimming.py script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between if needed), and output csv file. When this step is done, a file 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv' will be created.
 
-4. Visualise the end result.
-Now, you can load the end result in Spread.gl in your browser. Click the buttom "Add Data". Drag & drop the file of 'B.1.1.7_England_final_output.csv' there. You can customise the visualisation by adjusting the parameters in the side panal, i.e. showing / hiding / creating / deleting / reordering / colouring different layers. To create an animation for the dispersal, you need to add the filter to your map. First, select Filters from the navigation bar. Then, click Add Filter. Choose the result dataset, and then a field on which to filter your data. In this case, it should be a timestamp called "ending_time". After that, this filter will be applied on your map. You can see a time bar at the bottom of the screen. Set the time window to increment and click the play buttom. You will eventually see an animation.
+4. Visualise the spatial layers in Spread.gl.  
+Follow the previous steps to get different visuals.  
 
 https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
