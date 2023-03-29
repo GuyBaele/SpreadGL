@@ -53,7 +53,7 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 ### SARS-CoV-2 lineage A.27 Worldwide
 1. Process the MCC tree file using the following command:
 ```
-space --tree rep1.mcc.tre --time 2021-06-01 --location region --list A.27.location.list.csv
+spread --tree rep1.mcc.tre --time 2021-06-01 --location region --list A.27.location.list.csv
 ```
 This command executes the space.py script with 4 arguments:  
 --tree: Specify the name of your input tree file with filename extension.  
@@ -73,7 +73,7 @@ https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-
 ### Rabies virus (RABV) in the United States
 1. Process the MCC tree file using the following command:
 ```
-space --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
+spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
 This step works in the similar way as the A.27 example. Please take notice of the "--location" argument:  
 As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
@@ -87,7 +87,7 @@ https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-
 ### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the MCC tree file using the following command:
 ```
-space --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
+spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
 This step works in the same way as the A.27 example.
 
@@ -110,7 +110,7 @@ https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-
 ### Yellow fever virus (YFV) in Brazil
 1. Process the MCC tree file using the following command:
 ```
-space --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
+spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
 This step works in the same way as the RABV example. Since the tree annotations also include the information about regions of highest posterior density (HPD), some more relevant data will automatically be saved in the output GeoJSON file.
 
@@ -131,7 +131,7 @@ https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the following command:
 ```
-space --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
+spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
 ```
 This step works in the same way as the RABV example. Please take notice of the following argument:  
 --format: It is optional. If you want to check the output in a table, use "csv" in this argument. For this example, we need tabular data for further data wrangling.

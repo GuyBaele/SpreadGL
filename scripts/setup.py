@@ -12,7 +12,7 @@ setup(
     packages=find_packages(),
     entry_points={
             'console_scripts': [
-                'space = spatial_layer_generator.space:main',
+                'spread = spatial_layer_generator.spread:main',
                 'table = environmental_layer_generator.table:main',
                 'raster = environmental_layer_generator.raster:main',
                 'reprojection = projection_transformation.reprojection:main',
