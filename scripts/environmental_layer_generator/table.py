@@ -4,30 +4,30 @@ import geopandas
 
 
 def main():
-    welcome = "You can use this tool to create environmental layers for tabular data."
+    welcome = "You can use this tool to create environmental layers using tabular data."
     parser = argparse.ArgumentParser(description=welcome)
-    parser.add_argument('--region', '-r', required=True,
-                        help='Specify the GeoJSON file with filename extension as the region part of the environmental layer.')
+    parser.add_argument('--map', '-m', required=True,
+                        help='Specify the input boundary map (.GeoJSON).')
     parser.add_argument('--key', '-k', required=True,
-                        help='Enter the foreign key field of the GeoJSON file. '
+                        help='Enter the key field of the GeoJSON file. '
                         'In this case, it can be "name" in the properties.')
     parser.add_argument('--data', '-d', required=True,
-                        help='Specify the comma-delimited CSV file with filename extension as the data part of the environmental layer.')
+                        help='Use environmental data (.csv, comma-delimited).')
     parser.add_argument('--foreign', '-f', required=True,
-                        help='Enter the foreign/referenced field of the CSV file. '
+                        help='Enter the foreign field of the CSV file. '
                         'In this case, it can be the "location" column.')
     parser.add_argument('--output', '-o', required=True,
-                        help='Create a name with filename extension (.geojson) for the output file.')
+                        help='Give a name to the output environmental layer (.GeoJSON).')
 
     args = parser.parse_args()
-    region = str(args.region)
+    map = str(args.map)
     key = str(args.key)
     data = str(args.data)
     foreign = str(args.foreign)
     output = str(args.output)
 
     # Load a geojson file
-    gdf = geopandas.read_file(region)
+    gdf = geopandas.read_file(map)
     # Load a CSV file
     pdf = pandas.read_csv(data, delimiter=',')
     # Combine

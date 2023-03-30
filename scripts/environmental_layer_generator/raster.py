@@ -9,26 +9,29 @@ import argparse
 
 
 def main():
-    welcome = "You can use this tool to create environmental layers for raster data."
+    welcome = "You can use this tool to create environmental layers using raster data."
     parser = argparse.ArgumentParser(description=welcome)
-    parser.add_argument('--folder', '-f', required=True,
-                        help='Enter the folder that contains raster data (.tif files).')
-    parser.add_argument('--region', '-r', required=True,
-                        help='Specify the GeoJSON file with filename extension as the region part of the environmental layer.')
-    parser.add_argument('--mask', '-m', required=True,
-                        help='Use a list of locations of interest with its filename extension as a mask. '
-                             'This file should be in the txt format with a comma (",") separator.')
+    parser.add_argument('--data', '-d', required=True,
+                        help='Enter the folder that contains raster data files (.tif).')
+    parser.add_argument('--map', required=True,
+                        help='Specify the input boundary map (.GeoJSON).')
+    # parser.add_argument('--field', '-f', required=True,
+    #                     help='Enter the field where different region names are stored in the GeoJSON file. '
+    #                     'In this case, it can be "shapeName" in the properties part.')
+    parser.add_argument('--mask', required=True,
+                        help='Provide a list of locations of interest (.txt, comma-delimited).')
     parser.add_argument('--output', '-o', required=True,
-                        help='Create a name with filename extension (.csv) for the output file.')
+                        help='Give a name to the output environmental layer (.csv).')
 
     args = parser.parse_args()
-    folder = str(args.folder)
-    region = str(args.region)
+    data = str(args.data)
+    map = str(args.map)
+    # field = str(args.field)
     mask= str(args.mask)
     output = str(args.output)
 
     current_path = os.getcwd()
-    folder_path = os.path.join(current_path, folder)
+    folder_path = os.path.join(current_path, data)
     tif_files = glob.glob(folder_path + '/*.tif')
     tif_arrays = []
     for tif_file in tif_files:
@@ -42,7 +45,7 @@ def main():
         dst.write(mean_array_2D, 1)
     raster = rioxarray.open_rasterio(filename=os.path.join(current_path, 'mean.tif'), masked=True)
 
-    gdf = gpd.read_file(os.path.join(current_path, region))
+    gdf = gpd.read_file(os.path.join(current_path, map))
     with open(os.path.join(current_path, mask), 'r') as file:
         location_list = file.read().split(',')
     gdf_filtered = gdf.loc[gdf.shapeName.isin(location_list)]
@@ -71,3 +74,23 @@ def main():
 # (rather than when imported)
 if __name__ == '__main__':
     main()
+
+# cell_area = abs(raster.rio.resolution()[0] * raster.rio.resolution()[1])
+# with rasterio.open("masked.tif") as src:
+#     data = src.read(1)
+#     transform = src.transform
+# polygons = []
+# for geometry, value in shapes(data, transform=transform):
+#     shp_geo = shape(geometry)
+#     if abs(shp_geo.area - cell_area) <= 0.1 * cell_area:
+#         polygons.append(geometry)
+# features = []
+# for poly, val in zip(polygons, data.flatten()):
+#     if np.isfinite(val):
+#         feature = {"type": "Feature",
+#                    "geometry": poly,
+#                    "properties": {"data": float(val)}}
+#         features.append(feature)
+# with open("temperature.geojson", "w") as f:
+#     geojson = {"type": "FeatureCollection", "features": features}
+#     json.dump(geojson, f)
