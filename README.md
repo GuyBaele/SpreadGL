@@ -40,7 +40,10 @@ python setup.py install
 ```
 
 ## Visualising a geographical spread layer in spread.gl
-Here we should discuss the common step(s) - i.e. after the tree has been processed - for all geographical spread visualisations for how to show the arcs and data points that we obtained from the tree.
+Click the 'Add Data' button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
+(1) Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.  
+(2) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
+(3) Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
 
 
 ## Visualising an environmental data layer in spread.gl
@@ -48,25 +51,20 @@ Here we should discuss the common step(s) for the environmental data layer visua
 
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our 3 examples in the manuscript. We also provide example output videos by recording the screen on Mac using Screenshot.
+In the 'inputdata' folder, you can find all the required input files for our the different visualisation examples, which are explained in more detail below. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
-1. Process the MCC tree file using the following command:
-```
-spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
-```
-This command executes the space.py script with 4 arguments:  
+1. We first need to process the MCC tree file using the 'spread' command, which takes the following 4 arguments:
 --tree: Specify the name of your input tree file with filename extension.  
 --time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year. In this case, it is 2021-06-01.  
 --location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.geojson'. It represents the spatial layer.
+```
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
+```
 
-2. Visualise the spatial layers in Spread.gl.  
-Click the 'Add Data' button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
-(1) Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.  
-(2) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
-(3) Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
+2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a geographical spread layer in spread.gl').  
 
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
