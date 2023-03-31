@@ -60,7 +60,7 @@ When this processing step is done, you should be able to see a file called 'A.27
 spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
 ```
 
-2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a geographical spread layer in spread.gl').  
+2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
 
 https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
 
