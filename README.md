@@ -53,14 +53,14 @@ In the 'inputdata' folder, you can find all the required input files for our 3 e
 ### SARS-CoV-2 lineage A.27 Worldwide
 1. Process the MCC tree file using the following command:
 ```
-spread --tree rep1.mcc.tre --time 2021-06-01 --location region --list A.27.location.list.csv
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
 ```
 This command executes the space.py script with 4 arguments:  
 --tree: Specify the name of your input tree file with filename extension.  
 --time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year. In this case, it is 2021-06-01.  
 --location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
-When this processing step is done, you should be able to see a file called 'rep1.mcc.tre.output.geojson'. It represents the spatial layer.
+When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.geojson'. It represents the spatial layer.
 
 2. Visualise the spatial layers in Spread.gl.  
 Click the 'Add Data' button and import the file named 'rep1.mcc.tre.output.geojson' by drag-and-drop. Then, you need to follow a series of steps to create different types of visuals.  
