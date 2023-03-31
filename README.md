@@ -20,16 +20,16 @@ You will need to associate your token with Spread.gl:
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
 ```
-3. Start the project, which will open a browser window:
+3. Start the project, which will open a browser window, as follows:
 ```
 npm start
 ```
-Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages:
+4. Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages:
 ```
 npm install assert
 npm install url
 ```
-4. Open a new terminal at the same folder. Install SpreadTools to create legit input files for visualisation.  
+5. Open a new terminal at the same folder. Install SpreadTools to create legit input files for visualisation.  
 More information about different scripts can be found in the README of the scripts folder.
 ```
 cd scripts
