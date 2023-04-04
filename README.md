@@ -52,7 +52,7 @@ In the 'inputdata' folder, you can find all the required input files for our the
 
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:
-1. We first need to process the MCC tree file using the 'spread' command, which takes the following 4 arguments:
+1. We first need to process the MCC tree file using the 'spread' command, which takes the following 4 arguments:  
 --tree: Specify the name of your input tree file with filename extension.  
 --time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year. In this case, it is 2021-06-01.  
 --location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
