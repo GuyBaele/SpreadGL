@@ -89,14 +89,14 @@ This step works in the same way as the A.27 example.
 2. Create an environmental layer.  
 You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
 ```
-table --map China_map.geojson --key name --data National_swine_stocks.csv --foreign location --output Swine_stocks_on_map.geojson
+polygons --map China_map.geojson --foreignkey name --data National_swine_stocks.csv --primarykey location --output Swine_stocks_on_map.geojson
 ```
 This command executes the environment.py script with 5 required arguments:  
---map: Specify the input boundary map (.GeoJSON).  
---key: Enter the key field of the GeoJSON file. In this case, it can be "name" in the properties.  
 --data: Use environmental data (.csv, comma-delimited).  
---foreign: Enter the foreign field of the CSV file. In this case, it can be the "location" column.  
---output: Give a name to the output environmental layer (.GeoJSON).  
+--primarykey: For the input dataset, find a primary key field which will be referred by the input map. In this case, it is the "location" column.  
+--map: Specify the input boundary map (.geojson).  
+--foreignkey: For the input map, find a foreign key variable that refers to the primary key field in the input dataset. In this case, it is "name" in the part of properties.  
+--output: Give a name to the output environmental layer (.geojson).  
 When this step is done, a file called 'Swine_stocks_on_map.geojson' will be created.
 
 3. Visualise the spatial and environmental layers together in Spread.gl.  
