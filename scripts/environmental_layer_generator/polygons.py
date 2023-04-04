@@ -11,11 +11,11 @@ def main():
     parser.add_argument('--primarykey', '-pk', required=True,
                         help='For the input dataset, find a primary key field which will be referred by the input map.')
     parser.add_argument('--map', '-m', required=True,
-                        help='Specify the input boundary map (.GeoJSON).')
+                        help='Specify the input boundary map (.geojson).')
     parser.add_argument('--foreignkey', '-fk', required=True,
                         help='For the input map, find a foreign key variable that refers to the primary key field in the input dataset.')
     parser.add_argument('--output', '-o', required=True,
-                        help='Give a name to the output environmental layer (.GeoJSON).')
+                        help='Give a name to the output environmental layer (.geojson).')
 
     args = parser.parse_args()
     data = str(args.data)
