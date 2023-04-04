@@ -14,7 +14,7 @@ def main():
     parser.add_argument('--data', '-d', required=True,
                         help='Enter the folder that contains raster data files (.tif).')
     parser.add_argument('--map', required=True,
-                        help='Specify the input boundary map (.GeoJSON).')
+                        help='Specify the input boundary map (.geojson).')
     parser.add_argument('--mask', required=True,
                         help='Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).')
     parser.add_argument('--foreignkey', '-f', required=True,
