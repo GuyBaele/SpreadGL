@@ -120,12 +120,13 @@ https://www.geoboundaries.org/index.html#getdata
 In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
 Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 ```
-raster --data wc2.1_2.5m_tmax --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
+raster --data wc2.1_2.5m_tmax --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
 ```
-This command executes the raster.py script with 4 required arguments:  
+This command executes the raster.py script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
---map: Specify the input boundary map (.GeoJSON).  
---mask: Provide a list of locations of interest (.txt, comma-delimited).  
+--map: Specify the input boundary map (.geojson).  
+--mask: Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).  
+--foreignkey: Find a foreign key variable in the map that refers to the mask.  
 --output: Give a name to the output environmental layer (.csv).  
 When this step is done, a file called 'brazil_region_maxtemp.csv' will be created.
 
