@@ -29,6 +29,7 @@ def main():
     foreign_key_field = str(args.key)
     output_file = str(args.output)
 
+    print("Started processing, please wait...")
     # Load the reference dataset to a DataFrame.
     df1 = pd.read_csv(open(reference_dataset), delimiter=",")
     # Perform NULL queries on the specified fields.
