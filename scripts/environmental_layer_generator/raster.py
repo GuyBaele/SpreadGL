@@ -9,7 +9,7 @@ import argparse
 
 
 def main():
-    welcome = "You can use this tool to create environmental layers using raster data."
+    welcome = "You can use this tool to create an environmental layer with raster data."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--data', '-d', required=True,
                         help='Enter the folder that contains raster data files (.tif).')
