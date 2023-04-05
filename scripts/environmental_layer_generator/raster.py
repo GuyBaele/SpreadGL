@@ -9,27 +9,27 @@ import argparse
 
 
 def main():
-    welcome = "You can use this tool to create environmental layers using raster data."
+    welcome = "You can use this tool to create an environmental layer with raster data."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--data', '-d', required=True,
                         help='Enter the folder that contains raster data files (.tif).')
     parser.add_argument('--map', required=True,
-                        help='Specify the input boundary map (.GeoJSON).')
-    # parser.add_argument('--field', '-f', required=True,
-    #                     help='Enter the field where different region names are stored in the GeoJSON file. '
-    #                     'In this case, it can be "shapeName" in the properties part.')
+                        help='Specify the input boundary map (.geojson).')
     parser.add_argument('--mask', required=True,
-                        help='Provide a list of locations of interest (.txt, comma-delimited).')
+                        help='Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).')
+    parser.add_argument('--foreignkey', '-f', required=True,
+                        help='Find a foreign key variable in the map that refers to the mask.')
     parser.add_argument('--output', '-o', required=True,
                         help='Give a name to the output environmental layer (.csv).')
 
     args = parser.parse_args()
     data = str(args.data)
     map = str(args.map)
-    # field = str(args.field)
     mask= str(args.mask)
+    foreign_key= str(args.foreignkey)
     output = str(args.output)
 
+    print("Started processing, please wait...")
     current_path = os.getcwd()
     folder_path = os.path.join(current_path, data)
     tif_files = glob.glob(folder_path + '/*.tif')
@@ -48,7 +48,7 @@ def main():
     gdf = gpd.read_file(os.path.join(current_path, map))
     with open(os.path.join(current_path, mask), 'r') as file:
         location_list = file.read().split(',')
-    gdf_filtered = gdf.loc[gdf.shapeName.isin(location_list)]
+    gdf_filtered = gdf.loc[gdf[foreign_key].isin(location_list)]
     clipped = raster.rio.clip(gdf_filtered.geometry)
     masked = clipped.where(np.isfinite(clipped), np.nan)
     masked.rio.to_raster(os.path.join(current_path, 'masked.tif'))
@@ -74,23 +74,3 @@ def main():
 # (rather than when imported)
 if __name__ == '__main__':
     main()
-
-# cell_area = abs(raster.rio.resolution()[0] * raster.rio.resolution()[1])
-# with rasterio.open("masked.tif") as src:
-#     data = src.read(1)
-#     transform = src.transform
-# polygons = []
-# for geometry, value in shapes(data, transform=transform):
-#     shp_geo = shape(geometry)
-#     if abs(shp_geo.area - cell_area) <= 0.1 * cell_area:
-#         polygons.append(geometry)
-# features = []
-# for poly, val in zip(polygons, data.flatten()):
-#     if np.isfinite(val):
-#         feature = {"type": "Feature",
-#                    "geometry": poly,
-#                    "properties": {"data": float(val)}}
-#         features.append(feature)
-# with open("temperature.geojson", "w") as f:
-#     geojson = {"type": "FeatureCollection", "features": features}
-#     json.dump(geojson, f)

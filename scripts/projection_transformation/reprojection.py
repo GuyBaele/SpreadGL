@@ -27,6 +27,7 @@ def main():
     trg_crs = 'EPSG:'+str(args.trg)
     output_file = str(args.output)
 
+    print("Started processing, please wait...")
     df = pd.read_csv(input_file, delimiter=",")
     transformer = Transformer.from_crs(src_crs, trg_crs)
     for i in range(len(src_lng)):
