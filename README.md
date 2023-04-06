@@ -83,7 +83,7 @@ As there are two annotations (location1 & location2 in this case) to store coord
 2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.  
 
 
-https://user-images.githubusercontent.com/74751786/230121216-bb9229f2-3006-4f2a-bc35-3ce0f33b459f.mov
+https://user-images.githubusercontent.com/74751786/230362590-db7320f9-893c-4997-b7bf-22744d7c4cb8.mov
 
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
