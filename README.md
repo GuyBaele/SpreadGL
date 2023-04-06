@@ -44,7 +44,7 @@ Once you have started spread.gl, you will see a world map in your browser window
 1. Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.
 2. (Discrete phylogeography) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
 (Continuous phylogeography) Create a layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.  
-(Continuous phylogeography with available HPD data) Create a contour layer to visually represent uncertainty. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. When playing the animation, contours will gradually appear in chronological order.
+(Continuous phylogeography with available HPD data) Create a contour layer to visually represent uncertainty. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. You can make the colour change automatically based on 'ending_time' and set the colour scale to quantize. When playing the animation, contours will gradually appear in chronological order.
 3. Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
 
 ## Visualising an environmental data layer in spread.gl
@@ -68,7 +68,9 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
 
-https://user-images.githubusercontent.com/74751786/221681883-46bc7d5c-efdb-439c-bfbb-98c5f12f11ff.mov
+
+https://user-images.githubusercontent.com/74751786/230090751-3a966889-3277-482e-a370-013a76cc535f.mov
+
 
 ### Rabies virus (RABV) in the United States
 1. Process the MCC tree file using the following command.
@@ -80,7 +82,9 @@ As there are two annotations (location1 & location2 in this case) to store coord
 
 2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.  
 
-https://user-images.githubusercontent.com/74751786/221672148-b5190444-cb32-4047-a395-ed2cc8427130.mov
+
+https://user-images.githubusercontent.com/74751786/230362590-db7320f9-893c-4997-b7bf-22744d7c4cb8.mov
+
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the MCC tree file using the following command.
@@ -104,7 +108,9 @@ A GeoJSON file named 'Swine_stocks_on_map.geojson' will be generated to display 
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
-https://user-images.githubusercontent.com/74751786/205175522-5f639239-79d6-48c4-a097-837df9e50fa6.mp4
+
+https://user-images.githubusercontent.com/74751786/230144780-27d13ede-51a8-446a-8f1d-116d820b3996.mov
+
 
 ### Yellow fever virus (YFV) in Brazil
 1. Process the MCC tree file using the following command.
@@ -120,7 +126,7 @@ https://www.geoboundaries.org/index.html#getdata
 In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
 Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 ```
-raster --data wc2.1_2.5m_tmax --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
+raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
 ```
 This command executes the raster.py script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
@@ -132,7 +138,9 @@ A CSV file called 'brazil_region_maxtemp.csv' will be created to show the enviro
 
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
-https://user-images.githubusercontent.com/74751786/200294883-a1a28d8c-44c0-4a0a-ab89-b3d137e704f1.mp4
+
+https://user-images.githubusercontent.com/74751786/230352152-e4f046f5-e295-4505-a621-f818e0057def.mov
+
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the following command.
@@ -157,4 +165,6 @@ This command executes the trimming.py script with 6 required arguments: input cs
 4. Visualise the spatial layers in Spread.gl.  
 Follow the previous steps to get different visuals of the spatial layers.  
 
-https://user-images.githubusercontent.com/74751786/200294175-24cf3c0a-92c6-49b6-ad9d-ed5dd57fe60d.mp4
+
+https://user-images.githubusercontent.com/74751786/230358490-38cdf607-e783-4fb4-8c98-8651eb69aaa5.mov
+
