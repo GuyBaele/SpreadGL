@@ -13,7 +13,7 @@ setup(
     entry_points={
             'console_scripts': [
                 'spread = spatial_layer_generator.spread:main',
-                'polygons = environmental_layer_generator.polygons:main',
+                'regions = environmental_layer_generator.regions:main',
                 'raster = environmental_layer_generator.raster:main',
                 'reprojection = projection_transformation.reprojection:main',
                 'trimming = outlier_detection.trimming:main'
