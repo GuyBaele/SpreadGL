@@ -96,7 +96,7 @@ This step works in the same way as the A.27 example.
 2. Process tabular environmental data.  
 You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
 ```
-polygons --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
+regions --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
 ```
 This command executes the polygons.py script with 5 required arguments:  
 --map: specify the input boundary map in GeoJSON format (.geojson).
