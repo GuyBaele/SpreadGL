@@ -96,14 +96,14 @@ This step works in the same way as the A.27 example.
 2. Process tabular environmental data.  
 You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
 ```
-polygons --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --primarykey location --output Swine_stocks_on_map.geojson
+polygons --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
 ```
 This command executes the polygons.py script with 5 required arguments:  
---data: Use environmental data (.csv, comma-delimited).  
---primarykey: For the input dataset, find a primary key field which will be referred by the input map. In this case, it is the "location" column.  
---map: Specify the input boundary map (.geojson).  
---locationVariable: in the geoJSON input file, find the property that represents the location variable. In the China_map.geojson file, each location is stored in a "name" variable (as part of the "properties").  
---output: Give a name to the output environmental layer (.geojson).  
+--map: specify the input boundary map in GeoJSON format (.geojson).
+--locationVariable: in the GeoJSON input file, find the property that represents the location variable. In the China_map.geojson file, each location is stored in a "name" variable (as part of the "properties").  
+--data: the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).  
+--locationColumn: in the CSV file, find the column that holds the location information. In the National_swine_stocks.csv file, this is the "location" column.  
+--output: give a file name in which to store the output environmental layer (.geojson).  
 A GeoJSON file named 'Swine_stocks_on_map.geojson' will be generated to display the environmental layer.
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
