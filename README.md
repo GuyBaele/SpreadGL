@@ -56,10 +56,12 @@ In the 'inputdata' folder, you can find all the required input files for our the
 
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:
-1. We first need to process the MCC tree file using the 'spread' command, which takes the following 4 arguments:  
+1. We first need to process the MCC tree file using the "spread" command, which takes the following 4 arguments:  
 --tree: Specify the name of your input tree file with filename extension.  
---time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year. In this case, it is 2021-06-01.  
---location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
+--time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.  
+  In this case, it is "2021-06-01".  
+--location: Type in the annotation that stores the location information (names or coordinates).  
+  In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.geojson'. It represents the spatial layer.
 ```
@@ -73,12 +75,11 @@ https://user-images.githubusercontent.com/74751786/230090751-3a966889-3277-482e-
 
 
 ### Rabies virus (RABV) in the United States
-1. Process the MCC tree file using the following command.
+1. Process the MCC tree file using the command below. This step works in the similar way as the A.27 example.  
+Please take notice of the "--location" argument: As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 ```
 spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
-This step works in the similar way as the A.27 example. Please take notice of the "--location" argument:  
-As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 
 2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.  
 
@@ -87,37 +88,38 @@ https://user-images.githubusercontent.com/74751786/230362590-db7320f9-893c-4997-
 
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
-1. Process the MCC tree file using the following command.
+1. Process the MCC tree file using the following command. This step works in the same way as the A.27 example.
 ```
 spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
-This step works in the same way as the A.27 example.
 
 2. Process tabular environmental data.  
-You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector). Use the following command:
+You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
+Use the command below to execute the 'regions.py' script with 5 required arguments:  
+--map: Specify the input boundary map in GeoJSON format (.geojson).  
+--locationVariable: In the GeoJSON input file, find the property that represents the location variable.  
+  In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
+--data: Specify the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).  
+--locationColumn: In the CSV file, find the column that holds the location information.  
+  In the 'National_swine_stocks.csv' file, this is the "location" column.  
+--output: Give a file name in which to store the output environmental layer (.geojson).  
+A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental layer.
 ```
 regions --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
 ```
-This command executes the polygons.py script with 5 required arguments:  
---map: specify the input boundary map in GeoJSON format (.geojson).
---locationVariable: in the GeoJSON input file, find the property that represents the location variable. In the China_map.geojson file, each location is stored in a "name" variable (as part of the "properties").  
---data: the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).  
---locationColumn: in the CSV file, find the column that holds the location information. In the National_swine_stocks.csv file, this is the "location" column.  
---output: give a file name in which to store the output environmental layer (.geojson).  
-A GeoJSON file named 'Swine_stocks_on_map.geojson' will be generated to display the environmental layer.
 
-3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the add map style button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
+3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 
 https://user-images.githubusercontent.com/74751786/230144780-27d13ede-51a8-446a-8f1d-116d820b3996.mov
 
 
 ### Yellow fever virus (YFV) in Brazil
-1. Process the MCC tree file using the following command.
+1. Process the MCC tree file using the command below. This step works in the same way as the RABV example.  
+As the tree annotations include the information about regions of highest posterior density (HPD), the relevant data will be saved in the output GeoJSON file automatically.
 ```
 spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
-This step works in the same way as the RABV example. As the tree annotations include the information about regions of highest posterior density (HPD), the relevant data will be saved in the output GeoJSON file automatically.
 
 2. Process raster environmental data.  
 You can download the raster environmental data & a GeoJSON boundary map via the following links respectively:  
@@ -125,16 +127,16 @@ https://www.worldclim.org/data/monthlywth.html
 https://www.geoboundaries.org/index.html#getdata  
 In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
 Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
-```
-raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
-```
-This command executes the raster.py script with 5 required arguments:  
+Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.geojson).  
 --mask: Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).  
 --foreignkey: Find a foreign key variable in the map that refers to the mask.  
 --output: Give a name to the output environmental layer (.csv).  
-A CSV file called 'brazil_region_maxtemp.csv' will be created to show the environmental layer.
+A CSV file called 'brazil_region_maxtemp.csv' will then be created to show the environmental layer.
+```
+raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
+```
 
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
@@ -143,24 +145,25 @@ https://user-images.githubusercontent.com/74751786/230352152-e4f046f5-e295-4505-
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-1. Process the single tree file using the following command.
+1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
+Please take notice of the "--format" argument: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should use "csv" in this argument. For this example, we apparently need tabular data for further data wrangling.
 ```
 spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
 ```
-This step works in the same way as the RABV example. Please take notice of the following argument:  
---format: It is optional. If you want to check the output in a table, use "csv" in this argument. For this example, we need tabular data for further data wrangling.
 
-2. Reproject coordinates. Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84). Use the following command:
+2. Reproject coordinates.  
+Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84).  
+Use the following command to execute the 'reprojection.py' script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
 ```
 reprojection --input B.1.1.7_England.single.tree.output.csv --lat starting_coordinates_1,ending_coordinates_1 --lng starting_coordinates_2,ending_coordinates_2 --src 27700 --trg 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
 ```
-This command executes the reprojection.py script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
 
-3. Remove geographic outliers. If you visualise the reprojected output file created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. UTLA (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is NULL, that point will fall outside of England. Therefore, the corresponding row (branch) has to be removed. Use the following command:
+3. Remove geographic outliers.  
+If you visualise the reprojected output file created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. "UTLA" (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is "NULL", that point will fall outside of England. Therefore, the corresponding row (branch) has to be removed.  
+Use the following command to execute the 'trimming.py' script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between, if needed), and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv'.
 ```
 trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending_coordinates_1_original --refer TreeTime_270221.csv --foreign endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
 ```
-This command executes the trimming.py script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between if needed), and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv'.
 
 4. Visualise the spatial layers in Spread.gl.  
 Follow the previous steps to get different visuals of the spatial layers.  
