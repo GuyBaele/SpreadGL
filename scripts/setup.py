@@ -13,6 +13,7 @@ setup(
     entry_points={
             'console_scripts': [
                 'spread = spatial_layer_generator.spread:main',
+                'rates = bayes_factor_test.rates:main',
                 'regions = environmental_layer_generator.regions:main',
                 'raster = environmental_layer_generator.raster:main',
                 'reprojection = projection_transformation.reprojection:main',
