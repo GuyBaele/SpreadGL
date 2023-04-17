@@ -63,9 +63,10 @@ We here visualise one of the discrete phylogeographic analyses from Kaleta et al
 --location: Type in the annotation that stores the location information (names or coordinates).  
   In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
-When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.geojson'. It represents the spatial layer.
+--format: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should type in "csv".  
+When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.csv'. It represents the spatial layer.
 ```
-spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv --format csv
 ```
 
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
@@ -73,6 +74,18 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 
 https://user-images.githubusercontent.com/74751786/230090751-3a966889-3277-482e-a370-013a76cc535f.mov
 
+
+3. Perform a Bayes factor test.  
+If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you can calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. The aim of this test is to identify rates that are frequently used to interpret the diffusion process.  
+Use the command below to execute the 'rates.py' script with 4 required arguments:  
+--log: Specify the input BEAST log file (.log).  
+--location: Type in the annotation that stores the location names in the MCC tree, such as "region" in this case.  
+--list: Use the same location list from your discrete analysis as an input (.csv).  
+--layer: Use the file of discrete spatial layer as an input (.csv).  
+The test result will be saved in the file of 'A.27_worldwide.BEAST.log.Bayes.factor.test.csv'.
+```
+rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
+```
 
 ### Rabies virus (RABV) in the United States
 1. Process the MCC tree file using the command below. This step works in the similar way as the A.27 example.  
@@ -146,7 +159,7 @@ https://user-images.githubusercontent.com/74751786/230352152-e4f046f5-e295-4505-
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
-Please take notice of the "--format" argument: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should use "csv" in this argument. For this example, we apparently need tabular data for further data wrangling.
+As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
 ```
 spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
 ```
