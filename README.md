@@ -90,7 +90,7 @@ rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_loc
 4. Set a filter with Bayes factors in visualisation.  
 You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported.  
 Now, only the phylogenetic branches with a Bayes factor >= 3 will be displayed. Besides that, the clusters that represent cumulative numbers of local transmissions will be hidden as well. You can see the difference from the comparison of before (lower left pic) and after (lower right pic) effect.  
-<img width="486" alt="image" src="https://user-images.githubusercontent.com/74751786/232536466-a9c1649b-dea9-4130-a034-062b4995ac44.png"> <img width="486" alt="image" src="https://user-images.githubusercontent.com/74751786/232535902-8157098d-46b0-4b6f-a400-a8af85f61afe.png">
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/74751786/232536466-a9c1649b-dea9-4130-a034-062b4995ac44.png"> <img width="400" alt="image" src="https://user-images.githubusercontent.com/74751786/232535902-8157098d-46b0-4b6f-a400-a8af85f61afe.png">
 
 
 ### Rabies virus (RABV) in the United States
