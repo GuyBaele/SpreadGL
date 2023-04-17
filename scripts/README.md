@@ -9,7 +9,7 @@ In this directory, you can find all the scripts that will be used to process max
 
 ## spatial_layer_generator
 
-**space.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
+**spatial.py** parses the arguments from the client end and automatically passes the values of different parameters on to the corresponding script, depending on the (automatically) detected type of phylogeographic analysis (i.e., discrete or continuous).
 
 **continuous_space_processor.py** accepts values from spatial.py, processes the tree by calling the code in continuous_tree_handler.py and returns the result in the format of either csv or geojson. By default, the format of output file is set as GeoJSON, which is a format for encoding a variety of geographic data structures. If the users would like to inspect the result in the table, an output file of the CSV format will be provided by using an additional argument for output.
 
@@ -23,9 +23,14 @@ In this directory, you can find all the scripts that will be used to process max
 
 **time_conversion.py** converts time from decimal years to datetime.
 
+## bayes_factor_test
+**rates.py** performs Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference.
+
 ## environmental_layer_generator
 
-**environment.py** creates environmental layers by adding data to GeoJSON maps.
+**regions.py** creates the environmental layer using tabular data.
+
+**raster.py** creates the environmental layer using raster data.
 
 ## projection_transformation
 
@@ -39,7 +44,7 @@ In this directory, you can find all the scripts that will be used to process max
 # Tutorials
 
 ```
-space --help
+spread --help
 ```
 ```
 Welcome to the spatial layer generator! You can create a spatial layer for a phylogenetic tree to display in Spread.gl.
@@ -51,39 +56,72 @@ optional arguments:
   --time TIME, -ti TIME
                         Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.
   --location LOCATION, -lo LOCATION
-                        Type in the annotation that stores the location information (names or coordinates). If there are two annotations to store
-                        coordinates, enter them in the order of latitude and longitude with a comma separator.
+                        Type in the annotation that stores the location information (names or coordinates). If there are two annotations to store coordinates,
+                        enter them in the order of latitude and longitude with a comma separator.
   --list LIST, -li LIST
-                        Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be
-                        in the csv format with a comma (",") separator, and comprised of three columns with a specific header of
-                        "location,latitude,longitude".
+                        Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the
+                        csv format with a comma (",") separator, and comprised of three columns with a specific header of "location,latitude,longitude".
   --format {csv}, -f {csv}
                         It is optional. If you want to check the output in a table, use "csv" in this argument.
 ```
 
 ```
-environment --help
+rates --help
 ```
 ```
-Welcome to the environmental layer generator! You can create the environmental layers with environmental data to display in Spread.gl.
+You can use this tool to perform Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --region REGION, -r REGION
-                        Specify the GeoJSON file with filename extension as the region part of the environmental layer.
-  --key KEY, -k KEY     Enter the foreign key field of the GeoJSON file. In this case, it can be "name" in the properties.
-  --data DATA, -d DATA  Specify the comma-delimited CSV file with filename extension as the data part of the environmental layer.
-  --foreign FOREIGN, -f FOREIGN
-                        Enter the foreign/referenced field of the CSV file. In this case, it can be the "location" column.
+  --log LOG, -lg LOG    Specify the input BEAST log file (.log).
+  --location LOCATION, -lo LOCATION
+                        Type in the annotation that stores the location names in the MCC tree, e.g. "region".
+  --list LIST, -li LIST
+                        Use the same location list from your discrete analysis as an input (.csv).
+  --layer LAYER, -la LAYER
+                        Use the file of discrete spatial layer as an input (.csv).
+```
+
+```
+regions --help
+```
+```
+You can use this tool to create environmental layers using tabular data.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --map MAP, -m MAP     Specify the input boundary map in GeoJSON format (.geojson).
+  --locationVariable LOCATIONVARIABLE, -lv LOCATIONVARIABLE
+                        In the GeoJSON input file, find the property that represents the location variable.
+  --data DATA, -d DATA  Specify the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).
+  --locationColumn LOCATIONCOLUMN, -lc LOCATIONCOLUMN
+                        In the CSV file, find the column that holds the location information.
   --output OUTPUT, -o OUTPUT
-                        Create a name with filename extension (.geojson) for the output file.
+                        Give a file name in which to store the output environmental layer (.geojson).
+```
+
+```
+raster --help
+```
+```
+You can use this tool to create environmental layers using raster data.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --data DATA, -d DATA  Enter the folder that contains raster data files (.tif).
+  --map MAP             Specify the input boundary map (.geojson).
+  --mask MASK           Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).
+  --foreignkey FOREIGNKEY, -f FOREIGNKEY
+                        Find a foreign key variable in the map that refers to the mask.
+  --output OUTPUT, -o OUTPUT
+                        Give a name to the output environmental layer (.csv).
 ```
 
 ```
 reprojection --help
 ```
 ```
-Welcome to this tool for projection transformation! You can convert geographic data between different CRS.
+You can use this tool to convert geographic data between different CRS.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -101,21 +139,21 @@ optional arguments:
 trimming --help
 ```
 ```
-Welcome to this tool for outlier detection! You can remove outliers of the current dataset by referring to another one.
+You can use this tool to remove outliers of the current dataset by referring to another one.
 
 optional arguments:
   -h, --help            show this help message and exit
   --input INPUT, -i INPUT
                         Specify the comma-delimited input file with filename extension (.csv).
-  --key KEY, -k KEY     Enter the foreign key field name of the input dataset. In the case of geographic outliers, it can be the latitude
-                        field of ending points.
+  --key KEY, -k KEY     Enter the foreign key field name of the input dataset. In the case of geographic outliers, it can be the latitude field of ending
+                        points.
   --refer REFER, -r REFER
                         Specify the comma-delimited reference dataset with filename extension (.csv).
   --foreign FOREIGN, -f FOREIGN
-                        Enter the foreign field name of the referenced dataset. In the case of geographic outliers, it can be the latitude
-                        field of ending points.
-  --null NULL, -n NULL  Enter the queried field(s) of the referenced dataset, where NULL values will be recorded. If there are multiple fields
-                        to be used in the NULL queries, use a comma separator in between.
+                        Enter the foreign field name of the referenced dataset. In the case of geographic outliers, it can be the latitude field of ending
+                        points.
+  --null NULL, -n NULL  Enter the queried field(s) of the referenced dataset, where NULL values will be recorded. If there are multiple fields to be used in
+                        the NULL queries, use a comma separator in between.
   --output OUTPUT, -o OUTPUT
                         Create a name with filename extension (.csv) for the output file.
 ```

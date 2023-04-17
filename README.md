@@ -45,7 +45,7 @@ Once you have started spread.gl, you will see a world map in your browser window
 2. (Discrete phylogeography) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
 (Continuous phylogeography) Create a layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.  
 (Continuous phylogeography with available HPD data) Create a contour layer to visually represent uncertainty. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Then, you will see a lot of tangled polygons. Hide the stroke colour, change the fill colour as you want and lower the opacity to clearly see all the inner polygons. You can make the colour change automatically based on 'ending_time' and set the colour scale to quantize. When playing the animation, contours will gradually appear in chronological order.
-3. Create an animation for the dispersal over time. You need to add a filter to your map by selecting 'Filters' from the navigation bar, then clicking 'Add Filter' and choosing the result dataset. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
+3. Create an animation for the dispersal over time. You need to add a filter to your map by expanding the panel of 'Filters' in the navigation bar and then doing 'Add Filter' on the spread layer. You should then select a field on which to filter data, in this case, a timestamp called "ending_time". Once this filter is applied to the map, you can see a time bar at the bottom of the screen. Set a moving time window and then click the play button, you will be able to see the animation.
 
 ## Visualising an environmental data layer in spread.gl
 1. Create an environmental layer after processing tabular data. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Polygon' in Basic. Fill the colours based on your desired field. You can also set the colour scale as quantize and lower the opacity to increase the contrast between this layer and the base map layer. It is also possible to hide the stroke, change its colour and width.
@@ -63,15 +63,34 @@ We here visualise one of the discrete phylogeographic analyses from Kaleta et al
 --location: Type in the annotation that stores the location information (names or coordinates).  
   In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
-When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.geojson'. It represents the spatial layer.
+--format: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should type in "csv".  
+When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.csv'. It represents the spatial layer.
 ```
-spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv --format csv
 ```
 
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
 
 
 https://user-images.githubusercontent.com/74751786/230090751-3a966889-3277-482e-a370-013a76cc535f.mov
+
+
+3. Perform a Bayes factor test.  
+If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you can calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. The aim of this test is to identify rates that are frequently used to interpret the diffusion process.  
+Use the command below to execute the 'rates.py' script with 4 required arguments:  
+--log: Specify the input BEAST log file (.log).  
+--location: Type in the annotation that stores the location names in the MCC tree, such as "region" in this case.  
+--list: Use the same location list from your discrete analysis as an input (.csv).  
+--layer: Use the file of discrete spatial layer as an input (.csv).  
+The test result will be saved in the file of 'A.27_worldwide.BEAST.log.Bayes.factor.test.csv'.
+```
+rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
+```
+
+4. Set a filter with Bayes factors in visualisation.  
+You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported.  
+Now, only the phylogenetic branches with a Bayes factor >= 3 will be displayed. Besides that, the clusters that represent cumulative numbers of local transmissions will be hidden as well. You can see the difference from the comparison of before (lower left pic) and after (lower right pic) effect.  
+<img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/232536466-a9c1649b-dea9-4130-a034-062b4995ac44.png"> <img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/232535902-8157098d-46b0-4b6f-a400-a8af85f61afe.png">
 
 
 ### Rabies virus (RABV) in the United States
@@ -146,7 +165,7 @@ https://user-images.githubusercontent.com/74751786/230352152-e4f046f5-e295-4505-
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
-Please take notice of the "--format" argument: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should use "csv" in this argument. For this example, we apparently need tabular data for further data wrangling.
+As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
 ```
 spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
 ```
