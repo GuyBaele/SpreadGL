@@ -77,7 +77,7 @@ optional arguments:
   --location LOCATION, -lo LOCATION
                         Type in the annotation that stores the location names in the MCC tree, e.g. "region".
   --list LIST, -li LIST
-                        Use the location list from your discrete analysis as an input (.csv).
+                        Use the same location list from your discrete analysis as an input (.csv).
   --layer LAYER, -la LAYER
                         Use the file of discrete spatial layer as an input (.csv).
 ```
