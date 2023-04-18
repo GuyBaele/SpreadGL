@@ -1,36 +1,36 @@
 # Spread.gl - visualising pathogen dispersal in a high-performance browser application
-Main development repository and webpage for spread.gl, hosting installation files, input data files and tutorials for several visualisation examples.
+Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before start, make sure you have already installed Git, npm, and Python3 on your device.  
-Please refer to the following links for installation:  
+Before starting, make sure you have already installed git, npm, and python3 on your device.  
+We refer to the following links for installation instructions of these tools:  
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
 https://www.python.org/downloads
 
-1. Clone Github repository in your working directory and then use npm to install the web application:
+1. Clone this Github repository in your working directory and use npm to install the web application:
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install
 ```
 2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token.  
-You will need to associate your token with Spread.gl:
+You will need to associate your token with spread.gl as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
 ```
-3. Start the project, which will open a browser window, as follows:
+3. Start the spread.gl visualisation, which will open a browser window, as follows:
 ```
 npm start
 ```
-4. Note: In case of any problems running 'npm start', you may also have to install the 'assert' and 'url' packages:
+4. Note: In case of any problems running 'npm start', you may first have to also install the 'assert' and 'url' packages:
 ```
 npm install assert
 npm install url
 ```
-5. Open a new terminal at the same folder. Install SpreadTools to create legit input files for visualisation.  
-More information about different scripts can be found in the README of the scripts folder.
+5. Open a new terminal in the same directory. Install the provided spread.gl tools to create valid input files for your visualisations.  
+More information about the different scripts can be found in the README of the scripts directory.
 ```
 cd scripts
 python -m venv my_env
