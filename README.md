@@ -29,8 +29,7 @@ npm start
 npm install assert
 npm install url
 ```
-5. Open a new terminal in the same directory. Install the provided spread.gl tools to create valid input files for your visualisations.  
-More information about the different scripts can be found in the README of the scripts directory.
+5. Open a new terminal in the same directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
 cd scripts
 python -m venv my_env
