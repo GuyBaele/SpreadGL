@@ -40,6 +40,7 @@ python setup.py install
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
 Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop. Then, you need to follow these steps to create different types of visuals:  
+
 1. Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' in Basic. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.
 2. (Discrete phylogeography) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
 (Continuous phylogeography) Create a layer that enables the differentiation of nodes and tips. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. In order to effectively distinguish between the nodes and tips, it is recommended to utilise a qualitative colour bar and set the colours based on the 'type' field. As a result, the internal nodes and external tips will be categorised into distinct colours, allowing for clear and unambiguous observation.  
@@ -54,7 +55,8 @@ Once you have started spread.gl, you will see a world map in your browser window
 In the 'inputdata' folder, you can find all the required input files for our the different visualisation examples, which are explained in more detail below. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
-We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:
+We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
+
 1. We first need to process the MCC tree file using the "spread" command, which takes the following 4 arguments:  
 --tree: Specify the name of your input tree file with filename extension.  
 --time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.  
@@ -68,10 +70,10 @@ When this processing step is done, you should be able to see a file called 'A.27
 spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv --format csv
 ```
 
-2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
+2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
-https://user-images.githubusercontent.com/74751786/234024040-5192f2ee-74aa-443e-9ddc-c87fbeb8fa9f.mov
+https://user-images.githubusercontent.com/74751786/234103943-a2dab441-454d-4167-ac1d-a5b424ba7d97.mov
 
 
 3. Perform a Bayes factor test.  
@@ -87,11 +89,10 @@ rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_loc
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
-You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported.  
-Now, only the phylogenetic branches with a Bayes factor >= 3 will be displayed. Besides that, the clusters that represent cumulative numbers of local transmissions will be hidden as well. You can see the difference from the comparison of before (lower left pic) and after (lower right pic) effect.  
-<img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/234025599-74113a8b-dad8-436a-b530-2db2bd86d601.png"> <img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/234026310-a8d48cd1-00f4-45fd-be77-884feb951c9f.png">
+You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
 
 
+<img width=100% alt="image" src="https://user-images.githubusercontent.com/74751786/234096466-3c452c36-2d42-4a9d-b2d6-ccc83a44941d.png">
 
 
 ### Rabies virus (RABV) in the United States
@@ -101,7 +102,7 @@ Please take notice of the "--location" argument: As there are two annotations (l
 spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
 
-2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.  
+2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 
 https://user-images.githubusercontent.com/74751786/230362590-db7320f9-893c-4997-b7bf-22744d7c4cb8.mov
@@ -131,7 +132,7 @@ regions --map China_map.geojson --locationVariable name --data National_swine_st
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 
-https://user-images.githubusercontent.com/74751786/234029366-41a172bf-c3dc-45ec-b3a3-4a88daa85d9b.mov
+https://user-images.githubusercontent.com/74751786/234107195-a03f8b47-dce0-4b06-9363-a4fc6c53a9a7.mov
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -161,7 +162,7 @@ raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --m
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
 
-https://user-images.githubusercontent.com/74751786/234006706-8f13ff6f-2224-4e82-b572-41be5a5a45d6.mov
+https://user-images.githubusercontent.com/74751786/234108234-3b7b2887-0336-4713-93e7-6954776135fa.mov
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
@@ -186,7 +187,7 @@ trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending
 ```
 
 4. Visualise the spatial layers in Spread.gl.  
-Follow the previous steps to get different visuals of the spatial layers.  
+Follow the previous steps to get different visuals of the spatial layers.
 
 
 https://user-images.githubusercontent.com/74751786/230358490-38cdf607-e783-4fb4-8c98-8651eb69aaa5.mov
