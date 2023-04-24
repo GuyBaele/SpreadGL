@@ -71,7 +71,7 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').  
 
 
-https://user-images.githubusercontent.com/74751786/230090751-3a966889-3277-482e-a370-013a76cc535f.mov
+https://user-images.githubusercontent.com/74751786/234024040-5192f2ee-74aa-443e-9ddc-c87fbeb8fa9f.mov
 
 
 3. Perform a Bayes factor test.  
@@ -89,7 +89,9 @@ rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_loc
 4. Set a filter with Bayes factors in visualisation.  
 You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported.  
 Now, only the phylogenetic branches with a Bayes factor >= 3 will be displayed. Besides that, the clusters that represent cumulative numbers of local transmissions will be hidden as well. You can see the difference from the comparison of before (lower left pic) and after (lower right pic) effect.  
-<img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/232536466-a9c1649b-dea9-4130-a034-062b4995ac44.png"> <img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/232535902-8157098d-46b0-4b6f-a400-a8af85f61afe.png">
+<img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/234025599-74113a8b-dad8-436a-b530-2db2bd86d601.png"> <img width=48% alt="image" src="https://user-images.githubusercontent.com/74751786/234026310-a8d48cd1-00f4-45fd-be77-884feb951c9f.png">
+
+
 
 
 ### Rabies virus (RABV) in the United States
@@ -129,7 +131,7 @@ regions --map China_map.geojson --locationVariable name --data National_swine_st
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 
-https://user-images.githubusercontent.com/74751786/230144780-27d13ede-51a8-446a-8f1d-116d820b3996.mov
+https://user-images.githubusercontent.com/74751786/234029366-41a172bf-c3dc-45ec-b3a3-4a88daa85d9b.mov
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -159,7 +161,7 @@ raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --m
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
 
-https://user-images.githubusercontent.com/74751786/230352152-e4f046f5-e295-4505-a621-f818e0057def.mov
+https://user-images.githubusercontent.com/74751786/234006706-8f13ff6f-2224-4e82-b572-41be5a5a45d6.mov
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
