@@ -8,7 +8,7 @@ import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 
 const reducers = combineReducers({keplerGl: keplerGlReducer});
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
-const mapboxAccessToken = "pk.eyJ1IjoiZGFqYXAiLCJhIjoiY2xhaWRhbHFzMDFkOTN1cGp1N2xxOXV2ZyJ9.paHEbrE0krDorE3WWqiUAg";
+const mapboxAccessToken = "INSERT YOUR OWN TOKEN!!!";
 
 function App() {
       return (
