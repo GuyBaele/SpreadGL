@@ -4,17 +4,24 @@ import { taskMiddleware } from "react-palm/tasks";
 import { Provider } from "react-redux";
 import KeplerGl from "kepler.gl";
 import keplerGlReducer from "kepler.gl/reducers";
+import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 
 const reducers = combineReducers({keplerGl: keplerGlReducer});
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
-const mapboxAccessToken = "";
+const mapboxAccessToken = "INSERT YOUR OWN TOKEN!!!";
 
 function App() {
       return (
           <div className="App">
-                <Provider store={store}>
-                    <Map/>
-                </Provider>
+                <div style={{ display: 'flex' }}>
+                    <div style={{flex: '1 1 auto'}}>
+                        <AutoSizer>{() => (
+                            <Provider store={store}>
+                                <Map/>
+                            </Provider>)}
+                        </AutoSizer>
+                    </div>
+                </div>
           </div>
       );
 }

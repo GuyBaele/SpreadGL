@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const filePath = path.resolve(__dirname, './src/app.js');
+const filePath = path.resolve(__dirname, './src/components/app.js');
 const [, , newToken] = process.argv;
 
 if (!newToken) {
