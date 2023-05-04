@@ -78,14 +78,17 @@ https://user-images.githubusercontent.com/74751786/234103943-a2dab441-454d-4167-
 
 3. Perform a Bayes factor test.  
 If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you can calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. The aim of this test is to identify rates that are frequently used to interpret the diffusion process.  
-Use the command below to execute the 'rates.py' script with 4 required arguments:  
+Use the command below to execute the 'rates.py' script with the following arguments:  
 --log: Specify the input BEAST log file (.log).  
 --location: Type in the annotation that stores the location names in the MCC tree, such as "region" in this case.  
+--burnin: Specify burn-in to set how many initial samped values should be discarded from the analysis.  
+It should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analysis.  
+You can also specify it by using the number of rows, which should be a valid integer in this case.  
 --list: Use the same location list from your discrete analysis as an input (.csv).  
---layer: Use the file of discrete spatial layer as an input (.csv).  
-The test result will be saved in the file of 'A.27_worldwide.BEAST.log.Bayes.factor.test.csv'.
+--layer: It is optional. You can combine the spatial layer with the Bayes factors. Use the file of discrete spatial layer as an input (.csv).  
+The test result will be saved as 'Bayes.factor.test.result.csv'. If you specified the "layer" argument, a combined output called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
-rates --log A.27_worldwide.BEAST.log --location region --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
+rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
