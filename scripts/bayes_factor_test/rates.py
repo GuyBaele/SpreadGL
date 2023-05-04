@@ -1,3 +1,4 @@
+import sys
 import argparse
 import math
 import pandas as pd
@@ -11,14 +12,20 @@ def main():
                         help='Specify the input BEAST log file (.log).')
     parser.add_argument('--location', '-lo', required=True,
                         help='Type in the annotation that stores the location names in the MCC tree, e.g. "region".')
+    parser.add_argument('--burnin', '-b', required=True,
+                        help='Specify burn-in to set how many initial samped values should be discarded from the analysis. '
+                        'It should be smaller than 1 but not less than 0, e.g. "0.1" should be sufficient for most analysis. '
+                        'You can also specify it by using the number of rows, which should be a valid integer in this case.')   
     parser.add_argument('--list', '-li', required=True,
                         help='Use the same location list from your discrete analysis as an input (.csv).')
-    parser.add_argument('--layer', '-la', required=True,
-                        help='Use the file of discrete spatial layer as an input (.csv).')
+    parser.add_argument('--layer', '-la',
+                        help='Optional: You can add the Bayes factors to the spatial layer. '
+                         'Use the file of discrete spatial layer as an input (.csv).')
 
     args = parser.parse_args()
     log = str(args.log)
     location = str(args.location)
+    burnin = float(args.burnin)
     list = str(args.list)
     layer = str(args.layer)
 
@@ -81,6 +88,14 @@ def main():
             starting_location.append(name_elements[-2])
     log_df = log_df.loc[:, filtered_columns]
     indicators = log_df.values
+    if burnin < 0 or burnin >= len(indicators):
+        print("Please enter a valid burn-in value!")
+        sys.exit()
+    elif 0 <= burnin < 1:
+        burn_in_rows = int(len(indicators) * burnin)
+        indicators = indicators[burn_in_rows:]
+    elif 1 <= burnin < len(indicators):
+        indicators = indicators[int(burnin):]
 
     location_df = pd.read_csv(list)
     location_list = np.asarray(location_df['location'])
@@ -88,11 +103,15 @@ def main():
     bayes_factor, posterior_probability = parse_bayes_factors(indicators, location_list)
     bayes_df = pd.DataFrame({f'starting_{location}_name': starting_location, f'ending_{location}_name': ending_location,
                             'bayes_factor': bayes_factor, 'posterior_probability': posterior_probability})
+    bayes_df.to_csv(f'Bayes.factor.test.result.csv', sep=',', index=False)
+    print(f'The output of Bayes factor test has been saved as "Bayes.factor.test.result.csv" in the current directory.')   
 
+    if layer == "None":
+        sys.exit()        
     spread_df = pd.read_csv(layer)
     result_df = pd.merge(spread_df, bayes_df, how='left', on=[f'starting_{location}_name', f'ending_{location}_name'])
-    result_df.to_csv(f'{log}.Bayes.factor.test.csv', sep=',', index=False)
-    print(f'The result has been successfully stored as "{log}.Bayes.factor.test.csv" in the current directory!')    
+    result_df.to_csv(f'Bayes.factors.added.{layer}', sep=',', index=False)
+    print(f'You can now visualise the discrete spatial layer with Bayes factors using "Bayes.factors.added.{layer}".')    
         
 
 # Run with command line arguments precisely when called directly
