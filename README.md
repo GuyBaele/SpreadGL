@@ -73,7 +73,16 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
+
+<video src="https://github.com/FlorentLee/SpreadGL/assets/74751786/7903181d-8692-4c97-a94f-5c6eeee2285f" width=640></video>
+
+
+
+
+
 https://github.com/FlorentLee/SpreadGL/assets/74751786/7903181d-8692-4c97-a94f-5c6eeee2285f
+
+
 
 
 3. Perform a Bayes factor test.  
