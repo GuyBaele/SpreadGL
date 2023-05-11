@@ -76,10 +76,14 @@ optional arguments:
   --log LOG, -lg LOG    Specify the input BEAST log file (.log).
   --location LOCATION, -lo LOCATION
                         Type in the annotation that stores the location names in the MCC tree, e.g. "region".
+  --burnin BURNIN, -b BURNIN
+                        Specify burn-in to set how many initial samped values should be discarded from the analysis. It should be smaller than
+                        1 but not less than 0, e.g. "0.1" should be sufficient for most analysis. You can also specify it by using the number
+                        of rows, which should be a valid integer in this case.
   --list LIST, -li LIST
                         Use the same location list from your discrete analysis as an input (.csv).
   --layer LAYER, -la LAYER
-                        Use the file of discrete spatial layer as an input (.csv).
+                        Optional: You can add the Bayes factors to the spatial layer. Use the file of discrete spatial layer as an input (.csv).
 ```
 
 ```
