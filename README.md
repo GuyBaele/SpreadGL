@@ -73,14 +73,8 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/7b24b5c1-2319-4ab0-bcb0-857d003b7443
 
-
-
-
-
-https://github.com/FlorentLee/SpreadGL/assets/74751786/7903181d-8692-4c97-a94f-5c6eeee2285f
-
+https://github.com/FlorentLee/SpreadGL/assets/74751786/a83109b5-c8f3-4ee2-bbc5-7eaf4ea4f4bf
 
 
 
@@ -103,7 +97,9 @@ rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_
 You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
 
 
+
 <img width=100% alt="image" src="https://user-images.githubusercontent.com/74751786/234096466-3c452c36-2d42-4a9d-b2d6-ccc83a44941d.png">
+
 
 
 ### Rabies virus (RABV) in the United States
@@ -116,7 +112,9 @@ spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,locatio
 2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 
-https://user-images.githubusercontent.com/74751786/230362590-db7320f9-893c-4997-b7bf-22744d7c4cb8.mov
+
+https://github.com/FlorentLee/SpreadGL/assets/74751786/40a20821-b6b2-47cc-97d6-7c61f9367016
+
 
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
@@ -143,7 +141,9 @@ regions --map China_map.geojson --locationVariable name --data National_swine_st
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style Url. Note that you need to paste in your mapbox access token if your style is not published.
 
 
-https://user-images.githubusercontent.com/74751786/234107195-a03f8b47-dce0-4b06-9363-a4fc6c53a9a7.mov
+
+https://github.com/FlorentLee/SpreadGL/assets/74751786/c0ae6cad-c1c1-4d0d-9a60-9c9b7fdaf3c0
+
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -173,7 +173,9 @@ raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --m
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
 
-https://user-images.githubusercontent.com/74751786/234108234-3b7b2887-0336-4713-93e7-6954776135fa.mov
+
+https://github.com/FlorentLee/SpreadGL/assets/74751786/7ba09e2a-797f-47b0-b5e8-5931b8dc4715
+
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
@@ -201,5 +203,7 @@ trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending
 Follow the previous steps to get different visuals of the spatial layers.
 
 
-https://user-images.githubusercontent.com/74751786/230358490-38cdf607-e783-4fb4-8c98-8651eb69aaa5.mov
+
+https://github.com/FlorentLee/SpreadGL/assets/74751786/4211a40a-21c6-4ead-80d0-1e50a785c9b7
+
 
