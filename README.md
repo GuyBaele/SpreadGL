@@ -72,9 +72,7 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
-
-
-https://github.com/FlorentLee/SpreadGL/assets/74751786/a83109b5-c8f3-4ee2-bbc5-7eaf4ea4f4bf
+https://github.com/GuyBaele/SpreadGL/assets/1092968/cff5e752-0507-4242-9e49-f9d87aeb7e9d
 
 
 
