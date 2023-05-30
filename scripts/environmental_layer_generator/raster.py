@@ -17,8 +17,8 @@ def main():
                         help='Specify the input boundary map (.geojson).')
     parser.add_argument('--mask', required=True,
                         help='Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).')
-    parser.add_argument('--foreignkey', '-f', required=True,
-                        help='Find a foreign key variable in the map that refers to the mask.')
+    parser.add_argument('--key', '-k', required=True,
+                        help='Specify the key that contains location values in the properties of the GeoJSON map.')
     parser.add_argument('--output', '-o', required=True,
                         help='Give a name to the output environmental layer (.csv).')
 
@@ -26,7 +26,7 @@ def main():
     data = str(args.data)
     map = str(args.map)
     mask= str(args.mask)
-    foreign_key= str(args.foreignkey)
+    key= str(args.key)
     output = str(args.output)
 
     print("Started processing, please wait...")
@@ -48,7 +48,7 @@ def main():
     gdf = gpd.read_file(os.path.join(current_path, map))
     with open(os.path.join(current_path, mask), 'r') as file:
         location_list = file.read().split(',')
-    gdf_filtered = gdf.loc[gdf[foreign_key].isin(location_list)]
+    gdf_filtered = gdf.loc[gdf[key].isin(location_list)]
     clipped = raster.rio.clip(gdf_filtered.geometry)
     masked = clipped.where(np.isfinite(clipped), np.nan)
     masked.rio.to_raster(os.path.join(current_path, 'masked.tif'))
