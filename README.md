@@ -145,7 +145,7 @@ spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 You can download the raster environmental data & a GeoJSON boundary map via the following links respectively:  
 https://www.worldclim.org/data/monthlywth.html  
 https://www.geoboundaries.org/index.html#getdata  
-In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
+In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months during the virus outbreak will be calculated automatically once you specify the folder that contains the environmental raster files.  
 Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
