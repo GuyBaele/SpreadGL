@@ -145,17 +145,17 @@ spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 You can download the raster environmental data & a GeoJSON boundary map via the following links respectively:  
 https://www.worldclim.org/data/monthlywth.html  
 https://www.geoboundaries.org/index.html#getdata  
-In this case, we would like to visualise the maximum temperature. As this is monthly data, the mean value of all the months from the year 2010 to 2018 will be calculated automatically once you specify the folder that contains the environmental raster files.  
+In this case, we would like to visualise the maximum temperature. Since this is monthly data, the average of maximum temperatures for all the months during the virus outbreak will be automatically calculated once you specify the folder that contains the environmental raster files and start the run.  
 Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.geojson).  
---mask: Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).  
---foreignkey: Find a foreign key variable in the map that refers to the mask.  
+--mask: Use a list of locations of interest as a mask (.txt, comma-delimited).  
+--key: Specify the key that contains location values in the properties of the GeoJSON map, "shapeName" in this case.  
 --output: Give a name to the output environmental layer (.csv).  
-A CSV file called 'brazil_region_maxtemp.csv' will then be created to show the environmental layer.
+A CSV file named 'brazil_region_maxtemp.csv' will then be created to be used as the environmental layer.
 ```
-raster --data wc2.1_2.5m_tmax_2010-2018 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --foreignkey shapeName --output brazil_region_maxtemp.csv
+raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --key shapeName --output brazil_region_maxtemp.csv
 ```
 
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.

@@ -115,8 +115,8 @@ optional arguments:
   --data DATA, -d DATA  Enter the folder that contains raster data files (.tif).
   --map MAP             Specify the input boundary map (.geojson).
   --mask MASK           Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).
-  --foreignkey FOREIGNKEY, -f FOREIGNKEY
-                        Find a foreign key variable in the map that refers to the mask.
+  --key KEY, -k KEY
+                        Specify the key that contains location values in the properties of the GeoJSON map.
   --output OUTPUT, -o OUTPUT
                         Give a name to the output environmental layer (.csv).
 ```
