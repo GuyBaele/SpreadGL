@@ -27,7 +27,9 @@ def main():
     print("Started processing, please wait...")
     gdf = geopandas.read_file(map)
     pdf = pandas.read_csv(data, delimiter=',')
-    joined_gdf = gdf.merge(pdf, left_on=location_variable, right_on=location_column)
+    joined_gdf = gdf.merge(pdf, how='left', sort=True, left_on=location_variable, right_on=location_column)
+    new_order = list(pdf.keys()) + list(gdf.keys())
+    joined_gdf = joined_gdf[new_order]
     joined_gdf.to_file(output, driver='GeoJSON')
     print('The result has been successfully stored as "' + output + '" in the current directory!')
 
