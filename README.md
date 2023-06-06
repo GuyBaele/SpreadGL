@@ -123,7 +123,7 @@ In order to add data to the map, use the command below to execute the 'regions.p
   In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
 --data: Specify the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).  
 --locationColumn: In the CSV file, find the column that holds the location information.  
-  In the 'National_swine_stocks.csv' file, this is the "location" column.  
+  In the 'Environmental_variables.csv' file, this is the "location" column.  
 --output: Give a file name in which to store the output environmental layer (.geojson).  
 A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental layer.
 ```
