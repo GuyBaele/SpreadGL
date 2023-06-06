@@ -115,8 +115,9 @@ spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list I
 ```
 
 2. Process tabular environmental data.  
-You need to add environmental data to the map of China. The dataset 'Environmental_variables.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
-Use the command below to execute the 'regions.py' script with 5 required arguments:  
+The environmental data 'Environmental_variables.csv' was obtained from the original study (He et al.).  
+The China map 'China_map.geojson' was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
+In order to add data to the map, use the command below to execute the 'regions.py' script with 5 required arguments:  
 --map: Specify the input boundary map in GeoJSON format (.geojson).  
 --locationVariable: In the GeoJSON input file, find the property that represents the location variable.  
   In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
