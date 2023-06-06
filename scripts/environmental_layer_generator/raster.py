@@ -13,20 +13,20 @@ def main():
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--data', '-d', required=True,
                         help='Enter the folder that contains raster data files (.tif).')
-    parser.add_argument('--map', required=True,
+    parser.add_argument('--map', '-m', required=True,
                         help='Specify the input boundary map (.geojson).')
-    parser.add_argument('--mask', required=True,
-                        help='Use a list of locations / location IDs of interest as a mask (.txt, comma-delimited).')
-    parser.add_argument('--key', '-k', required=True,
-                        help='Specify the key that contains location values in the properties of the GeoJSON map.')
+    parser.add_argument('--locationVariable', '-lv', required=True,
+                        help='In the GeoJSON input map, find a property that represents the location variable.')
+    parser.add_argument('--locationList', '-ll',required=True,
+                        help='Provide a location list of interest (.txt, comma-delimited).')
     parser.add_argument('--output', '-o', required=True,
-                        help='Give a name to the output environmental layer (.csv).')
+                        help='Give a name to the output environmental data layer (.csv).')
 
     args = parser.parse_args()
     data = str(args.data)
     map = str(args.map)
-    mask= str(args.mask)
-    key= str(args.key)
+    locationVariable= str(args.locationVariable)
+    locationList= str(args.locationList)
     output = str(args.output)
 
     print("Started processing, please wait...")
@@ -46,9 +46,9 @@ def main():
     raster = rioxarray.open_rasterio(filename=os.path.join(current_path, 'mean.tif'), masked=True)
 
     gdf = gpd.read_file(os.path.join(current_path, map))
-    with open(os.path.join(current_path, mask), 'r') as file:
-        location_list = file.read().split(',')
-    gdf_filtered = gdf.loc[gdf[key].isin(location_list)]
+    with open(os.path.join(current_path, locationList), 'r') as file:
+        locations = file.read().split(',')
+    gdf_filtered = gdf.loc[gdf[locationVariable].isin(locations)]
     clipped = raster.rio.clip(gdf_filtered.geometry)
     masked = clipped.where(np.isfinite(clipped), np.nan)
     masked.rio.to_raster(os.path.join(current_path, 'masked.tif'))

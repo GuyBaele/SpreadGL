@@ -97,6 +97,7 @@ You can use the output file of Step 3 to filter the visualisation in Step 2. In 
 
 
 ### Rabies virus (RABV) in the United States
+We can take the following steps to visualise one of the continuous phylogeographic analyses from 
 1. Process the MCC tree file using the command below. This step works in the similar way as the A.27 example.  
 Please take notice of the "--location" argument: As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 ```
@@ -114,19 +115,21 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/6f39d920-0667-4eac-bd2b-1f45
 spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
 
-2. Process tabular environmental data.  
-You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
+2. Use tabular environmental data to populate vector data.  
+In this example, we need to add environmental table data to the GeoJSON map.  
+The tabular dataset, 'Environmental_variables.csv', can be obtained from the original study conducted by He et al. (2021) [Phylogeography Reveals Association between Swine Trade and the Spread of Porcine Epidemic Diarrhea Virus in China and across the World](https://academic.oup.com/mbe/article/39/2/msab364/6482749).  
+The vector dataset, 'China_map.geojson', can be generated via this link: http://datav.aliyun.com/portal/school/atlas/area_selector.  
 Use the command below to execute the 'regions.py' script with 5 required arguments:  
+--data: Specify the environmental tabular data you want to visualise (.csv, comma-delimited).  
+--locationColumn: In the CSV file, find the column that stores the location information.  
+  In the 'Environmental_variables.csv' file, this is the "location" column.  
 --map: Specify the input boundary map in GeoJSON format (.geojson).  
---locationVariable: In the GeoJSON input file, find the property that represents the location variable.  
+--locationVariable: In the GeoJSON input map, find a property that represents the location variable.  
   In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
---data: Specify the environmental data you want to visualise in an environmental layer (.csv, comma-delimited).  
---locationColumn: In the CSV file, find the column that holds the location information.  
-  In the 'National_swine_stocks.csv' file, this is the "location" column.  
---output: Give a file name in which to store the output environmental layer (.geojson).  
-A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental layer.
+--output: Give a name to the output environmental data layer (.geojson).  
+A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental data layer.
 ```
-regions --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
+regions --data Environmental_variables.csv --locationColumn location --map China_map.geojson --locationVariable name --output Environmental_data_layer.geojson
 ```
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
@@ -141,21 +144,21 @@ As the tree annotations include the information about regions of highest posteri
 spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
 
-2. Process raster environmental data.  
-You can download the raster environmental data & a GeoJSON boundary map via the following links respectively:  
+2. Crop raster environmental data using a mask made from vector and text data.  
+In this case, we would like to visualise the maximum temperature. Since this is monthly raster data, the average of maximum temperatures for all the months during the virus outbreak will be automatically calculated once you specify the folder that contains the environmental raster files and start the run. As we only want to visualise a few Brazilian provinces (not the entire world), we can clip it with a mask, which can be created with a GeoJSON boundary map and a text file of location list.  
+Download the raster environmental dataset & a GeoJSON boundary map via the following links:  
 https://www.worldclim.org/data/monthlywth.html  
 https://www.geoboundaries.org/index.html#getdata  
-In this case, we would like to visualise the maximum temperature. Since this is monthly data, the average of maximum temperatures for all the months during the virus outbreak will be automatically calculated once you specify the folder that contains the environmental raster files and start the run.  
-Regarding the boundary map, you will need to provide a GeoJSON file. Since we only wish to visualise a few Brazilian provinces (not the entire world), we can apply a mask to clip it with a list of locations of interest.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
---map: Specify the input boundary map (.geojson).  
---mask: Use a list of locations of interest as a mask (.txt, comma-delimited).  
---key: Specify the key that contains location values in the properties of the GeoJSON map, "shapeName" in this case.  
---output: Give a name to the output environmental layer (.csv).  
-A CSV file named 'brazil_region_maxtemp.csv' will then be created to be used as the environmental layer.
+--map: Specify the input boundary map (.geojson).   
+--locationVariable: In the GeoJSON input map, find a property that represents the location variable.  
+  In the 'geoBoundaries-BRA-ADM1.geojson' file, each location/state is stored in a "shapeName" variable (as part of the "properties").  
+--locationList: Provide a location list of interest (.txt, comma-delimited).  
+--output: Give a name to the output environmental data layer (.csv).  
+A CSV file named 'brazil_region_maxtemp.csv' will then be created to be used as the environmental data layer.
 ```
-raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --mask Involved_brazilian_states.txt --key shapeName --output brazil_region_maxtemp.csv
+raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --locationVariable shapeName --locationList Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
 ```
 
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
