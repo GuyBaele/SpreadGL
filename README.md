@@ -134,7 +134,7 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/28662298-0f29-4f9f-911b-d16cb028f46e
+https://github.com/GuyBaele/SpreadGL/assets/1092968/42434bcc-ece2-4e7f-b7e8-31f33608bbce
 
 
 ### Yellow fever virus (YFV) in Brazil
