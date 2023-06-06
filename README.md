@@ -127,7 +127,7 @@ In order to add data to the map, use the command below to execute the 'regions.p
 --output: Give a file name in which to store the output environmental layer (.geojson).  
 A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental layer.
 ```
- --map China_map.geojson --locationVariable name --data Environmental_variables.csv --locationColumn location --output Environmental_data_layer.geojson
+regions --map China_map.geojson --locationVariable name --data Environmental_variables.csv --locationColumn location --output Environmental_data_layer.geojson
 ```
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
