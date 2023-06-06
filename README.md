@@ -115,7 +115,7 @@ spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list I
 ```
 
 2. Process tabular environmental data.  
-You need to add swine trade data to the map of China. The dataset 'National_swine_stocks.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
+You need to add environmental data to the map of China. The dataset 'Environmental_variables.csv' was obtained from the original study (He et al.). The China map was generated via this link (http://datav.aliyun.com/portal/school/atlas/area_selector).  
 Use the command below to execute the 'regions.py' script with 5 required arguments:  
 --map: Specify the input boundary map in GeoJSON format (.geojson).  
 --locationVariable: In the GeoJSON input file, find the property that represents the location variable.  
@@ -126,7 +126,7 @@ Use the command below to execute the 'regions.py' script with 5 required argumen
 --output: Give a file name in which to store the output environmental layer (.geojson).  
 A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental layer.
 ```
-regions --map China_map.geojson --locationVariable name --data National_swine_stocks.csv --locationColumn location --output Swine_stocks_on_map.geojson
+ --map China_map.geojson --locationVariable name --data Environmental_variables.csv --locationColumn location --output Environmental_data_layer.geojson
 ```
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
