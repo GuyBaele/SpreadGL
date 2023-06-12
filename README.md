@@ -12,7 +12,7 @@ https://www.python.org/downloads
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
-npm install
+npm install --loglevel=error --no-audit
 ```
 2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token.  
 You will need to associate your token with spread.gl as follows:
@@ -24,12 +24,12 @@ chmod +x addToken.js
 ```
 npm start
 ```
-4. Note: in case of any problems running 'npm start', you may first have to also install the 'assert' and 'url' packages, as follows:
+In case of any problems running 'npm start', you may first have to also install the 'assert' and 'url' packages, as follows:
 ```
 npm install assert
 npm install url
 ```
-5. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
+4. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
 cd scripts
 python -m venv my_env
