@@ -2,20 +2,19 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed git, npm, and python3 on your device.  
+Before starting, make sure you have already installed npm (version >= 9.7.1), node.js(version >= 19.6.1), git, and python3 on your device.  
 We refer to the following links for installation instructions regarding these tools:  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://www.python.org/downloads
 
-1. Clone this Github repository in your working directory and use npm to install the web application:
+1. Clone this Github repository in your working directory and use npm to install the web application. If you meet some authentication issues, please refer to this link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token.  
-You will need to associate your token with spread.gl as follows:
+2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a Mapbox access token and associate it with spread.gl as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
@@ -32,10 +31,10 @@ npm install url
 4. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
 cd scripts
-python -m venv my_env
+python3 -m venv my_env
 source my_env/bin/activate (Linux/Mac)
 .\my_env\Scripts\activate (Windows)
-python setup.py install
+python3 setup.py install
 ```
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
