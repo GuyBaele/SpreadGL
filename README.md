@@ -14,7 +14,7 @@ git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a Mapbox access token and associate it with spread.gl as follows:
+2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
@@ -23,10 +23,9 @@ chmod +x addToken.js
 ```
 npm start
 ```
-In case of any problems running 'npm start', you may first have to also install the 'assert' and 'url' packages, as follows:
+If the localhost refused to connect (error:0308010C:digital envelope routines::unsupported), you need to execute this command before "npm start".
 ```
-npm install assert
-npm install url
+export NODE_OPTIONS=--openssl-legacy-provider
 ```
 4. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
