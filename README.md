@@ -2,20 +2,18 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed git, npm, and python3 on your device.  
-We refer to the following links for installation instructions regarding these tools:  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+Before starting, make sure you have already installed npm (version >= 9.7.1), node.js(version >= 19.6.1), git, and python3 on your device. We refer to the following links for installation instructions regarding these tools:  
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm  
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://www.python.org/downloads
 
-1. Clone this Github repository in your working directory and use npm to install the web application:
+1. Clone this Github repository in your working directory and use npm to install the web application. If you meet some authentication issues, please refer to this link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com, sign up for an account and create a Mapbox Access Token.  
-You will need to associate your token with spread.gl as follows:
+2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token>
@@ -24,18 +22,17 @@ chmod +x addToken.js
 ```
 npm start
 ```
-In case of any problems running 'npm start', you may first have to also install the 'assert' and 'url' packages, as follows:
+If the localhost refused to connect (error:0308010C:digital envelope routines::unsupported), you need to execute this command before "npm start".
 ```
-npm install assert
-npm install url
+export NODE_OPTIONS=--openssl-legacy-provider
 ```
 4. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
 cd scripts
-python -m venv my_env
+python3 -m venv my_env
 source my_env/bin/activate (Linux/Mac)
 .\my_env\Scripts\activate (Windows)
-python setup.py install
+python3 setup.py install
 ```
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
@@ -52,7 +49,7 @@ Once you have started spread.gl, you will see a world map in your browser window
 2. Create an environmental layer after processing raster data. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) with correct fields. Fill the colours based on your desired field. You can also set the colour scale as quantize and lower the opacity to increase the contrast between this layer and the base map layer. The radius parameters can be adjusted to reach a better effect when zooming in/out.
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our the different visualisation examples, which are explained in more detail below. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
+In the 'inputdata' folder, you can find all the required input files for our different visualisation examples, which are explained in more detail below. Certain files need to be unzipped before processing. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
@@ -67,7 +64,7 @@ We here visualise one of the discrete phylogeographic analyses from Kaleta et al
 --format: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should type in "csv".  
 When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.csv'. It represents the spatial layer.
 ```
-spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27.location.list.csv --format csv
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27_worldwide_location_list.csv --format csv
 ```
 
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
