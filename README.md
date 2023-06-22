@@ -22,7 +22,7 @@ chmod +x addToken.js
 ```
 npm start
 ```
-If the localhost refused to connect (error:0308010C:digital envelope routines::unsupported), you need to execute this command before "npm start".
+If the localhost refused to connect (error:0308010C:digital envelope routines::unsupported), you may need to execute this command before "npm start".
 ```
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
@@ -88,7 +88,7 @@ rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
-You can use the output file of Step 3 to filter the visualisation in Step 2. In spread.gl, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
+To filter the visualisation in Step 2, delete the current dataset in spread.gl and load the output file of Step 3. In the Filters panel, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
 
 <img width=100% alt="image" src="https://user-images.githubusercontent.com/74751786/234096466-3c452c36-2d42-4a9d-b2d6-ccc83a44941d.png">
 
