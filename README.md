@@ -34,6 +34,10 @@ source my_env/bin/activate (Linux/Mac)
 .\my_env\Scripts\activate (Windows)
 python3 setup.py install
 ```
+```cd scripts```: switch to the folder of "scripts";
+```python3 -m venv my_env```: create a virtual environment called "my_env";
+```source my_env/bin/activate``` on Linux/Mac or ```.\my_env\Scripts\activate``` on Windows: activate the created virtual environment;
+```python3 setup.py install```: Install a CLI tool for preprocessing tree files to generate input files supported by Spread.gl.
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
 Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
