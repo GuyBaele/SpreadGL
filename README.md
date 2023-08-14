@@ -16,7 +16,8 @@ npm install --loglevel=error --no-audit
 2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
-./addToken.js <insert_your_token>
+./addToken.js <insert_your_token> (Linux/Mac)
+node addToken.js <insert_your_token> (Windows)
 ```
 3. Start the spread.gl visualisation, which will open a browser window, as follows:
 ```
