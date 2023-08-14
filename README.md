@@ -55,7 +55,7 @@ Once you have started spread.gl, you will see a world map in your browser window
 2. Create an environmental layer after processing raster data. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) with correct fields. Fill the colours based on your desired field. You can also set the colour scale as quantize and lower the opacity to increase the contrast between this layer and the base map layer. The radius parameters can be adjusted to reach a better effect when zooming in/out.
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our different visualisation examples, which are explained in more detail below. Certain files need to be unzipped before processing. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
+In the 'inputdata' folder, you can find most of the required input files (excluding environmental data in the YFV example) for our different visualisation examples, which are explained in more detail below. Certain files need to be unzipped before processing. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
@@ -147,11 +147,12 @@ As the tree annotations include the information about regions of highest posteri
 spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
 
-2. Crop raster environmental data using a mask made from vector and text data.  
-In this case, we would like to visualise the maximum temperature. Since this is monthly raster data, the average of maximum temperatures for all the months during the virus outbreak will be automatically calculated once you specify the folder that contains the environmental raster files and start the run. As we only want to visualise a few Brazilian provinces (not the entire world), we can clip it with a mask, which can be created with a GeoJSON boundary map and a text file of location list.  
-Download the raster environmental dataset & a GeoJSON boundary map via the following links:  
-https://www.worldclim.org/data/monthlywth.html  
-https://www.geoboundaries.org/index.html#getdata  
+2. Crop raster environmental data using a mask map.  
+As the environmental data of this example are too large to be hosted on Github, you need to download historical monthly weather data (maximum temperature, 2010-2019, 2.5 minutes) from:
+https://www.worldclim.org/data/monthlywth.html.  
+Only keep the raster files from April 2015 to April 2019 and rename the folder as 'wc2.1_2.5m_tmax_2015-2019'.  
+The GeoJSON boundary map provided in the 'inputdata' folder can be obtained via:
+https://www.geoboundaries.org/index.html#getdata.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.geojson).   
@@ -159,7 +160,7 @@ Use the command below to execute the 'raster.py' script with 5 required argument
   In the 'geoBoundaries-BRA-ADM1.geojson' file, each location/state is stored in a "shapeName" variable (as part of the "properties").  
 --locationList: Provide a location list of interest (.txt, comma-delimited).  
 --output: Give a name to the output environmental data layer (.csv).  
-A CSV file named 'brazil_region_maxtemp.csv' will then be created to be used as the environmental data layer.
+The average maximum temperatures for all months during the virus outbreak will be calculated automatically. To visualise specific Brazilian provinces instead of the entire world, the raster temperature data will be clipped using a mask made from a GeoJSON boundary map and a list of locations. Finally, a CSV file named 'brazil_region_maxtemp.csv' should be created to serve as the environmental data layer.
 ```
 raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --locationVariable shapeName --locationList Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
 ```
