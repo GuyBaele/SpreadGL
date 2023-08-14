@@ -2,10 +2,11 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed node.js(Latest Current Version), git, and python3 on your device. We refer to the following links for installation instructions regarding these tools:  
-https://nodejs.org/en/download/current  
+Before starting, make sure you have already installed Node.js 16.20, Python 3.9, and git 2.41 on your device.  
+We refer to the following links for installation instructions regarding these tools:  
+https://nodejs.org/en/download/releases  
+https://www.python.org/downloads  
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
-https://www.python.org/downloads
 
 1. Clone this Github repository in your working directory and use npm to install the web application. If you meet some authentication issues, please refer to this link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
