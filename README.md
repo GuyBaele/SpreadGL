@@ -149,10 +149,7 @@ spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 
 2. Crop raster environmental data using a mask map.  
 As the environmental data of this example are too large to be hosted on Github, you need to download historical monthly weather data (maximum temperature, 2010-2019, 2.5 minutes) from:
-https://www.worldclim.org/data/monthlywth.html.  
-Only keep the raster files from April 2015 to April 2019 and rename the folder as 'wc2.1_2.5m_tmax_2015-2019'.  
-In the 'inputdata' folder, the provided GeoJSON boundary map can also be accessed via:
-https://www.geoboundaries.org/index.html#getdata.  
+https://www.worldclim.org/data/monthlywth.html. Only keep the raster files from April 2015 to April 2019 and then save them in a folder called 'wc2.1_2.5m_tmax_2015-2019'. You can find a GeoJSON boundary map in the 'inputdata' folder. This kind of boundary map can also be accessed via: https://www.geoboundaries.org/index.html#getdata.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.geojson).   
