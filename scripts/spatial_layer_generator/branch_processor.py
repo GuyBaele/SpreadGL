@@ -9,7 +9,7 @@ def iterate_tree(branches):
         while stack[-1]['visited_times'] == 2:
             calculate_parent_edge_time(stack)
         stack.append(branch)
-        if stack[-1]['ending_time'] != 0.0:
+        if stack[-1]['end_time'] != 0.0:
             calculate_parent_edge_time(stack)
     if stack:
         while stack[-1]['visited_times'] == 2:
@@ -18,6 +18,6 @@ def iterate_tree(branches):
 
 def calculate_parent_edge_time(stack):
     temp = stack.pop()
-    stack[-1]['ending_time'] = temp['starting_time']
-    stack[-1]['starting_time'] = stack[-1]['ending_time'] - stack[-1]['branch_length']
+    stack[-1]['end_time'] = temp['start_time']
+    stack[-1]['start_time'] = stack[-1]['end_time'] - stack[-1]['length']
     stack[-1]['visited_times'] += 1
