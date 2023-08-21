@@ -2,10 +2,11 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed node.js(Latest Current Version), git, and python3 on your device. We refer to the following links for installation instructions regarding these tools:  
-https://nodejs.org/en/download/current  
+Before starting, make sure you have already installed Node.js 16.20, Python 3.9, and git 2.41 on your device.  
+We refer to the following links for installation instructions regarding these tools:  
+https://nodejs.org/en/download/releases  
+https://www.python.org/downloads  
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
-https://www.python.org/downloads
 
 1. Clone this Github repository in your working directory and use npm to install the web application. If you meet some authentication issues, please refer to this link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
@@ -16,7 +17,8 @@ npm install --loglevel=error --no-audit
 2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
-./addToken.js <insert_your_token>
+./addToken.js <insert_your_token> (Linux/Mac)
+node addToken.js <insert_your_token> (Windows)
 ```
 3. Start the spread.gl visualisation, which will open a browser window, as follows:
 ```
@@ -53,7 +55,7 @@ Once you have started spread.gl, you will see a world map in your browser window
 2. Create an environmental layer after processing raster data. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Point' in Basic. Specify the coordinate fields (latitude & longitude) with correct fields. Fill the colours based on your desired field. You can also set the colour scale as quantize and lower the opacity to increase the contrast between this layer and the base map layer. The radius parameters can be adjusted to reach a better effect when zooming in/out.
 
 ## Animation examples in spread.gl
-In the 'inputdata' folder, you can find all the required input files for our different visualisation examples, which are explained in more detail below. Certain files need to be unzipped before processing. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
+In the 'inputdata' folder, you can find most of the required input files (excluding environmental data in the YFV example) for our different visualisation examples, which are explained in more detail below. Certain files need to be unzipped before processing. The example output videos we provide below were obtained through screen recording on Mac using Screenshot.
 
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
@@ -99,13 +101,13 @@ To filter the visualisation in Step 2, delete the current dataset in spread.gl a
 
 ### Rabies virus (RABV) in the United States
 We can take the following steps to visualise one of the continuous phylogeographic analyses from Biek et al. (2007) [A high-resolution genetic signature of demographic and spatial expansion in epizootic rabies virus](https://www.pnas.org/doi/full/10.1073/pnas.0700741104). This is an example for which the MCC tree does not have the HPD information for the ancestral locations.  
-1. Process the MCC tree file using the command below. This step works in the similar way as the A.27 example.  
+1. Process the MCC tree file using the command below. This step works in a similar way as the A.27 example.  
 Please take notice of the "--location" argument: As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 ```
 spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
 
-2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
+2. Follow the previous steps to reach different visuals of the spatial layers. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/6f39d920-0667-4eac-bd2b-1f45c223d971
 
@@ -135,7 +137,7 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/42434bcc-ece2-4e7f-b7e8-31f33608bbce
+https://github.com/FlorentLee/SpreadGL/assets/74751786/4206862f-41a1-41de-b89f-17cb13912d95
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -145,11 +147,9 @@ As the tree annotations include the information about regions of highest posteri
 spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
 
-2. Crop raster environmental data using a mask made from vector and text data.  
-In this case, we would like to visualise the maximum temperature. Since this is monthly raster data, the average of maximum temperatures for all the months during the virus outbreak will be automatically calculated once you specify the folder that contains the environmental raster files and start the run. As we only want to visualise a few Brazilian provinces (not the entire world), we can clip it with a mask, which can be created with a GeoJSON boundary map and a text file of location list.  
-Download the raster environmental dataset & a GeoJSON boundary map via the following links:  
-https://www.worldclim.org/data/monthlywth.html  
-https://www.geoboundaries.org/index.html#getdata  
+2. Crop raster environmental data using a mask map.  
+As the environmental data of this example are too large to be hosted on Github, you need to download historical monthly weather data (maximum temperature, 2010-2019, 2.5 minutes) from:
+https://www.worldclim.org/data/monthlywth.html. Only keep the raster files from April 2015 to April 2019 and then save them in a folder called 'wc2.1_2.5m_tmax_2015-2019'. You can find a GeoJSON boundary map in the 'inputdata' folder. This kind of boundary map can also be accessed via: https://www.geoboundaries.org/index.html#getdata.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  
 --map: Specify the input boundary map (.geojson).   
@@ -157,7 +157,7 @@ Use the command below to execute the 'raster.py' script with 5 required argument
   In the 'geoBoundaries-BRA-ADM1.geojson' file, each location/state is stored in a "shapeName" variable (as part of the "properties").  
 --locationList: Provide a location list of interest (.txt, comma-delimited).  
 --output: Give a name to the output environmental data layer (.csv).  
-A CSV file named 'brazil_region_maxtemp.csv' will then be created to be used as the environmental data layer.
+The average maximum temperatures for all months during the virus outbreak will be calculated automatically. To visualise specific Brazilian provinces instead of the entire world, the raster temperature data will be clipped using a mask made from a GeoJSON boundary map and a list of locations. Finally, a CSV file named 'brazil_region_maxtemp.csv' should be created to serve as the environmental data layer.
 ```
 raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --locationVariable shapeName --locationList Involved_brazilian_states.txt --output brazil_region_maxtemp.csv
 ```
@@ -178,19 +178,18 @@ spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinat
 Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84).  
 Use the following command to execute the 'reprojection.py' script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
 ```
-reprojection --input B.1.1.7_England.single.tree.output.csv --lat starting_coordinates_1,ending_coordinates_1 --lng starting_coordinates_2,ending_coordinates_2 --src 27700 --trg 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
+reprojection --input B.1.1.7_England.single.tree.output.csv --lat start_lat,end_lat --lon start_lon,end_lon --source 27700 --target 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
 ```
 
 3. Remove geographic outliers.  
 If you visualise the reprojected output file created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. "UTLA" (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is "NULL", that point will fall outside of England. Therefore, the corresponding row (branch) has to be removed.  
 Use the following command to execute the 'trimming.py' script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between, if needed), and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv'.
 ```
-trimming --input B.1.1.7_England.single.tree.output.reprojected.csv --key ending_coordinates_1_original --refer TreeTime_270221.csv --foreign endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
+trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --foreignkey end_lat_original --referenced TreeTime_270221.csv --primarykey endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
 ```
 
 4. Visualise the spatial layers in Spread.gl.  
-Follow the previous steps to get different visuals of the spatial layers.
+Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/7a53803f-a321-4a35-9ff1-f3fa60c5e59a
-
 
