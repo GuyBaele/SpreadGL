@@ -101,13 +101,13 @@ To filter the visualisation in Step 2, delete the current dataset in spread.gl a
 
 ### Rabies virus (RABV) in the United States
 We can take the following steps to visualise one of the continuous phylogeographic analyses from Biek et al. (2007) [A high-resolution genetic signature of demographic and spatial expansion in epizootic rabies virus](https://www.pnas.org/doi/full/10.1073/pnas.0700741104). This is an example for which the MCC tree does not have the HPD information for the ancestral locations.  
-1. Process the MCC tree file using the command below. This step works in the similar way as the A.27 example.  
+1. Process the MCC tree file using the command below. This step works in a similar way as the A.27 example.  
 Please take notice of the "--location" argument: As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 ```
 spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
 
-2. Follow the previous steps to reach different visuals of the spatial layers. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
+2. Follow the previous steps to reach different visuals of the spatial layers. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/6f39d920-0667-4eac-bd2b-1f45c223d971
 
@@ -178,7 +178,7 @@ spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinat
 Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84).  
 Use the following command to execute the 'reprojection.py' script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
 ```
-reprojection --input B.1.1.7_England.single.tree.output.csv --lat start_lat,end_lat --lng start_lon,end_lon --src 27700 --trg 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
+reprojection --input B.1.1.7_England.single.tree.output.csv --lat start_lat,end_lat --lon start_lon,end_lon --source 27700 --target 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
 ```
 
 3. Remove geographic outliers.  
@@ -189,7 +189,7 @@ trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --fore
 ```
 
 4. Visualise the spatial layers in Spread.gl.  
-Follow the previous steps to get different visuals of the spatial layers.
+Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/7a53803f-a321-4a35-9ff1-f3fa60c5e59a
 
