@@ -114,7 +114,11 @@ spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,locatio
 
 2. Follow the previous steps to reach different visuals of the spatial layers. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/6f39d920-0667-4eac-bd2b-1f45c223d971
+
+
+https://github.com/GuyBaele/SpreadGL/assets/1092968/e19685f5-1107-4a66-8165-78443b8a745d
+
+
 
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
@@ -142,7 +146,11 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 
 3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
 
-https://github.com/FlorentLee/SpreadGL/assets/74751786/4206862f-41a1-41de-b89f-17cb13912d95
+
+
+https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
+
+
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -169,7 +177,11 @@ raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --l
 
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/561d20d1-f517-469d-bd11-7cb7c6eb1e16
+
+
+https://github.com/GuyBaele/SpreadGL/assets/1092968/bfd2911f-e3a1-41c4-b8b2-2728b9d2ca0b
+
+
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
@@ -196,5 +208,9 @@ trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --fore
 4. Visualise the spatial layers in Spread.gl.  
 Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/7a53803f-a321-4a35-9ff1-f3fa60c5e59a
+
+
+https://github.com/GuyBaele/SpreadGL/assets/1092968/31b6076a-4ce4-4b4f-96f2-05210c6f7aeb
+
+
 
