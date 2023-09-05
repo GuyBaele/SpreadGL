@@ -14,7 +14,7 @@ git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com and sign up for an account (Spread.gl employs kepler.gl, which is built on top of Mapbox GL; a mapbox account and an access token are needed to use kepler.gl). While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
+2. Go to https://mapbox.com and sign up for an account (Spread.gl employs kepler.gl, which is built on top of Mapbox GL; a mapbox account and an access token are needed to use kepler.gl). While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads (you can check this number in your Mapbox account information). Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token> (Linux/Mac)
