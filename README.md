@@ -1,5 +1,5 @@
 # Spread.gl - visualising pathogen dispersal in a high-performance browser application
-Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
+Main development repository and webpage for Spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
 Before starting, make sure you have already installed Node.js 16.20, Python 3.9, and git 2.41 on your device.  
@@ -8,27 +8,27 @@ https://nodejs.org/en/download/releases
 https://www.python.org/downloads  
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 
-1. Clone this Github repository in your working directory and use npm to install the web application. If you meet some authentication issues, please refer to this link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
+1. Clone this Github repository in your working directory and use npm to install the web application. If you encounter authentication issues, please check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
 cd SpreadGL
 npm install --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com and sign up for an account. While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
+2. Go to https://mapbox.com and sign up for an account (Spread.gl employs kepler.gl, which is built on top of Mapbox GL; a mapbox account and an access token are needed to use kepler.gl). While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads. Create a new default Mapbox access token and associate it with spread.gl, as follows:
 ```
 chmod +x addToken.js
 ./addToken.js <insert_your_token> (Linux/Mac)
 node addToken.js <insert_your_token> (Windows)
 ```
-3. Start the spread.gl visualisation, which will open a browser window, as follows:
+3. Start the Spread.gl visualisation, which will open a browser window, as follows:
 ```
 npm start
 ```
-If the localhost refused to connect (error:0308010C:digital envelope routines::unsupported), you may need to execute this command before "npm start".
+If the localhost refuses to connect (error:0308010C:digital envelope routines::unsupported), you may need to execute this command before "npm start":
 ```
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
-4. Open a new terminal in the SpreadGL directory. Install the provided spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
+4. Open a new terminal in the SpreadGL directory. Install the provided Spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
 cd scripts
 python3 -m venv my_env
@@ -39,10 +39,10 @@ python3 setup.py install
 ```cd scripts```: switch to the folder of "scripts";
 ```python3 -m venv my_env```: create a virtual environment called "my_env";
 ```source my_env/bin/activate``` on Linux/Mac or ```.\my_env\Scripts\activate``` on Windows: activate the created virtual environment;
-```python3 setup.py install```: Install a CLI tool for preprocessing tree files to generate input files supported by Spread.gl.
+```python3 setup.py install```: install a command-line interface (CLI) tool for preprocessing tree files to generate input files supported by Spread.gl.
 
-## Visualising a (phylo)geographical spread layer in spread.gl
-Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
+## Visualising a (phylo)geographical spread layer in Spread.gl
+Once you have started Spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
 
 1. Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' as the layer type in the Basic properties window. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.
 2. (Discrete phylogeography) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
