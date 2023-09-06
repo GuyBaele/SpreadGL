@@ -4,7 +4,7 @@ from pyproj import *
 
 
 def main():
-    welcome = "Welcome to this tool for projection transformation! You can convert geographic data between different CRS."
+    welcome = "Use this tool to convert geographic data between different CRS."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--input', '-i', required=True,
                         help='Specify the comma-delimited input file with filename extension (.csv).')
