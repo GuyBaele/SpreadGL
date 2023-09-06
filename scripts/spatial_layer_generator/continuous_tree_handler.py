@@ -69,7 +69,7 @@ def get_edge_times(edge, most_recent_tip_time, branch_length, delimiter):
         ending_time, starting_time = get_leaf_times(child_node, most_recent_tip_time, branch_length, delimiter)
         branch_type = 'External'
         
-    return ending_time, starting_time
+    return ending_time, starting_time, branch_type
 
 
 def get_leaf_times(node, most_recent_tip_time, branch_length, delimiter):
