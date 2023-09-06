@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def main():
-    welcome = "You can remove outliers of the current dataset by referring to another one."
+    welcome = "Use this tool to remove outliers of the current dataset by referring to another one."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--referencing', '-ri', required=True,
                         help='Enter the name of a comma-delimited referening table with filename extension (.csv).')
