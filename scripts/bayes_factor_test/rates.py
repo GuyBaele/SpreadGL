@@ -6,7 +6,7 @@ import numpy as np
 
 
 def main():
-    welcome = "You can use this tool to perform Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference."
+    welcome = "You can use this tool to perform the Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--log', '-lg', required=True,
                         help='Specify the input BEAST log file (.log).')
