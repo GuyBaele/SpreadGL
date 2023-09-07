@@ -6,21 +6,21 @@ import numpy as np
 
 
 def main():
-    welcome = "You can use this tool to perform Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference."
+    welcome = "You can use this tool to perform the Bayes factor test of significant diffusion rates on the BEAST log of discrete phylogeographic inference."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--log', '-lg', required=True,
                         help='Specify the input BEAST log file (.log).')
     parser.add_argument('--location', '-lo', required=True,
                         help='Type in the annotation that stores the location names in the MCC tree, e.g. "region".')
     parser.add_argument('--burnin', '-b', required=True,
-                        help='Specify burn-in to set how many initial samped values should be discarded from the analysis. '
-                        'It should be smaller than 1 but not less than 0, e.g. "0.1" should be sufficient for most analysis. '
+                        help='Specify burn-in to set how many initial sampled values should be discarded from the analysis. '
+                        'It should be smaller than 1 but not less than 0, e.g. "0.1" should be sufficient for most analyses. '
                         'You can also specify it by using the number of rows, which should be a valid integer in this case.')   
     parser.add_argument('--list', '-li', required=True,
                         help='Use the same location list from your discrete analysis as an input (.csv).')
     parser.add_argument('--layer', '-la',
                         help='Optional: You can add the Bayes factors to the spatial layer. '
-                         'Use the file of discrete spatial layer as an input (.csv).')
+                         'Use the file of a discrete spatial layer as an input (.csv).')
 
     args = parser.parse_args()
     log = str(args.log)

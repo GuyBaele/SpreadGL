@@ -41,9 +41,8 @@ def get_most_recent_tip_time(most_recent_tip):
 
 
 def process_edge(edge, most_recent_tip_time, delimiter, id):
-    branch_type = 'Internal'
     branch_length = edge.length if edge.length else 0.0
-    ending_time, starting_time = get_edge_times(edge, most_recent_tip_time, branch_length, delimiter)
+    ending_time, starting_time, branch_type = get_edge_times(edge, most_recent_tip_time, branch_length, delimiter)
 
     return {
         'visited_times': 0,
@@ -64,11 +63,13 @@ def get_edge_times(edge, most_recent_tip_time, branch_length, delimiter):
     child_node = edge.head_node
     ending_time = 0.0
     starting_time = 0.0
+    branch_type = 'Internal'
 
     if child_node.is_leaf():
         ending_time, starting_time = get_leaf_times(child_node, most_recent_tip_time, branch_length, delimiter)
-    
-    return ending_time, starting_time
+        branch_type = 'External'
+        
+    return ending_time, starting_time, branch_type
 
 
 def get_leaf_times(node, most_recent_tip_time, branch_length, delimiter):

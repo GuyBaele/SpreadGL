@@ -4,7 +4,7 @@ import geopandas
 
 
 def main():
-    welcome = "You can use this tool to create environmental layers using tabular data."
+    welcome = "You can use this tool to create an environmental layer with tabular data."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--data', '-d', required=True,
                         help='Specify the environmental tabular data you want to visualise (.csv, comma-delimited).')

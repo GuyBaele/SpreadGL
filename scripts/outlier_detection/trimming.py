@@ -3,12 +3,12 @@ import pandas as pd
 
 
 def main():
-    welcome = "Welcome to this tool for outlier detection! You can remove outliers of the current dataset by referring to another one."
+    welcome = "Use this tool to remove outliers of the current dataset by referring to another one."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--referencing', '-ri', required=True,
-                        help='Enter the name of a comma-delimited referening table with filename extension (.csv).')
+                        help='Enter the name of a comma-delimited referencing table with filename extension (.csv).')
     parser.add_argument('--foreignkey', '-fk', required=True,
-                        help='Enter the foreign key field name of the referening table, e.g. "end_lat".')
+                        help='Enter the foreign key field name of the referencing table, e.g. "end_lat".')
     parser.add_argument('--referenced', '-rd', required=True,
                         help='Enter the name of a comma-delimited referenced dataset with filename extension (.csv).')
     parser.add_argument('--primarykey', '-pk', required=True,
