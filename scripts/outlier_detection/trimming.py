@@ -33,7 +33,7 @@ def main():
     # Perform NULL queries on the specified fields.
     # In this case, it records the branches that have no information about UTLA (English Upper Tier Local Authorities).
     # The queried fields: 'startUTLA,endUTLA'.
-    selected = df1[df1[[i for i in queries]].isna().any(1)]
+    selected = df1[df1[[i for i in queries]].isna().any(axis=1)]
     # Get values of the primary key column.
     # In this case, 'endLat' is the primary key field name.
     foreign = selected.loc[:, primary_key_field].map("{:.5f}".format).to_numpy()
