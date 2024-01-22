@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--location', '-lo', required=True,
                         help='Type in the annotation that stores the location names in the MCC tree, e.g. "region".')
     parser.add_argument('--burnin', '-b', required=True,
-                        help='Specify burn-in to set how many initial sampled values should be discarded from the analysis. '
+                        help='Specify burn-in to set how many initial sampled values were discarded from the analysis. '
                         'It should be smaller than 1 but not less than 0, e.g. "0.1" should be sufficient for most analyses. '
                         'You can also specify it by using the number of rows, which should be a valid integer in this case.')   
     parser.add_argument('--list', '-li', required=True,
@@ -101,7 +101,7 @@ def main():
     location_list = np.asarray(location_df['location'])
 
     bayes_factor, posterior_probability = parse_bayes_factors(indicators, location_list)
-    bayes_df = pd.DataFrame({f'starting_{location}_name': starting_location, f'ending_{location}_name': ending_location,
+    bayes_df = pd.DataFrame({f'start_name': starting_location, f'end_name': ending_location,
                             'bayes_factor': bayes_factor, 'posterior_probability': posterior_probability})
     bayes_df.to_csv(f'Bayes.factor.test.result.csv', sep=',', index=False)
     print(f'The output of Bayes factor test has been saved as "Bayes.factor.test.result.csv" in the current directory.')   
@@ -109,7 +109,7 @@ def main():
     if layer == "None":
         sys.exit()        
     spread_df = pd.read_csv(layer)
-    result_df = pd.merge(spread_df, bayes_df, how='left', on=[f'starting_{location}_name', f'ending_{location}_name'])
+    result_df = pd.merge(spread_df, bayes_df, how='left', on=[f'start_name', f'end_name'])
     result_df.to_csv(f'Bayes.factors.added.{layer}', sep=',', index=False)
     print(f'You can now visualise the discrete spatial layer with Bayes factors using "Bayes.factors.added.{layer}".')    
         
