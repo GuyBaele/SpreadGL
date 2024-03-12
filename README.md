@@ -2,44 +2,35 @@
 Main development repository and webpage for Spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed Node.js 16.20, Python 3.9, and git 2.41 on your device.  
-We refer to the following links for installation instructions regarding these tools:  
+Before starting, make sure you have already installed git v2.39.2, Node.js v21.1.0, Python v3.11 and pip v23.3.2 on your device. Using different versions of the above-mentioned tools does not guarantee a bug-free experience. We refer to the following links for installation instructions regarding these tools:  
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
 https://nodejs.org/en/download/releases  
 https://www.python.org/downloads  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+https://pip.pypa.io/en/stable/installation/  
 
-1. Clone this Github repository in your working directory and use npm to install the web application. If you encounter authentication issues, please check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
+1. Clone this Github repository in your working directory and use npm to install the web application. If you encounter authentication issues, check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
 git clone git@github.com:GuyBaele/SpreadGL.git
-cd SpreadGL
-npm install --loglevel=error --no-audit
+npm i --legacy-peer-deps --loglevel=error --no-audit
 ```
-2. Go to https://mapbox.com and sign up for an account (Spread.gl employs kepler.gl, which is built on top of Mapbox GL; a mapbox account and an access token are needed to use kepler.gl). While your credit card information is required to sign up, you won't be charged until you reach 50,000 free loads (you can check this number in your Mapbox account information). Create a new default Mapbox access token and associate it with spread.gl, as follows:
-```
-chmod +x addToken.js
-./addToken.js <insert_your_token> (Linux/Mac)
-node addToken.js <insert_your_token> (Windows)
-```
-3. Start the Spread.gl visualisation, which will open a browser window, as follows:
+
+2. Start the Spread.gl visualisation, which will open a browser window, as follows:
 ```
 npm start
 ```
-If the localhost refuses to connect (error:0308010C:digital envelope routines::unsupported), you may need to execute this command before "npm start":
+
+3. Open a new terminal in the SpreadGL directory. Install a tool to process data for your visualisation (additional information regarding the different scripts can be found in the README of the scripts directory):
 ```
-export NODE_OPTIONS=--openssl-legacy-provider
-```
-4. Open a new terminal in the SpreadGL directory. Install the provided Spread.gl tools to create valid input files for your visualisations (additional information regarding the different scripts can be found in the README of the scripts directory):
-```
+python3 -m venv .venv
+source .venv/bin/activate (Linux/Mac)
+.\.venv\Scripts\activate (Windows)
 cd scripts
-python3 -m venv my_env
-source my_env/bin/activate (Linux/Mac)
-.\my_env\Scripts\activate (Windows)
 python3 setup.py install
 ```
-```cd scripts```: switch to the folder of "scripts";
-```python3 -m venv my_env```: create a virtual environment called "my_env";
-```source my_env/bin/activate``` on Linux/Mac or ```.\my_env\Scripts\activate``` on Windows: activate the created virtual environment;
-```python3 setup.py install```: install a command-line interface (CLI) tool for preprocessing tree files to generate input files supported by Spread.gl.
+```python3 -m venv .venv```: create a virtual environment called ".venv";  
+```source .venv/bin/activate``` (for Linux/Mac) ```.\.venv\Scripts\activate``` (for Windows): activate the created virtual environment;  
+```cd scripts```: change the current directory to its subfolder called "scripts";  
+```python3 setup.py install```: install a command-line interface (CLI) tool for data processing to generate input files supported by Spread.gl.
 
 ## Visualising a (phylo)geographical spread layer in Spread.gl
 Once you have started Spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
@@ -84,16 +75,13 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/597c0b36-ffaa-44ad-97af-e128
 
 
 3. Perform a Bayes factor test.  
-If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you can calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. The aim of this test is to identify rates that are frequently used to interpret the diffusion process.  
-Use the command below to execute the 'rates.py' script with the following arguments:  
+If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you will be able to calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. This test aims to identify rates that are frequently used to interpret the diffusion process. **Unzip** "A.27_worldwide.BEAST.log.zip" and execute the 'rates.py' script using the following command with different arguments:  
 --log: Specify the input BEAST log file (.log).  
 --location: Type in the annotation that stores the location names in the MCC tree, such as "region" in this case.  
---burnin: Specify burn-in to set how many initial samped values should be discarded from the analysis.  
-It should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analysis.  
-You can also specify it by using the number of rows, which should be a valid integer in this case.  
+--burnin: Specify the burn-in ratio to set how many initial sampled values were discarded from the analysis. It should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analysis. An integer that represents the number of rows is also allowed.  
 --list: Use the same location list from your discrete analysis as an input (.csv).  
---layer: It is optional. You can combine the spatial layer with the Bayes factors. Use the file of discrete spatial layer as an input (.csv).  
-The test result will be saved as 'Bayes.factor.test.result.csv'. If you specified the "layer" argument, a combined output called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
+--layer: OPTIONAL; To combine the spatial layer with Bayes factors, use the output from Step 1 as an input (.csv).  
+The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
 rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
 ```
@@ -151,6 +139,16 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
 
 
+The current version of Spread.gl v2.0.0 does not offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not available in this version. However, there's a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
+1. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
+2. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
+3. Switch to a processed GeoJSON layer file, and you will notice a world map icon in the upper right corner.
+   <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3">
+4. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
+
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -161,7 +159,7 @@ spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
 
 2. Crop raster environmental data using a mask map.  
-As the environmental data of this example are too large to be hosted on Github, you need to download historical monthly weather data (maximum temperature, 2010-2019, 2.5 minutes) from:
+As the environmental data of this example are too large to be hosted on Github, you need to **download** historical monthly weather data (maximum temperature, 2010-2019, 2.5 minutes) from:
 https://www.worldclim.org/data/monthlywth.html. Only keep the raster files from April 2015 to April 2019 and then save them in a folder called 'wc2.1_2.5m_tmax_2015-2019'. You can find a GeoJSON boundary map in the 'inputdata' folder. This kind of boundary map can also be accessed via: https://www.geoboundaries.org/index.html#getdata.  
 Use the command below to execute the 'raster.py' script with 5 required arguments:  
 --data: Enter the folder that contains raster data files (.tif).  

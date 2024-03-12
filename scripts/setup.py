@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='processing_toolkit',
-    version='1.0.0',
+    version='1.1.0',
     author='Yimin Li',
     author_email='florent.li@kuleuven.be',
     url='https://github.com/GuyBaele/SpreadGL',
