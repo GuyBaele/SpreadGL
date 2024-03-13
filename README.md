@@ -75,19 +75,19 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/597c0b36-ffaa-44ad-97af-e128
 
 
 3. Perform a Bayes factor test.  
-If you have a BEAST log file with rate indicators as described in Bayesian stochastic search variable selection (BSSVS), you will be able to calculate the Bayes factors of diffusion rates for discrete phylogeographic analysis. This test aims to identify rates that are frequently used to interpret the diffusion process. **Unzip** "A.27_worldwide.BEAST.log.zip" and execute the 'rates.py' script using the following command with different arguments:  
---log: Specify the input BEAST log file (.log).  
---location: Type in the annotation that stores the location names in the MCC tree, such as "region" in this case.  
---burnin: Specify the burn-in ratio to set how many initial sampled values were discarded from the analysis. It should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analysis. An integer that represents the number of rows is also allowed.  
---list: Use the same location list from your discrete analysis as an input (.csv).  
---layer: OPTIONAL; To combine the spatial layer with Bayes factors, use the output from Step 1 as an input (.csv).  
-The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
+If you have a BEAST log file with rate indicators as a result of the Bayesian stochastic search variable selection (BSSVS) procedure, you will be able to calculate Bayes factors for the diffusion rates between the discrete locations. This test aims to identify relevant rates that are typically used to interpret the diffusion process. **Unzip** "A.27_worldwide.BEAST.log.zip" and execute the 'rates.py' script using the following command with different arguments:  
+--log: Specify as input the BEAST log file (.log).  
+--location: Type in the annotation that stores the location names in the MCC tree, i.e., "region" in this case.  
+--burnin: Specify the burn-in ratio to set how many initial sampled values need to be discarded from the analysis. This number should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analyses (but check your .log file in Tracer). An integer that represents the number of rows is also allowed.  
+--list: Use the same location list from your discrete analysis as input (.csv).  
+--layer: OPTIONAL; To combine the spatial layer with Bayes factors, use the output from Step 1 as input (.csv).  
+The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output file called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
 rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
-To filter the visualisation in Step 2, delete the current dataset in spread.gl and load the output file of Step 3. In the Filters panel, add a new filter using the field of "bayes_factor". Then, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
+To filter the visualisation in Step 2, delete the current dataset in spread.gl and load the output file of Step 3. In the Filters panel, add a new filter using the field "bayes_factor". Subsequently, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
 
 <img width=100% alt="image" src="https://user-images.githubusercontent.com/74751786/234096466-3c452c36-2d42-4a9d-b2d6-ccc83a44941d.png">
 
