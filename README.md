@@ -93,7 +93,7 @@ To filter the visualisation in Step 2, delete the current dataset in spread.gl a
 
 
 ### Rabies virus (RABV) in the United States
-We can take the following steps to visualise one of the continuous phylogeographic analyses from Biek et al. (2007) [A high-resolution genetic signature of demographic and spatial expansion in epizootic rabies virus](https://www.pnas.org/doi/full/10.1073/pnas.0700741104). This is an example for which the MCC tree does not have the HPD information for the ancestral locations.  
+We perform the following steps to visualise one of the continuous phylogeographic analyses from Biek et al. (2007) [A high-resolution genetic signature of demographic and spatial expansion in epizootic rabies virus](https://www.pnas.org/doi/full/10.1073/pnas.0700741104). This is an example for which the MCC tree does not have the HPD information for the ancestral locations.  
 1. Process the MCC tree file using the command below. This step works in a similar way as the A.27 example.  
 Please take notice of the "--location" argument: As there are two annotations (location1 & location2 in this case) to store coordinates, you need to enter them in the order of latitude and longitude with a comma (",") separator in between.
 ```
