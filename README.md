@@ -140,13 +140,13 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745a
 
 
 The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
-a. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
+1. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
-b. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
+2. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
-c. Switch to a processed GeoJSON layer file, and you will notice a world map icon in the upper right corner.
+3. Switch to a processed GeoJSON layer file, and you will notice a world map icon in the upper right corner.
    <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3">
-d. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
+4. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
 
 
