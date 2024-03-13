@@ -139,7 +139,7 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
 
 
-The current version of spread.gl v2.0.0 does not offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not available in this version. However, there's a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
+The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
 1. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
 2. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
