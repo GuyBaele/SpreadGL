@@ -10,7 +10,7 @@ https://pip.pypa.io/en/stable/installation/
 
 1. Clone this GitHub repository in your working directory and use npm to install the web application. If you encounter authentication issues, check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
-git clone git@github.com:GuyBaele/SpreadGL.git
+git clone https://github.com/GuyBaele/SpreadGL.git
 npm i --legacy-peer-deps --loglevel=error --no-audit
 ```
 
@@ -67,11 +67,7 @@ spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list
 2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
-
 https://github.com/GuyBaele/SpreadGL/assets/1092968/597c0b36-ffaa-44ad-97af-e128a646dcad
-
-
-
 
 
 3. Perform a Bayes factor test.  
@@ -103,10 +99,7 @@ spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,locatio
 2. Follow the previous steps to reach different visuals of the spatial layers. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 
-
 https://github.com/GuyBaele/SpreadGL/assets/1092968/e19685f5-1107-4a66-8165-78443b8a745d
-
-
 
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
@@ -132,23 +125,19 @@ A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to dis
 regions --data Environmental_variables.csv --locationColumn location --map China_map.geojson --locationVariable name --output Environmental_data_layer.geojson
 ```
 
-3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.
+<!--3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.-->
 
+3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/). Upon starting VS Code, we will see a lightweight, yet powerful, interface suitable for various programming tasks. To install Spread.gl, users should clone the GitHub repository using this URL, 'https://github.com/GuyBaele/SpreadGL.git', and then run the commands provided in the 'installation' section in a new terminal. Afterwards, they can proceed with the following steps to install the 'Geo Data Viewer' extension.  
+I. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
+II. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
+III. Switch to a processed GeoJSON layer file, and you will notice a world map icon <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3"> in the upper right corner.  
+IV. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
 
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
-
-
-The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
-1. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
-2. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
-3. Switch to a processed GeoJSON layer file, and you will notice a world map icon in the upper right corner.
-   <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3">
-4. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
-
 
 
 ### Yellow fever virus (YFV) in Brazil
