@@ -1,5 +1,5 @@
-# Spread.gl - visualising pathogen dispersal in a high-performance browser application
-Main development repository and webpage for Spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
+# spread.gl - visualising pathogen dispersal in a high-performance browser application
+Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Installation
 Before starting, make sure you have already installed git v2.39.2, Node.js v21.1.0, Python v3.11 and pip v23.3.2 on your device. Using different versions of the above-mentioned tools does not guarantee a bug-free experience. We refer to the following links for installation instructions regarding these tools:  
@@ -14,7 +14,7 @@ git clone git@github.com:GuyBaele/SpreadGL.git
 npm i --legacy-peer-deps --loglevel=error --no-audit
 ```
 
-2. Start the Spread.gl visualisation, which will open a browser window, as follows:
+2. Start the spread.gl visualisation, which will open a browser window, as follows:
 ```
 npm start
 ```
@@ -30,10 +30,10 @@ python3 setup.py install
 ```python3 -m venv .venv```: create a virtual environment called ".venv";  
 ```source .venv/bin/activate``` (for Linux/Mac) ```.\.venv\Scripts\activate``` (for Windows): activate the created virtual environment;  
 ```cd scripts```: change the current directory to its subfolder called "scripts";  
-```python3 setup.py install```: install a command-line interface (CLI) tool for data processing to generate input files supported by Spread.gl.
+```python3 setup.py install```: install a command-line interface (CLI) tool for data processing to generate input files supported by spread.gl.
 
-## Visualising a (phylo)geographical spread layer in Spread.gl
-Once you have started Spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
+## Visualising a (phylo)geographical spread layer in spread.gl
+Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
 
 1. Create a layer to display phylogenetic branches. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Arc' as the layer type in the Basic properties window. When specifying the coordinate fields (latitude and longitude) and coloring the branches, the source and target should correspond to the starting and ending points, respectively. You can adjust other parameters, such as opacity and stroke, to customise the visualisation. Once completed, the phylogenetic tree branches will be rendered on this layer.
 2. (Discrete phylogeography) Create a layer that reflects the cumulative numbers of phylogenetic nodes at different places. Select 'Layers' from the navigation bar, click 'Add Layer' and then choose 'Cluster' in Basic. Specify the coordinate fields (latitude & longitude) of the ending points. Choose a sequential colour bar and set the colours based on 'Point Count' (by default). The radius parameters can be adjusted to set an appropriate size for the clusters. After that, the clusters that represent the cumulative numbers will be displayed on this layer.  
@@ -139,7 +139,7 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
 
 
-The current version of Spread.gl v2.0.0 does not offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not available in this version. However, there's a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
+The current version of spread.gl v2.0.0 does not offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not available in this version. However, there's a workaround for users interested in visualising examples with satellite imagery in the VS Code IDE:  
 1. Navigate to the 'Extensions: Marketplace' panel and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
 2. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
@@ -203,7 +203,7 @@ Use the following command to execute the 'trimming.py' script with 6 required ar
 trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --foreignkey end_lat_original --referenced TreeTime_270221.csv --primarykey endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
 ```
 
-4. Visualise the spatial layers in Spread.gl.  
+4. Visualise the spatial layers in spread.gl.  
 Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
