@@ -133,7 +133,7 @@ I. Navigate to the 'Extensions: Marketplace' panel (on the left-hand side) and s
 II. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
 III. Switch to a processed GeoJSON layer file, and you will notice a map icon <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3"> in the upper right corner.  
-IV. Click the icon to open a Kepler.gl page within the IDE, automatically populated with the result data.
+IV. Click the icon to open a spread.gl page within the IDE, automatically populated with the result data.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
 
 
