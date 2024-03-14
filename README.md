@@ -77,14 +77,14 @@ If you have a BEAST log file with rate indicators as a result of the Bayesian st
 --location: Type in the annotation that stores the location names in the MCC tree, i.e., "region" in this case.  
 --burnin: Specify the burn-in ratio to set how many initial sampled values need to be discarded from the analysis. This number should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analyses (but check your .log file in Tracer). An integer that represents the number of rows is also allowed.  
 --list: Use the same location list from your discrete analysis as input (.csv).  
---layer: OPTIONAL; To combine the spread layer with Bayes factors, use the output from Step 1 as input (.csv).  
+--layer: OPTIONAL; To combine the spread layer with Bayes factors, use the output from step 1 as input (.csv).  
 The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output file called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
 rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
-To filter the visualisation in Step 2, delete the current dataset in spread.gl and load the output file of Step 3. In the Filters panel, add a new filter using the field "bayes_factor". Subsequently, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
+To filter the visualisation in step 2, delete the current dataset in spread.gl and load the output file of step 3. In the Filters panel, add a new filter using the field "bayes_factor". Subsequently, set the left lower limit to "3.0" as a default cut-off value above which the diffusion rates are considered to be well supported. Only phylogenetic branches with a Bayes factor of at least 3 will be shown in the figure below. In addition, the clusters now only indicate cumulative counts of non-local transmissions.
 
 <img width=100% alt="image" src="https://user-images.githubusercontent.com/74751786/234096466-3c452c36-2d42-4a9d-b2d6-ccc83a44941d.png">
 
@@ -105,7 +105,7 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/e19685f5-1107-4a66-8165-7844
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the MCC tree file using the following command. This step works in the same way as the A.27 example.
-You should be able to get an output file of the spread layer, named 'PEDV_China.MCC.tree.output.geojson' and used in Step 3.
+You should be able to get an output file of the spread layer, named 'PEDV_China.MCC.tree.output.geojson' and used in step 3.
 ```
 spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
@@ -122,7 +122,7 @@ Use the command below to execute the 'regions.py' script with 5 required argumen
 --locationVariable: In the GeoJSON input map, find a property that represents the location variable.  
   In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
 --output: Give a name to the output environmental data layer (.geojson).  
-You should be able to get an output file of the environmental data layer, named 'Environmental_data_layer.geojson' and used in Step 3.
+You should be able to get an output file of the environmental data layer, named 'Environmental_data_layer.geojson' and used in step 3.
 ```
 regions --data Environmental_variables.csv --locationColumn location --map China_map.geojson --locationVariable name --output Environmental_data_layer.geojson
 ```
