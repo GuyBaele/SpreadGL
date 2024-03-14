@@ -11,6 +11,7 @@ https://pip.pypa.io/en/stable/installation/
 1. Clone this GitHub repository in your working directory and use npm to install the web application. If you encounter authentication issues, check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
 ```
 git clone https://github.com/GuyBaele/SpreadGL.git
+cd SpreadGL
 npm i --legacy-peer-deps --loglevel=error --no-audit
 ```
 
