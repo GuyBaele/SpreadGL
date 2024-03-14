@@ -142,7 +142,7 @@ regions --data Environmental_variables.csv --locationColumn location --map China
    Click that icon to open a spread.gl page within the IDE, automatically populated with data from the spread layer.
    The environmental data from 'Environmental_data_layer.geojson' should also be imported in the opened spread.gl page and configured for ideal visualisation
    (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl').
-   Now, you can choose between different base map styles as shown in the image below.
+   As shown in the image below, you can choose between different base map styles, e.g. satellite imagery.
    <img width="1387" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/c49497df-fdf4-413d-9483-615785cbda0f">
 
 
