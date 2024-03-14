@@ -1,6 +1,8 @@
 {
   "name": "spread-gl",
-  "version": "2.0.0",
+  "version": "1.0.0",
+  "author": "Yimin (Florent) Li <yiminflorent@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development --progress --hot --open --port 8080",
     "start-prod": "webpack-dev-server -p --progress --hot --open --port 8080"
@@ -56,5 +58,8 @@
     "@deck.gl/core": "8.9.27",
     "@deck.gl/extensions": "8.9.27",
     "react-vis": "1.11.7"
+  },
+  "babel": {
+    "presets": ["@babel/preset-react"]
   }
 }
