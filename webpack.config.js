@@ -1,19 +1,10 @@
-// SPDX-License-Identifier: MIT
-// Copyright contributors to the kepler.gl project
-
-// NOTE: To use this example standalone (e.g. outside of deck.gl repo)
-// delete the local development overrides at the bottom of this file
-
-// avoid destructuring for older Node version support
 const resolve = require('path').resolve;
 const join = require('path').join;
 const webpack = require('webpack');
-
-const WEBPACK_ENV_VARIABLES = require('./shared-webpack-configuration')
-  .WEBPACK_ENV_VARIABLES;
+const WEBPACK_ENV_VARIABLES = require('./shared-webpack-configuration').WEBPACK_ENV_VARIABLES;
 
 const CONFIG = {
-  // bundle app.js and everything it imports, recursively.
+
   entry: {
     app: resolve('./src/main.js')
   },
@@ -24,7 +15,10 @@ const CONFIG = {
   },
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    fallback: {
+      "path": require.resolve("path-browserify")
+    }
   },
 
   devtool: 'source-map',
@@ -32,12 +26,16 @@ const CONFIG = {
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx)$/,
-        loader: 'babel-loader',
+        test: /\.(js|jsx|ts|tsx)$/,
         include: [join(__dirname, 'src')],
-        exclude: [/node_modules/]
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react", "@babel/preset-env", "@babel/preset-typescript"],
+          }
+        }
       },
-      // fix for arrow-related errors
+
       {
         test: /\.mjs$/,
         include: /node_modules/,
@@ -46,21 +44,22 @@ const CONFIG = {
     ]
   },
 
-  node: {
-    fs: 'empty'
-  },
-
-  // to support browser history api and remove the '#' sign
   devServer: {
     historyApiFallback: true
   },
 
-  // Optional: Enables reading mapbox and dropbox client token from environment variable
-  plugins: [new webpack.EnvironmentPlugin(WEBPACK_ENV_VARIABLES)]
+  stats: {
+    errorDetails: true
+  },
+
+  plugins: [
+    new webpack.EnvironmentPlugin(WEBPACK_ENV_VARIABLES),
+    new webpack.DefinePlugin({
+      'process.env':{
+        NODE_ENV: JSON.stringify("development")
+      }
+    })
+  ]
 };
 
-// This line enables bundling against src in this repo rather than installed kepler.gl module
-// module.exports = env => {
-//   return env ? require('../webpack.config.local')(CONFIG, __dirname)(env) : CONFIG;
-// };
 module.exports = CONFIG;
