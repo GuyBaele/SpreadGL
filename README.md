@@ -60,12 +60,12 @@ We here visualise one of the discrete phylogeographic analyses from Kaleta et al
   In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
 --format: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should type in "csv".  
-When this processing step is done, you should be able to see a file called 'A.27_worldwide.MCC.tree.output.csv'. It represents the spatial layer.
+When this processing step is done, you will see an output file of the spread layer called 'A.27_worldwide.MCC.tree.output.csv'.
 ```
 spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27_worldwide_location_list.csv --format csv
 ```
 
-2. We can now visualise the spatial layers in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
+2. We can now visualise the spread layer in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/597c0b36-ffaa-44ad-97af-e128a646dcad
@@ -77,7 +77,7 @@ If you have a BEAST log file with rate indicators as a result of the Bayesian st
 --location: Type in the annotation that stores the location names in the MCC tree, i.e., "region" in this case.  
 --burnin: Specify the burn-in ratio to set how many initial sampled values need to be discarded from the analysis. This number should be smaller than "1" but not less than "0", e.g. "0.1" should be sufficient for most analyses (but check your .log file in Tracer). An integer that represents the number of rows is also allowed.  
 --list: Use the same location list from your discrete analysis as input (.csv).  
---layer: OPTIONAL; To combine the spatial layer with Bayes factors, use the output from Step 1 as input (.csv).  
+--layer: OPTIONAL; To combine the spread layer with Bayes factors, use the output from Step 1 as input (.csv).  
 The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output file called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
 rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
@@ -97,7 +97,7 @@ Please take notice of the "--location" argument: As there are two annotations (l
 spread --tree RABV_US1_gamma_MCC.tree --time 2004-7 --location location1,location2
 ```
 
-2. Follow the previous steps to reach different visuals of the spatial layers. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
+2. Follow the previous steps to try different visuals of the spread layer. Please pay attention to the "continuous phylogeography without HPD" part of Section 'Visualising a (phylo)geographical spread layer in spread.gl'. You can set the time window of animation as incremental for better observation of dispersal in continuous space.
 
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/e19685f5-1107-4a66-8165-78443b8a745d
@@ -105,6 +105,7 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/e19685f5-1107-4a66-8165-7844
 
 ### Porcine epidemic diarrhea virus (PEDV) in China
 1. Process the MCC tree file using the following command. This step works in the same way as the A.27 example.
+You should be able to get an output file of the spread layer, named 'PEDV_China.MCC.tree.output.geojson' and used in Step 3.
 ```
 spread --tree PEDV_China.MCC.tree --time 2019-12-14 --location location --list Involved_provincial_capital_coordinates.csv
 ```
@@ -121,20 +122,21 @@ Use the command below to execute the 'regions.py' script with 5 required argumen
 --locationVariable: In the GeoJSON input map, find a property that represents the location variable.  
   In the 'China_map.geojson' file, each location is stored in a "name" variable (as part of the "properties").  
 --output: Give a name to the output environmental data layer (.geojson).  
-A GeoJSON file named 'Swine_stocks_on_map.geojson' will then be generated to display the environmental data layer.
+You should be able to get an output file of the environmental data layer, named 'Environmental_data_layer.geojson' and used in Step 3.
 ```
 regions --data Environmental_variables.csv --locationColumn location --map China_map.geojson --locationVariable name --output Environmental_data_layer.geojson
 ```
 
-<!--3. We can now visualise the spatial and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.-->
+<!--3. We can now visualise the spread and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.-->
 
-3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/). Upon starting the VS Code IDE, you will see a lightweight - yet powerful - interface suitable for various programming tasks. To install spread.gl, users should clone the GitHub repository and run the commands provided in the 'installation' section in a new terminal within VS Code. Afterwards, they can proceed with the following steps to install the 'Geo Data Viewer' extension (also in VS Code).\
+3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/). Upon starting the VS Code IDE, you will see a lightweight - yet powerful - interface suitable for various programming tasks. To install spread.gl, users should clone the GitHub repository and run the commands provided in the 'installation' section in a new terminal within VS Code. Afterwards, remember to copy and paste the output files from Steps 1 & 2 to any folder of the current VS Code project. Now, you can proceed with the following steps to install the 'Geo Data Viewer' extension (also in VS Code).\
 I. Navigate to the 'Extensions: Marketplace' panel (on the left-hand side) and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
 II. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
-III. Switch to a processed GeoJSON layer file, and you will notice a map icon <img width="32" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/3342475e-98fd-4a2a-b5c2-1ff6c8ed3ad3"> in the upper right corner.  
-IV. Click the icon to open a spread.gl page within the IDE, automatically populated with the result data.
+III. Click the output layer file ('PEDV_China.MCC.tree.output.geojson'). A map icon will appear in the upper right corner.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/f21754ce-78e2-4e00-af45-41dc4ee3a2b9">
+IV. Click that icon to open a spread.gl page within the IDE, automatically populated with data from the spread layer. The environmental data from 'Environmental_data_layer.geojson' should also be imported in the opened spread.gl page and configured for ideal visualisation (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl').
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
 
 
@@ -166,10 +168,7 @@ raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --l
 3. Follow the previous steps to get different visuals of the spatial and environmental layers. For the spatial layer, you can generate a contour layer. For the environmental layer, you will need to choose 'Point' instead of 'Polygon' as the basic layer type. See Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl' for more information.
 
 
-
 https://github.com/GuyBaele/SpreadGL/assets/1092968/bfd2911f-e3a1-41c4-b8b2-2728b9d2ca0b
-
-
 
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
@@ -197,8 +196,5 @@ trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --fore
 Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
 
 
-
 https://github.com/GuyBaele/SpreadGL/assets/1092968/31b6076a-4ce4-4b4f-96f2-05210c6f7aeb
-
-
 
