@@ -12,7 +12,7 @@ https://pip.pypa.io/en/stable/installation/
 ```
 git clone https://github.com/GuyBaele/SpreadGL.git
 cd SpreadGL
-npm install assert --legacy-peer-deps --loglevel=error --no-audit
+npm install --legacy-peer-deps --loglevel=error --no-audit
 ```
 
 2. Start the spread.gl visualisation, which will open a browser window, as follows:
