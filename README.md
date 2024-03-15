@@ -129,19 +129,21 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 
 <!--3. We can now visualise the spread and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.-->
 
-3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/). Upon starting the VS Code IDE, you will see a lightweight - yet powerful - interface suitable for various programming tasks.  
-To install spread.gl, you should clone the GitHub repository into VS Code as shown in the picture below. A VS Code project will be automatically created. Then, run the commands provided in the 'installation' section in a new terminal in VS Code. Afterwards, remember to copy and paste the output files from steps 1 & 2 to any folder of the current VS Code project.
-<img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/970aa0a1-ad53-4a88-98b7-4b683031e3d1">
-Now, you can proceed with the following steps to install the 'Geo Data Viewer' extension (also in VS Code).
-
-I. Navigate to the 'Extensions: Marketplace' panel (on the left-hand side) and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
+3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/).  
+   Upon starting the VS Code IDE, open the output file from step 1 on the welcome page.
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/44247dd9-fb27-4d1f-9ed4-79c45f2c83a2">
+   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/a3596f9e-4706-4476-9854-3d71ab3f7817">
+   Navigate to the 'Extensions: Marketplace' panel (on the left-hand side in VS Code) and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
-II. Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
+   Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
-III. Click the output file 'PEDV_China.MCC.tree.output.geojson' in the left panel. Then, a world map icon will appear in the upper right corner.
+   Go back to the output file of the spread layer. A world map icon will appear in the upper right corner.
    <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/f21754ce-78e2-4e00-af45-41dc4ee3a2b9">
-IV. Click that icon to open a spread.gl page within the IDE, automatically populated with data from the spread layer. The environmental data from 'Environmental_data_layer.geojson' should also be imported in the opened spread.gl page and configured for ideal visualisation (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl').
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/664265dc-5964-49d2-ba91-329ca1061a84">
+   Click that icon to open a spread.gl page within the IDE, automatically populated with data from the spread layer.
+   The environmental data from 'Environmental_data_layer.geojson' should also be imported in the opened spread.gl page and configured for ideal visualisation
+   (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl').
+   As shown in the image below, you can choose between different base map styles, e.g. satellite imagery.
+   <img width="1387" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/c49497df-fdf4-413d-9483-615785cbda0f">
 
 
 https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
