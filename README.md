@@ -127,26 +127,37 @@ You should be able to get an output file of the environmental data layer, named 
 regions --data Environmental_variables.csv --locationColumn location --map China_map.geojson --locationVariable name --output Environmental_data_layer.geojson
 ```
 
-<!--3. We can now visualise the spread and environmental layers together in spread.gl using the steps explained above (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl'). If you would like to add a custom base map style, you need to first create a custom map style on Mapbox Studio (https://studio.mapbox.com). An official manual can be found via this link (https://docs.mapbox.com/studio-manual/guides). Once completed, open the Base Map panel, click the "Add Map Style" button to open the custom map style modal, paste in the mapbox style URL. Note that you need to paste in your mapbox access token if your style is not published.-->
-
-3. The current version of spread.gl does not readily offer the satellite map style due to a lack of support from MapLibre. Additionally, custom map styles are not yet available in this version. However, we here provide a workaround for users interested in visualising examples with satellite imagery in the Visual Studio Code, which is an entirely free IDE and can be obtained [here](https://code.visualstudio.com/).  
-   Upon starting the VS Code IDE, open the output file from step 1 on the welcome page.
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/44247dd9-fb27-4d1f-9ed4-79c45f2c83a2">
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/a3596f9e-4706-4476-9854-3d71ab3f7817">
-   Navigate to the 'Extensions: Marketplace' panel (on the left-hand side in VS Code) and search for the '[Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer)' extension.
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/2915ac6b-cfa8-46b7-a2b1-3f221c67b2ac">
-   Install and enable the extension following [this tutorial](https://code.visualstudio.com/learn/get-started/extensions).
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/1f5f1b5b-883d-4d17-a58b-d7e2f7356435">
-   Go back to the output file of the spread layer. A world map icon will appear in the upper right corner.
-   <img width="1024" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/f21754ce-78e2-4e00-af45-41dc4ee3a2b9">
-   Click that icon to open a spread.gl page within the IDE, automatically populated with data from the spread layer.
-   The environmental data from 'Environmental_data_layer.geojson' should also be imported in the opened spread.gl page and configured for ideal visualisation
-   (see Sections 'Visualising a (phylo)geographical spread layer in spread.gl' & 'Visualising an environmental data layer in spread.gl').
-   As shown in the image below, you can choose between different base map styles, e.g. satellite imagery.
-   <img width="1387" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/c49497df-fdf4-413d-9483-615785cbda0f">
 
 
-https://github.com/GuyBaele/SpreadGL/assets/1092968/4749d03b-71b1-43f9-a0c7-745acd69c91a
+
+### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
+1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
+As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
+```
+spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
+```
+
+2. Reproject coordinates.  
+Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84).  
+Use the following command to execute the 'reprojection.py' script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
+```
+reprojection --input B.1.1.7_England.single.tree.output.csv --lat start_lat,end_lat --lon start_lon,end_lon --source 27700 --target 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
+```
+
+3. Remove geographic outliers.  
+If you visualise the reprojected output file created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. "UTLA" (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is "NULL", that point will fall outside of England. Therefore, the corresponding row (branch) has to be removed.  
+Use the following command to execute the 'trimming.py' script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between, if needed), and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv'.
+```
+trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --foreignkey end_lat_original --referenced TreeTime_270221.csv --primarykey endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
+```
+
+4. Visualise the spatial layers in spread.gl.  
+Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
+
+
+https://github.com/GuyBaele/SpreadGL/assets/1092968/31b6076a-4ce4-4b4f-96f2-05210c6f7aeb
+
+
 
 
 ### Yellow fever virus (YFV) in Brazil
@@ -177,30 +188,5 @@ raster --data wc2.1_2.5m_tmax_2015-2019 --map geoBoundaries-BRA-ADM1.geojson --l
 https://github.com/GuyBaele/SpreadGL/assets/1092968/bfd2911f-e3a1-41c4-b8b2-2728b9d2ca0b
 
 
-### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
-1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
-As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
-```
-spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
-```
 
-2. Reproject coordinates.  
-Due to the original tree file using the British National Grid coordinate reference system (CRS), which is not supported in spread.gl, you need to perform an additional step (using the file 'B.1.1.7_England.single.tree.output.csv' created in step 2) to convert it to another CRS (i.e., the World Geodetic System 1984; WGS84).  
-Use the following command to execute the 'reprojection.py' script with 6 required arguments: input csv file, field names of source latitudes (comma separator in between), field names of source longitudes (comma separator in between), source CRS, target CRS and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.csv'.
-```
-reprojection --input B.1.1.7_England.single.tree.output.csv --lat start_lat,end_lat --lon start_lon,end_lon --source 27700 --target 4326 --output B.1.1.7_England.single.tree.output.reprojected.csv
-```
-
-3. Remove geographic outliers.  
-If you visualise the reprojected output file created in step 3, there will be many points that fall outside Endland. These outliers were caused by missing geographic data. To identify them, it becomes necessary to refer to a dataset file 'TreeTime_270221.csv', which is an analysis result from the original study (Kraemer et al.). This file contains the location information of each point, i.e. "UTLA" (Upper Tier Local Authorities in England). You will need to check if this value is empty or not. If it is "NULL", that point will fall outside of England. Therefore, the corresponding row (branch) has to be removed.  
-Use the following command to execute the 'trimming.py' script with 6 required arguments: input csv file, foreign key field name of input, reference csv file, foreign field name of reference, queried field(s) of reference (comma separator in between, if needed), and output csv file. When this step is done, there will be a new file called 'B.1.1.7_England.single.tree.output.reprojected.cleaned.csv'.
-```
-trimming --referencing B.1.1.7_England.single.tree.output.reprojected.csv --foreignkey end_lat_original --referenced TreeTime_270221.csv --primarykey endLat --null startUTLA,endUTLA --output B.1.1.7_England.single.tree.output.reprojected.cleaned.csv
-```
-
-4. Visualise the spatial layers in spread.gl.  
-Follow the previous steps to get different visuals of the spatial layers (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
-
-
-https://github.com/GuyBaele/SpreadGL/assets/1092968/31b6076a-4ce4-4b4f-96f2-05210c6f7aeb
 
