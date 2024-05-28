@@ -130,6 +130,12 @@ regions --data Environmental_variables.csv --locationColumn location --map China
 
 
 
+https://github.com/GuyBaele/SpreadGL/assets/1092968/b643e829-89e0-4b0c-8e74-c749913d7749
+
+
+
+
+
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
 As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
