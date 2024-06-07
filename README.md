@@ -1,37 +1,22 @@
 # spread.gl - visualising pathogen dispersal in a high-performance browser application
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
-## Installation
-Before starting, make sure you have already installed git v2.39.2, Node.js v21.1.0, Python v3.11 and pip v23.3.2 on your device. Using different versions of the above-mentioned tools does not guarantee a bug-free experience. We refer to the following links for installation instructions regarding these tools:  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
-https://nodejs.org/en/download/releases  
-https://www.python.org/downloads  
-https://pip.pypa.io/en/stable/installation/  
-
-1. Clone this GitHub repository in your working directory and use npm to install the web application. If you encounter authentication issues, check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
+## Dockerised Quick Installation
+Before starting, make sure you have already installed the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+1. Download the code base on the docker branch, unzip it and enter this folder.
+2. Open a terminal in this directory and execute the following command to pull and run the images:
 ```
-git clone https://github.com/GuyBaele/SpreadGL.git
-cd SpreadGL
-npm install --legacy-peer-deps --loglevel=error --no-audit
+docker-compose -f docker-compose.prod.yml up -d
 ```
-
-2. Start the spread.gl visualisation, which will open a browser window, as follows:
+3. After starting the services, open your preferred web browser and navigate to [the local host link](http://localhost:8080) to access the Spread.gl webpage.
+4. Back to the terminal window, run the following command to access the backend interactive session:
 ```
-npm start
+docker-compose -f docker-compose.prod.yml exec backend /bin/bash
 ```
-
-3. Open a new terminal in the SpreadGL directory. Install a tool to process data for your visualisation (additional information regarding the different scripts can be found in the README of the scripts directory):
+5. Check the instrucions to learn how to process the input data under the 'inputdata' folder:
 ```
-python3 -m venv .venv
-source .venv/bin/activate (Linux/Mac)
-.\.venv\Scripts\activate (Windows)
-cd scripts
-python3 setup.py install
+spread -h
 ```
-```python3 -m venv .venv```: create a virtual environment called ".venv";  
-```source .venv/bin/activate``` (for Linux/Mac) ```.\.venv\Scripts\activate``` (for Windows): activate the created virtual environment;  
-```cd scripts```: change the current directory to its subfolder called "scripts";  
-```python3 setup.py install```: install a command-line interface (CLI) tool for data processing to generate input files supported by spread.gl.
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
 Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
