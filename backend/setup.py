@@ -4,8 +4,8 @@ with open('requirements.txt') as f:
     requirements = f.readlines()
 
 setup(
-    name='processing_toolkit',
-    version='1.1.0',
+    name='backend_logic',
+    version='1.0.0',
     author='Yimin Li',
     author_email='florent.li@kuleuven.be',
     url='https://github.com/GuyBaele/SpreadGL',
