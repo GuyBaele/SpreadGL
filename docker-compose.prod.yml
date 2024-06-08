@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  frontend:
+    image: florentlee/spreadgl:FrontEndAppV1.0.0
+    ports:
+      - "8080:8080"
+    restart: always
+
+  backend:
+    image: florentlee/spreadgl:BackEndLogicV1.0.0
+    volumes:
+      - ./inputdata:/backend
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    restart: always
