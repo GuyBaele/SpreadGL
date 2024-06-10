@@ -8,12 +8,20 @@ Before starting, make sure you have already installed the latest version of [Doc
 ```
 docker-compose -f docker-compose.prod.yml up -d
 ```
-3. After starting the services, open your preferred web browser and navigate to [the local host link](http://localhost:8080) to access the Spread.gl webpage.
-4. Back to the terminal window, run the following command to access the backend interactive session:
+3. Open your preferred web browser and access the front-end webpage of Spread.gl via this link: http://localhost:8080.  
+In case you want to restart the 'frontend' service after exiting the container, go to the same directory in your terminal and run:
+```
+docker-compose -f docker-compose.prod.yml up -d frontend
+```
+4. Return to the terminal and run this command to start a backend interactive session:
 ```
 docker-compose -f docker-compose.prod.yml exec backend /bin/bash
 ```
-5. Check the instrucions to learn how to process the input data under the 'inputdata' folder:
+In case you want to restart the 'backend' service after exiting the container, go to the same directory in your terminal and run:
+```
+docker-compose -f docker-compose.prod.yml up -d backend
+```
+5. Check out our instructions and get familiar with how to handle input data under the 'inputdata' folder:
 ```
 spread -h
 ```
