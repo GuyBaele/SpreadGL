@@ -5,17 +5,20 @@ Main development repository and webpage for spread.gl, hosting installation file
 Before starting, make sure you have already installed the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 1. Download the code base on the docker branch, unzip it and enter this folder.
 2. Open a terminal in this directory and execute the following command to pull the images and run the container.  
-   To restart the container after exiting, rerun this command in the same directory.  
+   To restart the container after exiting, rerun this command in the terminal of the same directory.  
 ```
 docker-compose -f docker-compose.prod.yml up -d
 ```
-3. Access Spread.gl in your favourite web browser via a local host IP address: http://localhost:8080.  
-4. Return to the terminal and run this command below to start a backend interactive session.
+3. Access Spread.gl in your favourite web browser via a local host IP address: http://localhost:8080, or run:
+```
+open http://localhost:8080
+```
+4. Run this command to start a backend interactive session in the terminal of the same directory.
 ```
 docker-compose -f docker-compose.prod.yml exec backend /bin/bash
 ```
-The ‘inputdata’ folder is the default location for storing input data.  
-To mount a local directory on your hard drive into the container, replace '/YOUR/PATH/TO/INPUT/DATA' in the following command with your folder path and execute.
+The ‘inputdata’ folder is the default location to store all the input data files or subfolders.  
+If you need to mount a local directory on your hard drive into the container, replace '/YOUR/PATH/TO/INPUT/DATA' in the following command with your folder path and execute.
 ```
 docker run -it --name processing-my-data --volume /YOUR/PATH/TO/INPUT/DATA:/backend florentlee/spreadgl:BackEndLogicV1.0.0 /bin/bash
 ```
