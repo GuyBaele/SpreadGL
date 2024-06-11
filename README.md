@@ -13,12 +13,12 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 open http://localhost:8080
 ```
-4. Run this command to start a backend interactive session in the terminal of the same directory.
+4. The ‘inputdata’ folder is the default location to store all the input data files/subfolders.
+   If you prefer to store your data in this folder, run this command to start a backend interactive session in the terminal of the same directory.
 ```
 docker-compose -f docker-compose.prod.yml exec backend /bin/bash
 ```
-The ‘inputdata’ folder is the default location to store all the input data files or subfolders.  
-If you need to mount a local directory on your hard drive into the container, replace '/YOUR/PATH/TO/INPUT/DATA' in the following command with your folder path and execute.
+If you need to mount a local directory on your hard drive into the container, replace '/YOUR/PATH/TO/INPUT/DATA' in the following command with the absolute path to the folder of your choice, and then execute.
 ```
 docker run -it --name processing-my-data --volume /YOUR/PATH/TO/INPUT/DATA:/backend florentlee/spreadgl:BackEndLogicV1.0.0 /bin/bash
 ```
