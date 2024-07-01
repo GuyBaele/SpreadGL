@@ -21,7 +21,7 @@ docker-compose exec backend /bin/bash
 ```
 docker run -it --volume "/FOLDER/PATH/TO/INPUT/DATA":/backend florentlee/spread.gl.processing.toolkit:1.0.0 /bin/bash
 ```
-5. Run this command to learn how to process input data.
+5. Run this command and learn how to process input data.
 ```
 spread -h
 ```
