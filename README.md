@@ -4,8 +4,7 @@ Main development repository and webpage for spread.gl, hosting installation file
 ## Dockerised Quick Installation
 Before you start, please install the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 1. Download the codebase on the docker branch, unzip it and enter this folder.
-2. Open a terminal in this directory and execute the following command to pull images and set up a container for them.  
-   To restart the container after exiting, rerun this command in the terminal of the same directory.  
+2. Open a terminal in this directory and execute the following command to pull images and set up a container for them. To restart the container after exiting, rerun this command in the terminal of the same directory.  
 ```
 docker-compose up -d
 ```
