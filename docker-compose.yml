@@ -1,0 +1,15 @@
+services:
+  frontend:
+    image: florentlee/spread.gl.web.page:1.0.0
+    ports:
+      - "8080:8080"
+    restart: always
+
+  backend:
+    image: florentlee/spread.gl.processing.toolkit:1.0.0
+    volumes:
+      - ./inputdata:/backend
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    restart: always
