@@ -2,27 +2,26 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Dockerised Quick Installation
-Before starting, make sure you have already installed the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-1. Download the code base on the docker branch, unzip it and enter this folder.
-2. Open a terminal in this directory and execute the following command to pull the images and run the container.  
-   To restart the container after exiting, rerun this command in the terminal of the same directory.  
+Before you start, please install the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+1. Download the codebase on the docker branch, unzip it and enter this folder.
+2. Open a terminal in this directory and execute the following command to pull images and set up a container for them. To restart the container after exiting, rerun this command in the terminal of the same directory.  
 ```
-docker-compose -f docker-compose.prod.yml up -d
+docker-compose up -d
 ```
-3. Access Spread.gl in your favourite web browser via a local host IP address: http://localhost:8080, or run:
+3. Access the webpage of Spread.gl in your favourite browser via a local host IP address: http://localhost:8080, or run:
 ```
 open http://localhost:8080
 ```
 4. The ‘inputdata’ folder is the default location to store all the input data files/subfolders.
-   If you prefer to store your data in this folder, run this command to start a backend interactive session in the terminal of the same directory.
+   If you continue to save your data in this folder, run this command to start a backend interactive session in the terminal of the same directory.
 ```
-docker-compose -f docker-compose.prod.yml exec backend /bin/bash
+docker-compose exec backend /bin/bash
 ```
-If you need to mount a local directory on your hard drive into the container, replace '/YOUR/PATH/TO/INPUT/DATA' in the following command with the absolute path to the folder of your choice, and then execute.
+(Optional) If you need to mount a local directory on your hard drive into the container, replace the "/FOLDER/PATH/TO/INPUT/DATA" part with an absolute path to your preferred data folder, and then run:
 ```
-docker run -it --name processing-my-data --volume /YOUR/PATH/TO/INPUT/DATA:/backend florentlee/spreadgl:BackEndLogicV1.0.0 /bin/bash
+docker run -it --volume "/FOLDER/PATH/TO/INPUT/DATA":/backend florentlee/spread.gl.processing.toolkit:1.0.0 /bin/bash
 ```
-5. Run this command to learn how to process the input data.
+5. Run this command and learn how to process input data.
 ```
 spread -h
 ```
