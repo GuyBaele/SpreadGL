@@ -2,8 +2,8 @@
 Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
 
 ## Dockerised Quick Installation
-Before starting, make sure you have already installed the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-1. Download the code base on the docker branch, unzip it and enter this folder.
+Before you start, please install the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+1. Download the codebase on the docker branch, unzip it and enter this folder.
 2. Open a terminal in this directory and execute the following command to pull images and set up a container for them.  
    To restart the container after exiting, rerun this command in the terminal of the same directory.  
 ```
@@ -18,11 +18,11 @@ open http://localhost:8080
 ```
 docker-compose exec backend /bin/bash
 ```
-If you need to mount a local directory on your hard drive into the container, replace the part, '/YOUR/PATH/TO/INPUT/DATA', with an absolute path to your preferred folder, and then run this command.
+(Optional) If you need to mount a local directory on your hard drive into the container, replace the "/FOLDER/PATH/TO/INPUT/DATA" part with an absolute path to your preferred data folder, and then run:
 ```
-docker run -it --name personal-data-folder --volume '/YOUR/PATH/TO/INPUT/DATA':/backend florentlee/spread.gl.processing.toolkit:1.0.0 /bin/bash
+docker run -it --volume "/FOLDER/PATH/TO/INPUT/DATA":/backend florentlee/spread.gl.processing.toolkit:1.0.0 /bin/bash
 ```
-5. Run this command to learn how to process the input data.
+5. Run this command to learn how to process input data.
 ```
 spread -h
 ```
