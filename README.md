@@ -1,37 +1,26 @@
 # spread.gl - visualising pathogen dispersal in a high-performance browser application
-Main development repository and webpage for spread.gl, hosting installation files, input data files, example output and tutorials for several visualisation examples.
+This main development repository for spread.gl hosts installation files, input data files, output data files, output examples, and tutorials for several visualisation examples.
 
 ## Installation
-Before starting, make sure you have already installed git v2.39.2, Node.js v21.1.0, Python v3.11 and pip v23.3.2 on your device. Using different versions of the above-mentioned tools does not guarantee a bug-free experience. We refer to the following links for installation instructions regarding these tools:  
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
-https://nodejs.org/en/download/releases  
-https://www.python.org/downloads  
-https://pip.pypa.io/en/stable/installation/  
-
-1. Clone this GitHub repository in your working directory and use npm to install the web application. If you encounter authentication issues, check out the following link: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github 
-```
-git clone https://github.com/GuyBaele/SpreadGL.git
-cd SpreadGL
-npm install --legacy-peer-deps --loglevel=error --no-audit
-```
-
-2. Start the spread.gl visualisation, which will open a browser window, as follows:
-```
-npm start
-```
-
-3. Open a new terminal in the SpreadGL directory. Install a tool to process data for your visualisation (additional information regarding the different scripts can be found in the README of the scripts directory):
-```
-python3 -m venv .venv
-source .venv/bin/activate (Linux/Mac)
-.\.venv\Scripts\activate (Windows)
-cd scripts
-python3 setup.py install
-```
-```python3 -m venv .venv```: create a virtual environment called ".venv";  
-```source .venv/bin/activate``` (for Linux/Mac) ```.\.venv\Scripts\activate``` (for Windows): activate the created virtual environment;  
-```cd scripts```: change the current directory to its subfolder called "scripts";  
-```python3 setup.py install```: install a command-line interface (CLI) tool for data processing to generate input files supported by spread.gl.
+### spread.gl web app
+1. Download & install the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/).  
+2. Search for the 'spread.gl.web.page' image through Docker Desktop.  
+    <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/055ff60a-8be0-467f-b5be-98c344873e7a">
+3. Run this image in a new container with '8080' as the host port.
+   <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/74f2ddd6-2b0e-4aa6-9dbd-29386a712f9b">
+4. Open a browser and go to http://localhost:8080/.  
+5. Try spread.gl with the provided examples by loading a file from the 'outputdata' folder.
+   
+### data processing tool
+1. Download & install [Python v3.11](https://www.python.org/downloads/) & the latest version of [Git](https://git-scm.com/downloads).
+2. Open your terminal and run the following commands:  
+`git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer;  
+`cd SpreadGL/scripts` to change the working directory to the 'scripts' folder containing the relevant scripts;  
+`python3 -m venv .venv` to create a Python virtual environment called '.venv';  
+`source .venv/bin/activate` to activate the created virtual environment on **Mac**;  
+`.\.venv\Scripts\activate` to activate the created virtual environment on **Windows**;  
+`python3 setup.py install` to install our command-line data processing tool.
+3. Process the data and prepare the output files as described in the 'Animation examples in spread.gl' section.
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
 Once you have started spread.gl, you will see a world map in your browser window. To add your own visualisation, click the 'Add Data' button and import the file with extension '.output.geojson' via drag-and-drop (see the sections below for how to generate .geojson files for your own analysis). Then, you need to follow these steps to create different types of visuals:  
