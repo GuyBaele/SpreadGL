@@ -14,13 +14,13 @@ This main development repository for spread.gl hosts installation files, input d
 ### data processing tool
 1. Download & install [Python v3.11](https://www.python.org/downloads/) & the latest version of [Git](https://git-scm.com/downloads).
 2. Open your terminal and run the following commands:  
-`git clone https://github.com/GuyBaele/SpreadGL.git` to clone this GitHub repository in your current directory.  
-`cd SpreadGL` to change the working directory to 'SpreadGL';  
+`git clone https://github.com/GuyBaele/SpreadGL.git` to clone this GitHub repository to your local computer;  
+`cd SpreadGL` to change the working directory to the 'SpreadGL' folder;  
 `python3 -m venv .venv` to create a Python virtual environment called '.venv';  
 `source .venv/bin/activate` to activate the created virtual environment on **Mac**;  
 `.\.venv\Scripts\activate` to activate the created virtual environment on **Windows**;  
-`cd scripts` to change the working directory to 'scripts' which lists descriptions of involved scripts;   
-`python3 setup.py install` to install a command-line data processing tool.
+`cd scripts` to change the working directory to the 'scripts' folder which lists descriptions of involved scripts;   
+`python3 setup.py install` to install our command-line data processing tool.
 3. Process the data and prepare the output files as described in the 'Animation examples in spread.gl' section.
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
