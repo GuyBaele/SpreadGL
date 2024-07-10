@@ -10,12 +10,11 @@ def main():
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--log', '-lg', required=True,
                         help='Specify the input BEAST log file (.log).')
+    parser.add_argument("--burnin","-b",required=True,
+                        help="Set burn-in to determine how many sampled states should be discarded from the analysis. "
+                        'It can be a float denoting the percentage, e.g. "0.1", or an integer denoting the number of rows.',)  
     parser.add_argument('--location', '-lo', required=True,
-                        help='Type in the annotation that stores the location names in the MCC tree, e.g. "region".')
-    parser.add_argument('--burnin', '-b', required=True,
-                        help='Specify burn-in to set how many initial sampled values were discarded from the analysis. '
-                        'It should be smaller than 1 but not less than 0, e.g. "0.1" should be sufficient for most analyses. '
-                        'You can also specify it by using the number of rows, which should be a valid integer in this case.')   
+                        help='Speficy the name of the location trait, e.g."region", "state", etc.') 
     parser.add_argument('--list', '-li', required=True,
                         help='Use the same location list from your discrete analysis as an input (.csv).')
     parser.add_argument('--layer', '-la',
@@ -24,8 +23,8 @@ def main():
 
     args = parser.parse_args()
     log = str(args.log)
-    location = str(args.location)
     burnin = float(args.burnin)
+    location = str(args.location)
     list = str(args.list)
     layer = str(args.layer)
 
