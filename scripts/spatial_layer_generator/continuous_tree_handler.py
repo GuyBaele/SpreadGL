@@ -33,11 +33,11 @@ def handle_continuous_tree(tree_path, most_recent_tip, location):
 
 
 def get_most_recent_tip_time(most_recent_tip):
-    if isinstance(most_recent_tip, str):
+    if float(most_recent_tip):
+        return float(most_recent_tip)
+    else:
         most_recent_tip_date = convert_datetext_to_datetime(most_recent_tip)
         return convert_datetime_to_decimal_year(most_recent_tip_date)
-    elif isinstance(most_recent_tip, float):
-        return most_recent_tip
 
 
 def process_edge(edge, most_recent_tip_time, delimiter, id):
@@ -86,8 +86,12 @@ def get_leaf_times(node, most_recent_tip_time, branch_length, delimiter):
     if no_height:
         label = node.taxon.label
         name_elements = re.split(delimiter, label)
-        ending_date = convert_datetext_to_datetime(name_elements[-1])
-        ending_time = convert_datetime_to_decimal_year(ending_date)
+        time_element = name_elements[-1]
+        if float(time_element):
+            ending_time = float(time_element)
+        else:
+            ending_date = convert_datetext_to_datetime(time_element)
+            ending_time = convert_datetime_to_decimal_year(ending_date)
         starting_time = ending_time - branch_length
     
     return ending_time, starting_time
