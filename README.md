@@ -69,7 +69,7 @@ If you have a BEAST log file with rate indicators as a result of the Bayesian st
 --layer: OPTIONAL; To combine the spread layer with Bayes factors, use the output from step 1 as input (.csv).  
 The test result will be saved as 'Bayes.factor.test.result.csv'. If you specify the "layer" argument, a combined output file called 'Bayes.factors.added.A.27_worldwide.MCC.tree.output.csv' will be generated for visualisation.
 ```
-rates --log A.27_worldwide.BEAST.log --location region --burnin 0.1 --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
+rates --log A.27_worldwide.BEAST.log --burnin 0.1 --location region --list A.27_worldwide_location_list.csv --layer A.27_worldwide.MCC.tree.output.csv
 ```
 
 4. Set a filter with Bayes factors in visualisation.  
