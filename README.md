@@ -42,7 +42,7 @@ In the 'inputdata' folder, you can find most of the required input files (exclud
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
 
 1. We first need to process the MCC tree file using the "spread" command, which takes the following arguments:  
---tree: Specify the filename (with an extension) of your input tree file.  
+--tree: Specify the filename (with extension) of your input tree file.  
 --time: Enter the date of the most recent tip. It can be either a formatted date or a decimal year. In this case, it is "2021-06-01".  
 --format: This OPTIONAL argument specifies the date format found at the end of phylogenetic tree taxa names. The default format is "YYYY-MM-DD". It also supports "DD-MM-YYYY". In this case, we don't need to specify it explicitly.  
 --location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
