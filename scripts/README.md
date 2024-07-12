@@ -55,14 +55,20 @@ optional arguments:
                         Specify the name of your input tree file with filename extension.
   --time TIME, -ti TIME
                         Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.
+  --format {YYYY-MM-DD,DD-MM-YYYY}, -f {YYYY-MM-DD,DD-MM-YYYY}
+                        This OPTIONAL argument specifies the date format found at the end of phylogenetic tree taxa names. The
+                        default format is "YYYY-MM-DD". It also supports "DD-MM-YYYY".
   --location LOCATION, -lo LOCATION
-                        Type in the annotation that stores the location information (names or coordinates). If there are two annotations to store coordinates,
-                        enter them in the order of latitude and longitude with a comma separator.
+                        Type in the annotation that stores the location information (names or coordinates). If there are two
+                        annotations to store coordinates, enter them in the order of latitude and longitude with a comma
+                        separator.
   --list LIST, -li LIST
-                        Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the
-                        csv format with a comma (",") separator, and comprised of three columns with a specific header of "location,latitude,longitude".
-  --format {csv}, -f {csv}
-                        It is optional. If you want to check the output in a table, use "csv" in this argument.
+                        Only compulsory for discrete space analysis. Use a location list with its filename extension as an input.
+                        This file should be in the csv format with a comma (",") separator, and comprised of three columns with a
+                        specific header of "location,latitude,longitude".
+  --extension {geojson,csv}, -e {geojson,csv}
+                        This OPTIONAL argument specifies the output file extension. The default extension is "geojson". It also
+                        supports "csv" to generate a table (without HPD polygons in case of continuous phylogeographic diffusion).
 ```
 
 ```
