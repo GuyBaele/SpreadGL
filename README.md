@@ -41,17 +41,17 @@ In the 'inputdata' folder, you can find most of the required input files (exclud
 ### SARS-CoV-2 lineage A.27 Worldwide
 We here visualise one of the discrete phylogeographic analyses from Kaleta et al. (2022) [Antibody escape and global spread of SARS-CoV-2 lineage A.27](https://www.nature.com/articles/s41467-022-28766-y). We here list the steps to follow in spread.gl:  
 
-1. We first need to process the MCC tree file using the "spread" command, which takes the following 4 arguments:  
---tree: Specify the name of your input tree file with filename extension.  
---time: Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.  
-  In this case, it is "2021-06-01".  
---location: Type in the annotation that stores the location information (names or coordinates).  
-  In this case, the "region" annotation stores the names of regions and countries.  
+1. We first need to process the MCC tree file using the "spread" command, which takes the following arguments:  
+--tree: Specify the filename (with an extension) of your input tree file.  
+--time: Enter the date of the most recent tip. It can be either a formatted date or a decimal year. In this case, it is "2021-06-01".  
+--format: This OPTIONAL argument specifies the date format found at the end of phylogenetic tree taxa names. The default format is "YYYY-MM-DD". It also supports "DD-MM-YYYY". In this case, we don't need to specify it explicitly.  
+--location: Type in the annotation that stores the location information (names or coordinates). In this case, the "region" annotation stores the names of regions and countries.  
 --list: Only compulsory for discrete space analysis. Use a location list with its filename extension as an input. This file should be in the csv format with a comma (",") separator and comprised of three columns with a specific header of "location,latitude,longitude".  
---format: It is optional as the default format is GeoJSON. However, if you want to inspect the output in a table, you should type in "csv".  
+--extension: This OPTIONAL argument specifies the output file extension. The default extension is "geojson". In this case, we should choose "csv" to generate a table. So that the Bayes factors can be easily added later.  
+    
 When this processing step is done, you will see an output file of the spread layer called 'A.27_worldwide.MCC.tree.output.csv'.
 ```
-spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27_worldwide_location_list.csv --format csv
+spread --tree A.27_worldwide.MCC.tree --time 2021-06-01 --location region --list A.27_worldwide_location_list.csv --extension csv
 ```
 
 2. We can now visualise the spread layer in spread.gl using the steps explained above (see Section 'Visualising a (phylo)geographical spread layer in spread.gl').
@@ -127,9 +127,9 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/b643e829-89e0-4b0c-8e74-c749
 
 ### SARS-CoV-2 lineage B.1.1.7 (VOC Alpha) in England
 1. Process the single tree file using the command below. This step works in the same way as the RABV example.  
-As we need tabular data for further data wrangling, do not forget to add the argument of "--format csv".  
+As we need tabular data for further data wrangling, do not forget to add the argument of "--extension csv".  
 ```
-spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --format csv
+spread --tree B.1.1.7_England.single.tree --time 2021-01-12 --location coordinates --extension csv
 ```
 
 2. Reproject coordinates.  
@@ -156,8 +156,7 @@ https://github.com/GuyBaele/SpreadGL/assets/1092968/31b6076a-4ce4-4b4f-96f2-0521
 
 
 ### Yellow fever virus (YFV) in Brazil
-1. Process the MCC tree file using the command below. This step works in the same way as the RABV example.  
-As the tree annotations include the information about regions of highest posterior density (HPD), the relevant data will be saved in the output GeoJSON file automatically.
+1. Process the MCC tree file using the command below. This step works in the same way as the RABV example. Data for the 80% highest posterior density (HPD) regions should be extracted from the tree annotations and stored in the GeoJSON output file.  
 ```
 spread --tree YFV.MCC.tree --time 2019-04-16 --location location1,location2
 ```
