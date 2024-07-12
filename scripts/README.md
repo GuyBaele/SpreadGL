@@ -52,7 +52,7 @@ Welcome to the spatial layer generator! You can create a spatial layer for a phy
 optional arguments:
   -h, --help            show this help message and exit
   --tree TREE, -tr TREE
-                        Specify the name of your input tree file with filename extension.
+                        Specify the filename (with extension) of your input tree file.
   --time TIME, -ti TIME
                         Enter the date of the most recent tip. It can be either a formatted date or a decimal year.
   --format {YYYY-MM-DD,DD-MM-YYYY}, -f {YYYY-MM-DD,DD-MM-YYYY}
