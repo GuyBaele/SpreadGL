@@ -54,7 +54,7 @@ optional arguments:
   --tree TREE, -tr TREE
                         Specify the name of your input tree file with filename extension.
   --time TIME, -ti TIME
-                        Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.
+                        Enter the date of the most recent tip. It can be either a formatted date or a decimal year.
   --format {YYYY-MM-DD,DD-MM-YYYY}, -f {YYYY-MM-DD,DD-MM-YYYY}
                         This OPTIONAL argument specifies the date format found at the end of phylogenetic tree taxa names. The
                         default format is "YYYY-MM-DD". It also supports "DD-MM-YYYY".
