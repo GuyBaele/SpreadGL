@@ -3,32 +3,37 @@ from datetime import timedelta as td
 import time
 
 
-def convert_datetext_to_datetime(text):
+def convert_datetext_to_datetime(text, format='YYYY-MM-DD'):
     year = None
     month = None
     day = None
     # Split text by '-'
     parts = text.split("-")
-    # Extract year, month and day values
-    if len(parts) >= 1:
-        year = int(parts[0])
-    if len(parts) >= 2:
-        month = int(parts[1])
-    if len(parts) == 3:
-        day = int(parts[2])
-    # If month or day is missing, assume middle of that month or day
+
+    # Extract year, month and day values based on the specified format
+    if format == 'YYYY-MM-DD':
+        if len(parts) >= 1:
+            year = int(parts[0])
+        if len(parts) >= 2:
+            month = int(parts[1])
+        if len(parts) == 3:
+            day = int(parts[2])
+    elif format == 'DD-MM-YYYY':
+        if len(parts) >= 1:
+            day = int(parts[0])
+        if len(parts) >= 2:
+            month = int(parts[1])
+        if len(parts) == 3:
+            year = int(parts[2])
+    else:
+        raise ValueError("Unsupported date format!")
+    
+    # If month or day is missing, assume first of that month or day
     if month is None:
-        month = 7
+        month = 1
     if day is None:
-        days_in_month = 31
-        if month in [4, 6, 9, 11]:
-            days_in_month = 30
-        elif month == 2:
-            if year is None or (year % 4 != 0 or (year % 100 == 0 and year % 400 != 0)):
-                days_in_month = 28
-            else:
-                days_in_month = 29
-        day = (days_in_month + 1) // 2
+        day = 1
+        
     # Convert to datetime object
     dt_obj = dt(year=year, month=month, day=day, hour=12, minute=0, second=0)
     return dt_obj
