@@ -7,9 +7,9 @@ def main():
     welcome = "Welcome to the spatial layer generator! You can create a spatial layer for a phylogenetic tree to display in Spread.gl."
     parser = argparse.ArgumentParser(description=welcome)
     parser.add_argument('--tree', '-tr', required=True,
-                        help='Specify the name of your input tree file with filename extension.')
+                        help='Specify the filename (with extension) of your input tree file.')
     parser.add_argument('--time', '-ti', required=True,
-                        help='Enter the date of the most recent tip. It can be either in the format of YYYY-MM-DD or decimal year.')
+                        help='Enter the date of the most recent tip. It can be either a formatted date or a decimal year.')
     parser.add_argument('--format', '-f',  choices=['YYYY-MM-DD', 'DD-MM-YYYY'], default='YYYY-MM-DD',
                         help='This OPTIONAL argument specifies the date format found at the end of phylogenetic tree taxa names. '
                              'The default format is "YYYY-MM-DD". It also supports "DD-MM-YYYY".')
