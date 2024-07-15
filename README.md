@@ -23,14 +23,14 @@ This main development repository for spread.gl hosts installation files, input d
 3. You should now be able to process your own data for visualisation in spread.gl (but see the next sections).
 
 ### test the spread.gl installation
-We provide readily made output files (as generated from the data examples below) in the 'outputdata' folder, which you downloaded in the previous step.
+1. We provide readily made output files (as generated from the data examples below) in the 'outputdata' folder, which you downloaded in the previous step.
 To test spread.gl, you can - for example - drag & drop the file 'Rabies_virus_RABV_in_the_United_States/RABV_US1_gamma_MCC.tree.output.geojson' into the 'Add Data To Map' window that's currently open in your browser.
 You should see the following visualisation in your browser:
 <img width="2558" alt="RABV_USA_spreadgl" src="https://github.com/user-attachments/assets/01119f87-d775-4929-8660-1c03c06ff690">
-
- 
- and prepare the output files as described in the 'Animation examples in spread.gl' section.
-
+2. Play around with the visualisation to explore its features. You can - for example - click the eye symbol to also show the 'end' and the 'start -> end arc' layers, which will show a more phylogeny-like visualisation:
+<img width="2554" alt="end_arcs_spreadgl" src="https://github.com/user-attachments/assets/7d6272ec-cb90-4b7e-8329-3aa77326007f">
+3. Set up a filter by clicking on the funnel symbol (but see below for more detailed instructions on how to do so), in order to enable animated visualisations in spread.gl.
+4. Now that you have tested your spread.gl installation, you can prepare the output files as described in the 'Animation examples in spread.gl' section below to become familiar with the different processing steps within spread.gl.
 
 
 ## Visualising a (phylo)geographical spread layer in spread.gl
