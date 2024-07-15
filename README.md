@@ -25,7 +25,7 @@ This main development repository for spread.gl hosts installation files, input d
 ### test the spread.gl installation
 1. We provide readily made output files (as generated from the data examples below) in the 'outputdata' folder, which you downloaded in the previous step.
 To test spread.gl, you can - for example - drag & drop the file 'Rabies_virus_RABV_in_the_United_States/RABV_US1_gamma_MCC.tree.output.geojson' into the 'Add Data To Map' window that's currently open in your browser.
-You should see the following visualisation in your browser:
+You should see the following visualisation in your browser (when running in dark mode):
     <img width="2558" alt="RABV_USA_spreadgl" src="https://github.com/user-attachments/assets/01119f87-d775-4929-8660-1c03c06ff690">
 2. Play around with the visualisation to explore its features. You can - for example - click the eye symbol to also show the 'end' and the 'start -> end arc' layers, which will show a more phylogeny-like visualisation:
     <img width="2554" alt="end_arcs_spreadgl" src="https://github.com/user-attachments/assets/7d6272ec-cb90-4b7e-8329-3aa77326007f">
