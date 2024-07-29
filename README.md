@@ -16,7 +16,7 @@ This main development repository for spread.gl hosts installation files, input d
 2. Open a terminal on your computer and run the following commands:  
 `git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer;  
 `cd SpreadGL` to enter the cloned 'SpreadGL' directory;  
-`python3.11 -m venv .venv` to create a Python 3.11 virtual environment called '.venv';  
+`python3.11 -m venv .venv` to create a Python v3.11 virtual environment called '.venv';  
 `source .venv/bin/activate` to activate the created virtual environment on **Mac**;  
 `.\.venv\Scripts\activate` to activate the created virtual environment on **Windows**;  
 `cd scripts` to change the working directory to the 'scripts' folder containing the relevant scripts;  
