@@ -21,7 +21,7 @@ This main development repository for spread.gl hosts installation files, input d
 `.\.venv\Scripts\activate` to activate the created virtual environment on **Windows**;  
 `cd scripts` to change the working directory to the 'scripts' folder containing the relevant scripts;  
 `pip install .` to install our command-line data processing tools.
-4. You should now be able to process your own data for visualisation in spread.gl (but see the next sections).
+3. You should now be able to process your own data for visualisation in spread.gl (but see the next sections).
 
 ### test the spread.gl installation
 1. We provide readily made output files (as generated from the data examples below) in the 'outputdata' folder, which you downloaded in the previous step.
