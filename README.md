@@ -15,12 +15,13 @@ This main development repository for spread.gl hosts installation files, input d
 1. Download & install [Python v3.11](https://www.python.org/downloads/) & the latest version of [Git](https://git-scm.com/downloads).
 2. Open a terminal on your computer and run the following commands:  
 `git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer;  
-`cd SpreadGL/scripts` to change the working directory to the 'scripts' folder containing the relevant scripts;  
-`python3 -m venv .venv` to create a Python virtual environment called '.venv';  
+`cd SpreadGL` to enter the cloned 'SpreadGL' directory;  
+`python3.11 -m venv .venv` to create a Python 3.11 virtual environment called '.venv';  
 `source .venv/bin/activate` to activate the created virtual environment on **Mac**;  
 `.\.venv\Scripts\activate` to activate the created virtual environment on **Windows**;  
-`python3 setup.py install` to install our command-line data processing tools.
-3. You should now be able to process your own data for visualisation in spread.gl (but see the next sections).
+`cd scripts` to change the working directory to the 'scripts' folder containing the relevant scripts;  
+`pip install .` to install our command-line data processing tools.
+4. You should now be able to process your own data for visualisation in spread.gl (but see the next sections).
 
 ### test the spread.gl installation
 1. We provide readily made output files (as generated from the data examples below) in the 'outputdata' folder, which you downloaded in the previous step.
