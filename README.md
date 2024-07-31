@@ -9,7 +9,7 @@ This main development repository for spread.gl hosts installation files, input d
     <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/055ff60a-8be0-467f-b5be-98c344873e7a">
 3. 'Run' the spread.gl image. A pop-up window will appear that allows you to define Optional Settings. Go into these settings and enter '8080' as the host port; there is no need to alter any other settings. Click 'Run' and wait until the Logs window shows 'Compiled successfully', this should take roughly 10 seconds.
    <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/74f2ddd6-2b0e-4aa6-9dbd-29386a712f9b">
-4. Open a browser and go to http://localhost:8080/ to load the spread.gl page; you should see the following page in your browser:
+4. Open a browser and go to http://localhost:8080/ to load the spread.gl page (on Windows computers, we advise to use Firefox or Edge). You should see the following page in your browser:
     ![browser](https://github.com/user-attachments/assets/310e6b63-a8a8-4a15-a01b-1b77041ca66e)
    
 ### data processing tools
