@@ -13,7 +13,7 @@ This main development repository for spread.gl hosts installation files, input d
     ![browser](https://github.com/user-attachments/assets/310e6b63-a8a8-4a15-a01b-1b77041ca66e)
    
 ### data processing tools
-1. Download & install [Python v3.11](https://www.python.org/downloads/). Download & install the latest version of [Git](https://git-scm.com/downloads) for command-line use, or [GitHub Desktop](https://github.com/apps/desktop) if you prefer a graphical user interface to clone our spread.gl repository (see the next step).
+1. Download & install [Python v3.11](https://www.python.org/downloads/). Note that using a more recent Python version can lead to important changes in how to install our provided data processing tools (check [here](python3.12.4/) for instructions). Download & install the latest version of [Git](https://git-scm.com/downloads) for command-line use, or [GitHub Desktop](https://github.com/apps/desktop) if you prefer a graphical user interface to clone our spread.gl repository (see the next step).
 2. Open a terminal on your computer and run the following commands:  
 `git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer; or browse to [the spread.gl GitHub repository](https://github.com/GuyBaele/SpreadGL), click '<> Code ▼' and select 'Open with GitHub Desktop' if you chose to use GitHub Desktop in the previous step;  
 `cd SpreadGL` to enter the cloned 'SpreadGL' directory;  
