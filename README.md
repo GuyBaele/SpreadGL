@@ -5,7 +5,7 @@ This main development repository for spread.gl hosts installation files, input d
 ### spread.gl web app
 1. Download & install the latest version of [Docker Desktop](https://www.docker.com/products/docker-desktop/). Different platforms and chipsets are supported.
     <img width="617" alt="dockerdownloads" src="https://github.com/user-attachments/assets/747cd67f-a0f0-4f4f-825c-85019363cfb0">
-2. Search for the 'spread.gl.web.page' image through Docker Desktop. You can choose to either 'Pull' or 'Run' the image (select 'Pull' if you don't want to start working with spread.gl immediately). This should take less than a minute to complete.
+2. Search for the 'spread.gl.web.page' image (or 'florentlee/spread.gl.web.page') through Docker Desktop. You can choose to either 'Pull' or 'Run' the image (select 'Pull' if you don't want to start working with spread.gl immediately). This should take less than a minute to complete.
     <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/055ff60a-8be0-467f-b5be-98c344873e7a">
 3. 'Run' the spread.gl image. A pop-up window will appear that allows you to define Optional Settings. Go into these settings and enter '8080' as the host port; there is no need to alter any other settings. Click 'Run' and wait until the Logs window shows 'Compiled successfully', this should take roughly 10 seconds.
    <img width="992" alt="image" src="https://github.com/FlorentLee/SpreadGL/assets/74751786/74f2ddd6-2b0e-4aa6-9dbd-29386a712f9b">
