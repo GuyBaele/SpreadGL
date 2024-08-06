@@ -1,7 +1,7 @@
 ### data processing tools using python3.12.4 on Mac OS Sonoma 14.5 (July 31st, 2024)
-1. Download & install [Python v3.12.4](https://www.python.org/downloads/). Download & install the latest version of [Git](https://git-scm.com/downloads) for command-line $
+1. Download & install [Python v3.12.4](https://www.python.org/downloads/). Download & install the latest version of [Git](https://git-scm.com/downloads) for command-line use, or [GitHub Desktop](https://github.com/apps/desktop) if you prefer a graphical user interface to clone our spread.gl repository (see the next step).
 2. Open a terminal on your computer and run the following commands:
-`git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer; or browse to [the spread.gl GitHub repository](https://github.com/Gu$
+`git clone https://github.com/GuyBaele/SpreadGL.git` to clone this repository to your local computer; or browse to [the spread.gl GitHub repository](https://github.com/GuyBaele/SpreadGL), click '<> Code ▼' and select 'Open with GitHub Desktop' if you chose to use GitHub Desktop in the previous step;
 `cd SpreadGL` to enter the cloned 'SpreadGL' directory;
 `python3.12 -m venv .venv` to create a Python v3.12 virtual environment called '.venv';
 `source .venv/bin/activate` to activate the created virtual environment;
