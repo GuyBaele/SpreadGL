@@ -1,7 +1,16 @@
+import os
 from setuptools import find_packages, setup
 
 with open('requirements.txt') as f:
     requirements = f.readlines()
+
+# Check if conda is installed
+conda_env = os.environ.get('CONDA_PREFIX') or os.environ.get('CONDA_DEFAULT_ENV')
+
+if conda_env:
+    print(f"Conda environment detected: {conda_env}.\nMake sure dependencies were installed using conda.")
+else:
+    print("No conda environment detected. Using system Python.\nDependencies will be installed using pip.")
 
 setup(
     name='processing_toolkit',
@@ -21,5 +30,5 @@ setup(
             ]},
     include_package_data=True,
     zip_safe=False,
-    install_requires=requirements
+    install_requires=requirements if not conda_env else []
 )
