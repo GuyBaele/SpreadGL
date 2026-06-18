@@ -46,6 +46,31 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # A single, clean push of the entire repository to your main Hugging Face Space
-          git remote add hf https://florentlee98:${HF_TOKEN}@huggingface.co/spaces/FlorentLee98/SpreadGL
-          git push hf HEAD:main -f
+          # 1. Remove large demo directories and files not needed for the live app
+          rm -rf inputdata/ outputdata/ videos/ html/
+          
+          # 2. Re-initialize a fresh git repo to wipe out any large files in the history
+          rm -rf .git
+          git init
+          git config --global user.email "deploy-bot@spread.gl"
+          git config --global user.name "SpreadGL Deploy Bot"
+          git checkout -b main
+          
+          # 3. Setup Git LFS for binary files (Images, Icons, Fonts)
+          git lfs install
+          git lfs track "*.png"
+          git lfs track "*.jpg"
+          git lfs track "*.jpeg"
+          git lfs track "*.gif"
+          git lfs track "*.ico"
+          git lfs track "*.woff"
+          git lfs track "*.woff2"
+          git add .gitattributes
+          
+          # 4. Add the clean files and commit
+          git add .
+          git commit -m "Clean deployment snapshot to Hugging Face"
+          
+          # 5. Push to Hugging Face (Force push to overwrite the Space)
+          git remote add hf https://florentlee:${HF_TOKEN}@huggingface.co/spaces/FlorentLee98/SpreadGL
+          git push hf main -f
