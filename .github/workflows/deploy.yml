@@ -32,6 +32,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./backend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: florentlee/spread.gl.processing.toolkit:2.0-beta
 
@@ -39,6 +40,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: florentlee/spread.gl.web.page:2.0-beta
 
