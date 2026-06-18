@@ -18,11 +18,7 @@ spread.gl is designed with a **privacy-first architecture**.
 
 Unlike conventional web visualization tools that upload your sequences to third-party cloud servers, spread.gl processes and renders all datasets locally. This relieves all security and compliance concerns regarding sensitive, unpublished molecular epidemiology sequences during active outbreaks.
 
-### 🌐 Live Hugging Face Demo
-For instant evaluation without any local installation, users can immediately test the platform via our official Hugging Face Space. All processing remains isolated within your browser session:
-👉 **[Hugging Face Space Live Demo](https://huggingface.co/spaces/FlorentLee98/SpreadGL)**
-
-### 🚀 Quick Start (Local Docker Sandbox)
+### 🚀 Quick Start in Local Docker Sandbox
 The most secure and reliable way to run spread.gl locally—without installing Python, Node.js, or compiling dependencies—is using Docker.
 
 **Step 1: Install Docker**
@@ -36,7 +32,9 @@ docker run -d -p 8000:7860 --name spreadgl_backend florentlee/spread.gl.processi
 
 **Step 3: Start the Frontend (Visualization)**
 Run the following command to launch the browser-based visualization environment:
-`docker run -d -p 3000:7860 --name spreadgl_frontend florentlee/spread.gl.web.page:2.0-beta`
+```bash
+docker run -d -p 3000:7860 --name spreadgl_frontend florentlee/spread.gl.web.page:2.0-beta
+```
 
 **Step 4: Launch the App**
 Open your web browser and navigate to: **http://localhost:3000**
