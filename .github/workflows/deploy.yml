@@ -46,5 +46,5 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           # A single, clean push of the entire repository to your main Hugging Face Space
-          git remote add hf https://florentlee:${HF_TOKEN}@huggingface.co/spaces/FlorentLee/SpreadGL
+          git remote add hf https://florentlee98:${HF_TOKEN}@huggingface.co/spaces/FlorentLee98/SpreadGL
           git push hf HEAD:main -f
