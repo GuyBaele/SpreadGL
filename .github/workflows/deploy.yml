@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-      - v2.0-beta
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - '.github/workflows/deploy.yml'
 
 jobs:
   build-and-deploy:
@@ -32,17 +35,21 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./backend
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: florentlee/spread.gl.processing.toolkit:2.0-beta
+          cache-from: type=gha
+          cache-to: type=gha,mode=max      
 
       - name: Build and Push Frontend Web Application
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: florentlee/spread.gl.web.page:2.0-beta
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Deploy Unified App to Hugging Face Space
         env:
