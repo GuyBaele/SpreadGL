@@ -12,7 +12,7 @@
 
 ---
 
-## 🔒 Data Privacy & Live Demo
+## 🔐 Data Privacy & Live Demo
 
 spread.gl is designed with a **privacy-first architecture**. 
 
