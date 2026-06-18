@@ -12,28 +12,34 @@
 
 ---
 
-## 🔐 Data Privacy & Live Demo
+## 🔐 Data Privacy & Deployment Options
 
 spread.gl is designed with a **privacy-first architecture**. 
 
-Unlike conventional web visualization tools that upload your sequences to third-party cloud servers, spread.gl processes and renders all datasets locally. This relieves all security and compliance concerns regarding sensitive, unpublished molecular epidemiology sequences.
+Unlike conventional web visualization tools that upload your sequences to third-party cloud servers, spread.gl processes and renders all datasets locally. This relieves all security and compliance concerns regarding sensitive, unpublished molecular epidemiology sequences during active outbreaks.
 
 ### 🌐 Live Hugging Face Demo
 For instant evaluation without any local installation, users can immediately test the platform via our official Hugging Face Space. All processing remains isolated within your browser session:
 👉 **[Hugging Face Space Live Demo](https://huggingface.co/spaces/FlorentLee98/SpreadGL)**
 
-### 📦 Local Running Options (Docker Hub)
-For full privacy-sandbox isolation, you can pull the official, production-ready container images directly from Docker Hub and run them locally:
+### 🚀 Quick Start (Local Docker Sandbox)
+The most secure and reliable way to run spread.gl locally—without installing Python, Node.js, or compiling dependencies—is using Docker.
 
+**Step 1: Install Docker**
+Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your operating system (Mac, Windows, or Linux). Ensure the Docker application is open and running in the background.
+
+**Step 2: Start the Processing Engine (Backend)**
+Open your terminal (or Command Prompt) and run the following command to download and start the data extraction toolkit. This engine handles the parsing of BEAST log files and Bayes Factor computations.
 ```bash
-# Pull and run the backend processing toolkit
-docker run -d -p 8000:8000 florentlee/spread.gl.processing.toolkit:v2.0-beta
-
-# Pull and run the frontend web application
-docker run -d -p 8080:80 florentlee/spread.gl.web.page:v2.0-beta
+docker run -d -p 8000:7860 --name spreadgl_backend florentlee/spread.gl.processing.toolkit:2.0-beta
 ```
 
-Alternatively, you can run a **Local Python/Node Dev Server** serving from the source code directly on your local network.
+**Step 3: Start the Frontend (Visualization)**
+Run the following command to launch the browser-based visualization environment:
+`docker run -d -p 3000:7860 --name spreadgl_frontend florentlee/spread.gl.web.page:2.0-beta`
+
+**Step 4: Launch the App**
+Open your web browser and navigate to: **http://localhost:3000**
 
 ---
 
@@ -94,12 +100,12 @@ The **Map** view launches the interactive, GPU-accelerated map engine.
 
 ### 2. Configuring Geo-Contextual Data Layers
 To overlay climate grid cells or demographic polygons onto your dispersal map:
-* **For Regional Polygons (e.g., PEDV in China)**:
+* **For Regional Polygons (e.g., PEDV example discussed in spread.gl v1.0)**:
   1. Set **Environmental Type** to `Regions`.
   2. Upload your environmental spreadsheet (`Environmental_variables.csv`).
   3. Upload your map boundary file (`China_map.geojson`).
   4. Specify the **Location Column** inside the CSV (e.g., `location`) and the **Location Variable** property inside the GeoJSON (e.g., `name`).
-* **For Raster Grids (e.g., Climate Rasters)**:
+* **For Raster Grids (e.g., Climate Rasters used in YFV example)**:
   1. Set **Environmental Type** to `Rasters`.
   2. Upload one or more `.tif` files.
   3. Upload the geographic mask boundaries (`geoBoundaries-BRA-ADM1.geojson`).
@@ -111,41 +117,6 @@ In discrete phylogeographic studies, many migration routes are tested, but only 
 2. The default threshold is `3.0` (indicating positive support).
 3. Slide the value **higher** (e.g., `10.0` for strong support, or `30.0` for very strong support) to filter out support paths.
 4. The map will instantly update, hiding weaker routes and adjusting the width of the remaining arcs based on their **jump weights** (number of estimated transitions).
-
----
-
-## 🛠️ Developer Setup & Deployment Guide
-
-### Local Development
-To run the decoupled backend and frontend locally:
-
-1. **Activate Virtual Environment & Run Backend**:
-   ```bash
-   cd backend
-   python -m venv .venv
-   source .venv/bin/activate
-   pip install -r requirements.txt
-   pip install -e .
-   uvicorn main:app --host 0.0.0.0 --port 8000
-   ```
-
-2. **Run Frontend**:
-   ```bash
-   cd frontend
-   npm install --legacy-peer-deps
-   npm start
-   ```
-   Open [http://localhost:8080](http://localhost:8080) in your browser.
-
-### Cloud Deployment (Hugging Face Spaces)
-The project is configured to run on Hugging Face Spaces using the Docker runtime under a split architecture:
-
-* **Frontend Space**: Hosts the static web app compiled via Nginx.
-  * Target Space: `florentlee/SpreadGLWebSite`
-* **Backend Space**: Hosts the FastAPI server handling DendroPy computations.
-  * Target Space: `florentlee/SpreadGLBackEnd`
-
-*Both directories contain production-ready Dockerfiles configured to listen on port 7860 as required by Hugging Face.*
 
 ---
 
