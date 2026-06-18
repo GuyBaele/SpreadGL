@@ -1,0 +1,104 @@
+name: SpreadGL Decoupled CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - v2.0-beta
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-name: '3.11'
+          python-version: '3.11'
+
+      - name: Install System GDAL Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gdal-bin libgdal-dev build-essential
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install requests httpx
+          pip install -e backend/
+
+      - name: Run E2E Regression Tests
+        run: |
+          python backend/run_regression_tests.py
+
+  build-and-deploy:
+    needs: validate-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build and Push Backend Processing Toolkit
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: florentlee/spread.gl.processing.toolkit:2.0-beta
+
+      - name: Build and Push Frontend Web Application
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: florentlee/spread.gl.web.page:2.0-beta
+          build-args: |
+            BACKEND_API_URL=https://florentlee-spreadglbackend.hf.space
+
+      - name: Mirror Codebase to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config --global user.email "yiminflorent@gmail.com"
+          git config --global user.name "Yimin Li"
+          
+          # Push frontend subproject to SpreadGLWebSite Space
+          git subtree split --prefix=frontend -b hf-frontend-branch
+          git push https://florentlee:$HF_TOKEN@huggingface.co/spaces/florentlee/SpreadGLWebSite hf-frontend-branch:main --force
+          
+          # Push backend subproject to SpreadGLBackEnd Space
+          git subtree split --prefix=backend -b hf-backend-branch
+          git push https://florentlee:$HF_TOKEN@huggingface.co/spaces/florentlee/SpreadGLBackEnd hf-backend-branch:main --force
+
+  deploy-to-huggingface:
+    needs: validate-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to Hugging Face Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add hf https://user:$HF_TOKEN@huggingface.co/spaces/FlorentLee98/SpreadGL
+          git push hf HEAD:main -f
