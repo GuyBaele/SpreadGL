@@ -1,0 +1,1123 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            15,
+            60
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Northern Europe",
+        "jump_weight": 132,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 15,
+        "end_lat": 60,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Western Europe",
+        "jump_weight": 45,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 195.19009329479636
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            2.3158,
+            9.3077
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Benin",
+        "jump_weight": 59,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 2.3158,
+        "end_lat": 9.3077,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2.3158,
+            9.3077
+          ],
+          [
+            15,
+            60
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Benin",
+        "end_name": "Northern Europe",
+        "jump_weight": 7,
+        "start_lon": 2.3158,
+        "start_lat": 9.3077,
+        "end_lon": 15,
+        "end_lat": 60,
+        "bayes_factor": 824.1184726264038
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            20,
+            -2
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Middle Africa",
+        "jump_weight": 14,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 20,
+        "end_lat": -2,
+        "bayes_factor": 15332.23120038093
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            -5.5471,
+            7.54
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Ivory Coast",
+        "jump_weight": 31,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": -5.5471,
+        "end_lat": 7.54,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            -1.0232,
+            7.9465
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Ghana",
+        "jump_weight": 21,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": -1.0232,
+        "end_lat": 7.9465,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Western Europe",
+        "jump_weight": 103,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            15,
+            42
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Southern Europe",
+        "jump_weight": 49,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 15,
+        "end_lat": 42,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            -14.4524,
+            14.4974
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Senegal",
+        "jump_weight": 25,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": -14.4524,
+        "end_lat": 14.4974,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            8.0817,
+            17.6078
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Niger",
+        "jump_weight": 14,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 8.0817,
+        "end_lat": 17.6078,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            -100,
+            45
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Northern America",
+        "jump_weight": 66,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": -100,
+        "end_lat": 45,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            55,
+            25
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Western Asia",
+        "jump_weight": 15,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 55,
+        "end_lat": 25,
+        "bayes_factor": 5347.235970102774
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            31,
+            30
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Northern Africa",
+        "jump_weight": 28,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 31,
+        "end_lat": 30,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            37.2972,
+            -1.9577
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Eastern Africa",
+        "jump_weight": 30,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 37.2972,
+        "end_lat": -1.9577,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            -100,
+            45
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Northern America",
+        "jump_weight": 48,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": -100,
+        "end_lat": 45,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -100,
+            45
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern America",
+        "end_name": "Western Europe",
+        "jump_weight": 10,
+        "start_lon": -100,
+        "start_lat": 45,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            80,
+            20
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Southern Asia",
+        "jump_weight": 12,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 80,
+        "end_lat": 20,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            42
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Southern Europe",
+        "end_name": "Western Europe",
+        "jump_weight": 13,
+        "start_lon": 15,
+        "start_lat": 42,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -5.5471,
+            7.54
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Ivory Coast",
+        "end_name": "Western Europe",
+        "jump_weight": 12,
+        "start_lon": -5.5471,
+        "start_lat": 7.54,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2,
+            49
+          ],
+          [
+            15,
+            42
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Western Europe",
+        "end_name": "Southern Europe",
+        "jump_weight": 38,
+        "start_lon": 2,
+        "start_lat": 49,
+        "end_lon": 15,
+        "end_lat": 42,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            2,
+            49
+          ],
+          [
+            15,
+            60
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Western Europe",
+        "end_name": "Northern Europe",
+        "jump_weight": 17,
+        "start_lon": 2,
+        "start_lat": 49,
+        "end_lon": 15,
+        "end_lat": 60,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            8.6753,
+            9.082
+          ],
+          [
+            0.8248,
+            8.6195
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Nigeria",
+        "end_name": "Togo",
+        "jump_weight": 19,
+        "start_lon": 8.6753,
+        "start_lat": 9.082,
+        "end_lon": 0.8248,
+        "end_lat": 8.6195,
+        "bayes_factor": 1925.8040380494494
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0.8248,
+            8.6195
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Togo",
+        "end_name": "Western Europe",
+        "jump_weight": 6,
+        "start_lon": 0.8248,
+        "start_lat": 8.6195,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 539.6456740429844
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            80,
+            20
+          ],
+          [
+            15,
+            60
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Southern Asia",
+        "end_name": "Northern Europe",
+        "jump_weight": 15,
+        "start_lon": 80,
+        "start_lat": 20,
+        "end_lon": 15,
+        "end_lat": 60,
+        "bayes_factor": 35814.27269838869
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            127,
+            35
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Eastern Asia",
+        "jump_weight": 13,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 127,
+        "end_lat": 35,
+        "bayes_factor": 170.571299672677
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            37.2972,
+            -1.9577
+          ],
+          [
+            15,
+            60
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Eastern Africa",
+        "end_name": "Northern Europe",
+        "jump_weight": 10,
+        "start_lon": 37.2972,
+        "start_lat": -1.9577,
+        "end_lon": 15,
+        "end_lat": 60,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -14.4524,
+            14.4974
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Senegal",
+        "end_name": "Western Europe",
+        "jump_weight": 16,
+        "start_lon": -14.4524,
+        "start_lat": 14.4974,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0.8248,
+            8.6195
+          ],
+          [
+            2.3158,
+            9.3077
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Togo",
+        "end_name": "Benin",
+        "jump_weight": 6,
+        "start_lon": 0.8248,
+        "start_lat": 8.6195,
+        "end_lon": 2.3158,
+        "end_lat": 9.3077,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -100,
+            45
+          ],
+          [
+            -66,
+            18
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern America",
+        "end_name": "Caribbean",
+        "jump_weight": 6,
+        "start_lon": -100,
+        "start_lat": 45,
+        "end_lon": -66,
+        "end_lat": 18,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            80,
+            20
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Southern Asia",
+        "end_name": "Western Europe",
+        "jump_weight": 10,
+        "start_lon": 80,
+        "start_lat": 20,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 1102.602370187012
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            80,
+            20
+          ],
+          [
+            102,
+            3
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Southern Asia",
+        "end_name": "Southeastern Asia",
+        "jump_weight": 10,
+        "start_lon": 80,
+        "start_lat": 20,
+        "end_lon": 102,
+        "end_lat": 3,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -100,
+            45
+          ],
+          [
+            -85.6024,
+            12.769
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern America",
+        "end_name": "Central America",
+        "jump_weight": 1,
+        "start_lon": -100,
+        "start_lat": 45,
+        "end_lon": -85.6024,
+        "end_lat": 12.769,
+        "bayes_factor": 326.76205656002986
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            15,
+            60
+          ],
+          [
+            102,
+            3
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Europe",
+        "end_name": "Southeastern Asia",
+        "jump_weight": 7,
+        "start_lon": 15,
+        "start_lat": 60,
+        "end_lon": 102,
+        "end_lat": 3,
+        "bayes_factor": 727.9586533869372
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -100,
+            45
+          ],
+          [
+            55,
+            25
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern America",
+        "end_name": "Western Asia",
+        "jump_weight": 13,
+        "start_lon": -100,
+        "start_lat": 45,
+        "end_lon": 55,
+        "end_lat": 25,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            37.2972,
+            -1.9577
+          ],
+          [
+            -100,
+            45
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Eastern Africa",
+        "end_name": "Northern America",
+        "jump_weight": 12,
+        "start_lon": 37.2972,
+        "start_lat": -1.9577,
+        "end_lon": -100,
+        "end_lat": 45,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            55,
+            25
+          ],
+          [
+            2,
+            49
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Western Asia",
+        "end_name": "Western Europe",
+        "jump_weight": 4,
+        "start_lon": 55,
+        "start_lat": 25,
+        "end_lon": 2,
+        "end_lat": 49,
+        "bayes_factor": 626.3751858062221
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -14.4524,
+            14.4974
+          ],
+          [
+            -10.9408,
+            21.0079
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Senegal",
+        "end_name": "Mauritania",
+        "jump_weight": 8,
+        "start_lon": -14.4524,
+        "start_lat": 14.4974,
+        "end_lon": -10.9408,
+        "end_lat": 21.0079,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -14.4524,
+            14.4974
+          ],
+          [
+            -9.4295,
+            6.4281
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Senegal",
+        "end_name": "Liberia",
+        "jump_weight": 2,
+        "start_lon": -14.4524,
+        "start_lat": 14.4974,
+        "end_lon": -9.4295,
+        "end_lat": 6.4281,
+        "bayes_factor": 727.9586533869372
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -14.4524,
+            14.4974
+          ],
+          [
+            15,
+            42
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Senegal",
+        "end_name": "Southern Europe",
+        "jump_weight": 11,
+        "start_lon": -14.4524,
+        "start_lat": 14.4974,
+        "end_lon": 15,
+        "end_lat": 42,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            37.2972,
+            -1.9577
+          ],
+          [
+            80,
+            20
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Eastern Africa",
+        "end_name": "Southern Asia",
+        "jump_weight": 6,
+        "start_lon": 37.2972,
+        "start_lat": -1.9577,
+        "end_lon": 80,
+        "end_lat": 20,
+        "bayes_factor": 107501.41794142839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            31,
+            30
+          ],
+          [
+            55,
+            25
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Northern Africa",
+        "end_name": "Western Asia",
+        "jump_weight": 2,
+        "start_lon": 31,
+        "start_lat": 30,
+        "end_lon": 55,
+        "end_lat": 25,
+        "bayes_factor": 17892.486387631205
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -5.5471,
+            7.54
+          ],
+          [
+            -15.3101,
+            13.4432
+          ]
+        ]
+      },
+      "properties": {
+        "start_name": "Ivory Coast",
+        "end_name": "Gambia",
+        "jump_weight": 1,
+        "start_lon": -5.5471,
+        "start_lat": 7.54,
+        "end_lon": -15.3101,
+        "end_lat": 13.4432,
+        "bayes_factor": 170.94349934268922
+      }
+    }
+  ]
+}

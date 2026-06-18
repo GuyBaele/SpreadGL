@@ -1,1 +1,13 @@
-node_modules
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+dist/
+build/
+.env
+frontend/node_modules/
+frontend/build/
+backend/.venv/
+backend/__pycache__/
