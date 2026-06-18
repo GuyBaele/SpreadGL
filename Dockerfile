@@ -1,6 +1,7 @@
 # Stage 1: Build Frontend
 FROM node:18 AS frontend-builder
 WORKDIR /app/frontend
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 COPY frontend/package*.json ./
 RUN npm install --legacy-peer-deps
 COPY frontend/ ./
