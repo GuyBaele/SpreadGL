@@ -1,0 +1,14 @@
+numpy==1.23.2
+pandas==2.2.0
+geojson==3.0.1
+geopandas==0.14.4
+setuptools==67.4.0
+pyproj==3.4.1
+DendroPy==4.5.2
+rasterio==1.3.6
+rioxarray==0.14.0
+Cython==0.29.35
+bottleneck == 1.3.7
+fastapi
+uvicorn
+python-multipart
